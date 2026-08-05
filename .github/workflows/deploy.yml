@@ -1,4 +1,4 @@
-name: 67 design and build API CI/CD Pipeline
+name: KrestHolding API CI/CD Pipeline
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         run: npm run lint
 
   build:
-    name: Build API
+    name: Build KrestHolding website
     runs-on: ubuntu-latest
     needs: lint
 
@@ -50,33 +50,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-# name: Kisuma Api CI/CD Pipeline
-
-# on:
-#   push:
-#     branches:
-#       - main
-#       - dev
-
-# jobs:
-#   lint:
-#     name: Lint Code
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Install deps
-#         run: npm ci
-#       - name: Run linter
-#         run: npm run lint
-
-#   build:
-#     name: Build API
-#     runs-on: ubuntu-latest
-#     needs: lint
-#     steps:
-#       - uses: actions/checkout@v4
-#       - name: Install deps
-#         run: npm ci
-#       - name: Build project
-#         run: npm run build
