@@ -30,7 +30,7 @@ export default function Home() {
         <Image
           className="dark:invert"
           src="/logo67.svg"
-          alt="67design logo"
+          alt="krestholding logo"
           width={100}
           height={20}
           priority

@@ -35,6 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-# 67designandbuild-home
+# KrestHolding-home
 
-DESIGN &amp; BUILD est une entreprise de génie civil et de travaux publics fondée le 6 mai 2022 à Douala, Cameroun
+KrestHolding is an engineering and public works company founded on May 6, 2022 in Douala, Cameroon
