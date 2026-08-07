@@ -5,7 +5,7 @@ import { MaintenanceError } from "@/components/errors/maintenance-error";
 import { GeneralError } from "@/components/errors/general-error";
 import { BadRequest } from "@/components/errors/badRequest";
 
-function FetchError({ error }: { error: Error | null }) {
+function FetchError({ error, data }: { error: Error | null; data?: boolean }) {
   if (error instanceof AxiosError) {
     if (error.response?.status === 404) {
       return <NotFoundError />;
@@ -16,6 +16,9 @@ function FetchError({ error }: { error: Error | null }) {
     if (error.response?.status === 503) {
       return <MaintenanceError />;
     }
+  }
+  if (data) {
+    return <NotFoundError />;
   }
   return <BadRequest />;
 }
