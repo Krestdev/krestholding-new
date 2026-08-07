@@ -1,6 +1,13 @@
 import { Media } from "./media.collection";
-import { Service } from "./service.collection";
+import { Subsidiaries } from "./subsidiaries.collection";
+import { CompanyValues } from "./companyValues.collection";
+import { News } from "./news.collection";
+import { Pages } from "./pages.collection";
+
 export const collections = [
-  Service,
   Media,
+  Subsidiaries,
+  CompanyValues,
+  News,
+  Pages,
 ];
