@@ -10,6 +10,6 @@ export const Service: CollectionConfig = {
     { name: "title", type: "text", localized: true },
     { name: "slug", type: "text" },
     { name: "content", type: "richText", localized: true },
-    { name: "preveiw", type: "upload", relationTo: "media" },
+    { name: "preveiw", type: "upload", relationTo: "media" }, // Note: 'preveiw' is spelled this way in the schema
   ],
 };

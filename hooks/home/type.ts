@@ -1,20 +1,15 @@
 import { Media, RichText } from "../type";
 
-
-export interface HomePageGlobal {
+export interface HomePageContent {
   id: number;
-  title?: string | null;
-  intro?: string | null;
+  heroHeading?: string | null;
+  heroSubheading?: string | null;
+  heroCtaLabel?: string | null;
+  heroCtaUrl?: string | null;
+  heroBgMedia?: Media | number | null;
+  aboutIntroHeading?: string | null;
+  aboutIntroBody?: RichText | null;
+  newsCalloutText?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
-}
-
-export interface HomePageCollection {
-  id: number;
-  title?: string | null;
-  slug?: string | null;
-  content?: RichText | null;
-  preveiw?: Media | number | null; // Note: 'preveiw' is spelled this way in the collection schema
-  createdAt: string;
-  updatedAt: string;
 }
