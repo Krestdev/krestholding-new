@@ -1,3 +1,4 @@
+import { s3Storage } from '@payloadcms/storage-s3'
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
@@ -36,4 +37,21 @@ export default buildConfig({
   // This is optional - if you don't need to do these things,
   // you don't need it!
   sharp,
+  plugins: [
+    s3Storage({
+      collections: {
+        media: true
+      },
+      bucket: process.env.S3_BUCKET!,
+      config: {
+        endpoint: process.env.S3_ENDPOINT!,
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+        },
+        region: "cm-douala",
+        forcePathStyle: true
+      }
+    })
+  ]
 });
