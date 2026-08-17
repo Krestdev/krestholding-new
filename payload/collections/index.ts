@@ -3,6 +3,10 @@ import { Subsidiaries } from "./subsidiaries.collection";
 import { CompanyValues } from "./companyValues.collection";
 import { News } from "./news.collection";
 import { Pages } from "./pages.collection";
+import { Testimonials } from "./testimonials.collection";
+import { Faqs } from "./faqs.collection";
+import { Certifications } from "./certifications.collection";
+import { Service } from "./service.collection";
 
 export const collections = [
   Media,
@@ -10,4 +14,8 @@ export const collections = [
   CompanyValues,
   News,
   Pages,
+  Testimonials,
+  Faqs,
+  Certifications,
+  Service,
 ];

@@ -4,6 +4,8 @@ export interface News {
   id: number;
   title: string;
   slug: string;
+  category?: string | null;
+  author?: string | null;
   excerpt?: string | null;
   featuredImage?: Media | number | null;
   content?: RichText | null;

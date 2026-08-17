@@ -34,6 +34,17 @@ export const News: CollectionConfig = {
       relationTo: 'media',
     },
     {
+      name: 'category',
+      type: 'text',
+      defaultValue: 'Actualité',
+      localized: true,
+    },
+    {
+      name: 'author',
+      type: 'text',
+      defaultValue: 'Équipe Krest',
+    },
+    {
       name: 'content',
       type: 'richText',
       localized: true,

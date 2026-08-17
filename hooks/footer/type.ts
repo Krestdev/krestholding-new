@@ -23,8 +23,11 @@ export interface Footer {
   id: number;
   description?: RichText | null;
   columns?: FooterColumn[] | null;
+  participationsColumnTitle?: string | null;
   socialLinks?: FooterSocialLink[] | null;
   copyrightNotice?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
 }
+
+
