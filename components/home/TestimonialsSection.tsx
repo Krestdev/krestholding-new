@@ -61,10 +61,10 @@ export default function TestimonialsSection({ testimonials, homeData }: Testimon
             </h2>
             <Link
               href={homeData?.testimonialsCtaUrl || "/contact"}
-              className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white text-sm font-medium w-fit"
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white text-sm font-medium w-fit transition-colors hover:bg-black/80"
             >
               <span>{homeData?.testimonialsCtaLabel || "Nous rejoindre"}</span>
-              <CtaArrow />
+              <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

@@ -62,18 +62,18 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
           <div className="flex flex-wrap items-center gap-2.5 pt-1">
             <Link
               href={homeData?.heroCtaUrl || "#notre-modele"}
-              className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
             >
               <span>{homeData?.heroCtaLabel || "Notre modèle"}</span>
-              <CtaArrow />
+              <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
 
             <Link
               href={homeData?.heroSecondaryCtaUrl || "/partenaires"}
-              className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-colors"
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-colors"
             >
               <span>{homeData?.heroSecondaryCtaLabel || "Nos participations"}</span>
-              <CtaArrow />
+              <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
@@ -131,11 +131,16 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
             </div>
             <Link
               href={heroNews?.slug ? `/actualite/${heroNews.slug}` : "/actualite"}
-              className="flex flex-col h-[200px] items-center border border-white/10"
+              className="group flex flex-col h-[200px] items-center border border-white/10 transition-colors hover:border-white/30"
             >
-              <div className="relative h-[142px] w-full bg-white/10 shrink-0">
+              <div className="relative h-[142px] w-full bg-white/10 shrink-0 overflow-hidden">
                 {heroNewsImage?.url && (
-                  <Image src={heroNewsImage.url} alt={heroNews?.title ?? ""} fill className="object-cover" />
+                  <Image
+                    src={heroNewsImage.url}
+                    alt={heroNews?.title ?? ""}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 )}
               </div>
               <div className="flex flex-1 items-center min-h-0 w-full px-3">

@@ -13,9 +13,10 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
     <>
       <Link
         href="/"
-        className="inline-flex items-center text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+        className="group inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
       >
-        &larr; Retour à l&apos;accueil
+        <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">&larr;</span>
+        <span>Retour à l&apos;accueil</span>
       </Link>
 
       <header className="space-y-4">

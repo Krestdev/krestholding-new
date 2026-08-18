@@ -100,10 +100,10 @@ export default function InvestmentProcessSection({ homeData }: InvestmentProcess
           </div>
           <Link
             href={homeData?.processCtaUrl || "#soumettre-dossier"}
-            className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white text-sm font-medium shrink-0"
+            className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white text-sm font-medium shrink-0 transition-colors hover:bg-black/80"
           >
             <span>{homeData?.processCtaLabel || "Soumettre un dossier"}</span>
-            <CtaArrow />
+            <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>

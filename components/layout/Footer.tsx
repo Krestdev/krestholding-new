@@ -62,7 +62,10 @@ export default function Footer() {
             <ul className="flex flex-col gap-2">
               {col.links?.map((link, lIdx) => (
                 <li key={lIdx}>
-                  <Link href={link.url ?? "#"} className="text-[#4d5766] hover:text-white transition-colors text-lg">
+                  <Link
+                    href={link.url ?? "#"}
+                    className="relative inline-block py-0.5 text-[#4d5766] text-lg transition-colors hover:text-white after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  >
                     {link.label}
                   </Link>
                 </li>

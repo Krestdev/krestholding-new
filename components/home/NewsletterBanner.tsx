@@ -51,7 +51,7 @@ export default function NewsletterBanner({ homeData }: NewsletterBannerProps) {
               />
               <button
                 type="submit"
-                className="shrink-0 bg-[#f29308] text-white font-mono text-lg uppercase px-4 py-3 tracking-tight"
+                className="shrink-0 bg-[#f29308] text-white font-mono text-lg uppercase px-4 py-3 tracking-tight transition-colors hover:bg-[#f29308]/85"
               >
                 {homeData?.newsletterButtonLabel || "Rejoindre"}
               </button>

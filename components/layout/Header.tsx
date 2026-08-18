@@ -68,7 +68,11 @@ export default function Header() {
 
           <nav className="hidden lg:flex items-center gap-6 text-[15px] font-medium text-white">
             {navItems.map((item, idx) => (
-              <Link key={item.id || idx} href={item.url ?? "#"} className="hover:text-white/70 transition-colors">
+              <Link
+                key={item.id || idx}
+                href={item.url ?? "#"}
+                className="relative py-1 transition-colors hover:text-white/70 after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              >
                 {item.label}
               </Link>
             ))}
@@ -107,7 +111,7 @@ export default function Header() {
 
             <Link
               href={headerData?.ctaUrl || "/contact"}
-              className="inline-flex items-center justify-center px-4 py-3 text-[15px] font-medium bg-white text-black hover:bg-white/90 transition-colors"
+              className="inline-flex items-center justify-center px-4 py-3 text-[15px] font-medium bg-white text-black hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               {headerData?.ctaLabel || "Soumettre"}
             </Link>
@@ -115,7 +119,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="lg:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white transition-colors hover:text-white/70"
             aria-label="Menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <List size={22} />}
@@ -131,7 +135,7 @@ export default function Header() {
                 key={item.id || idx}
                 href={item.url ?? "#"}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-[15px] text-white"
+                className="text-[15px] text-white transition-colors active:text-white/60"
               >
                 {item.label}
               </Link>
@@ -155,7 +159,7 @@ export default function Header() {
           <Link
             href={headerData?.ctaUrl || "/contact"}
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-center px-4 py-3 bg-white text-black text-[15px] font-medium"
+            className="block text-center px-4 py-3 bg-white text-black text-[15px] font-medium transition-colors active:bg-white/80"
           >
             {headerData?.ctaLabel || "Soumettre"}
           </Link>

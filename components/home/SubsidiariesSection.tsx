@@ -74,7 +74,10 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
           {items.map((item) => {
             const accent = ACCENT[item.accentColor || "teal"];
             return (
-              <div key={item.id} className={`border ${accent.border} overflow-hidden flex flex-col`}>
+              <div
+                key={item.id}
+                className={`group border ${accent.border} overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-1`}
+              >
                 <div className={`h-1 w-full ${accent.bar}`} />
                 <div className="p-6 flex flex-col gap-1">
                   <span className={`font-abel text-xs uppercase tracking-[1px] ${accent.text}`}>
@@ -102,7 +105,10 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
 
                   <div className="flex items-center justify-between pt-4 mt-4 border-t border-white/[0.06]">
                     <span className="text-white/80 text-xs">Voir la fiche</span>
-                    <CtaArrow size={14} className={accent.text} />
+                    <CtaArrow
+                      size={14}
+                      className={`${accent.text} transition-transform duration-300 group-hover:translate-x-1`}
+                    />
                   </div>
                 </div>
               </div>

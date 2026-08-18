@@ -113,10 +113,10 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
               </p>
               <Link
                 href={homeData?.aboutCtaUrl || "#"}
-                className="inline-flex items-center gap-2 border border-white/20 rounded px-5 py-2.5 text-sm text-white font-medium w-fit"
+                className="group inline-flex items-center gap-2 border border-white/20 rounded px-5 py-2.5 text-sm text-white font-medium w-fit transition-colors hover:bg-white/5 hover:border-white/40"
               >
                 <span>{homeData?.aboutCtaLabel || "Notre rapport d'impact"}</span>
-                <CtaArrow />
+                <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
 
