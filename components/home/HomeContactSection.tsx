@@ -71,7 +71,7 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
         <div className="bg-white/[0.01] border border-white/[0.08] rounded-xl p-8">
           <div className="flex gap-2">
             {[1, 2, 3].map((s) => (
-              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#218da8]" : "bg-[#1a2c38]"}`} />
+              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#f29308]" : "bg-[#1a2c38]"}`} />
             ))}
           </div>
 
@@ -96,7 +96,7 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
           <button
             type="button"
             disabled
-            className="mt-8 px-6 py-2.5 bg-[#218da8] text-white font-mono text-sm uppercase tracking-wide opacity-70 cursor-not-allowed"
+            className="mt-8 px-6 py-2.5 bg-[#f29308] text-white font-mono text-sm uppercase tracking-wide opacity-70 cursor-not-allowed"
           >
             Continuer
           </button>

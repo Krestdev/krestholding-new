@@ -17,12 +17,38 @@ const ACCENT: Record<SubsidiaryAccentColor, { bar: string; text: string; border:
   gray: { bar: "bg-[#4d5766]", text: "text-[#4d5766]", border: "border-[#4d5766]/24" },
 };
 
+const DEFAULT_SYNERGIES = [
+  {
+    entityA: "CREACONSULT",
+    entityB: "67 DESIGN & BUILD",
+    description: "Études techniques et exécution BTP : du plan à la livraison en circuits intégrés.",
+  },
+  {
+    entityA: "KRESTDEV",
+    entityB: "LE CARINO",
+    description: "Digitalisation de la restauration : réservation, caisse, fidélité.",
+  },
+  {
+    entityA: "BULL SERVICES",
+    entityB: "Communes",
+    description: "Gestion fourrière mutualisée pour les collectivités de la zone CEMAC.",
+  },
+];
+
 export default function SubsidiariesSection({ subsidiaries, homeData }: SubsidiariesSectionProps) {
   const items = subsidiaries ?? [];
-  const synergies = homeData?.synergies ?? [];
 
   const subsidiaryName = (ref: Subsidiary | number | undefined) =>
     typeof ref === "object" && ref !== null ? ref.name : undefined;
+
+  const synergies = homeData?.synergies?.length
+    ? homeData.synergies.map((syn, idx) => ({
+        id: syn.id ?? idx,
+        entityA: subsidiaryName(syn.entityA),
+        entityB: subsidiaryName(syn.entityB),
+        description: syn.description,
+      }))
+    : DEFAULT_SYNERGIES.map((syn, idx) => ({ id: idx, ...syn }));
 
   return (
     <section className="bg-[#0d0d0d] py-24 lg:py-[112px] px-6 lg:px-10 border-y border-white/10">
@@ -51,10 +77,10 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
               <div key={item.id} className={`border ${accent.border} overflow-hidden flex flex-col`}>
                 <div className={`h-1 w-full ${accent.bar}`} />
                 <div className="p-6 flex flex-col gap-1">
-                  <span className={`font-abel text-[11px] uppercase tracking-widest ${accent.text}`}>
+                  <span className={`font-abel text-xs uppercase tracking-[1px] ${accent.text}`}>
                     {item.category}
                   </span>
-                  <h3 className="font-sans font-bold text-white text-xl pt-1">{item.name}</h3>
+                  <h3 className="font-sans text-white text-xl pt-1">{item.name}</h3>
 
                   <div className="flex items-center gap-3 pt-1 text-xs">
                     {item.participationLabel && (
@@ -64,7 +90,7 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
                     )}
                     {item.entryYear && (
                       <>
-                        <span className="text-[#4d5766]">·</span>
+                        <span className={accent.text}>·</span>
                         <span className="text-white/80">
                           Entrée <span className="text-white">{item.entryYear}</span>
                         </span>
@@ -72,7 +98,7 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
                     )}
                   </div>
 
-                  <p className="text-white/80 text-sm leading-relaxed pt-4">{item.shortDescription}</p>
+                  <p className="text-white/80 text-base leading-relaxed pt-4">{item.shortDescription}</p>
 
                   <div className="flex items-center justify-between pt-4 mt-4 border-t border-white/[0.06]">
                     <span className="text-white/80 text-xs">Voir la fiche</span>
@@ -84,26 +110,24 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
           })}
         </div>
 
-        {synergies.length > 0 && (
-          <div className="flex flex-col gap-6 pt-4">
-            <h3 className="font-sans font-medium text-white text-3xl sm:text-4xl tracking-tight">
-              {homeData?.synergiesHeading || "Ce que les entités s'apportent entre elles"}
-            </h3>
+        <div className="flex flex-col gap-6 pt-4">
+          <h3 className="font-sans font-medium text-white text-3xl sm:text-4xl tracking-tight">
+            {homeData?.synergiesHeading || "Ce que les entités s'apportent entre elles"}
+          </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {synergies.map((syn, idx) => (
-                <div key={syn.id ?? idx} className="bg-white/[0.01] border border-white/[0.06] rounded-lg p-5">
-                  <p className="text-sm">
-                    <span className="text-[#218da8] font-bold">{subsidiaryName(syn.entityA)}</span>
-                    <span className="text-[#4d5766] mx-2">↔</span>
-                    <span className="text-[#f29308] font-bold">{subsidiaryName(syn.entityB)}</span>
-                  </p>
-                  <p className="text-white/80 text-sm leading-relaxed pt-2">{syn.description}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {synergies.map((syn) => (
+              <div key={syn.id} className="bg-white/[0.01] border border-white/[0.06] rounded-lg p-5">
+                <p className="text-sm">
+                  <span className="text-[#218da8] font-bold">{syn.entityA}</span>
+                  <span className="text-[#4d5766] mx-2">↔</span>
+                  <span className="text-[#f29308] font-bold">{syn.entityB}</span>
+                </p>
+                <p className="text-white/80 text-sm leading-relaxed pt-2">{syn.description}</p>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

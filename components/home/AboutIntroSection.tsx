@@ -3,7 +3,7 @@
 import { HomePageContent } from "@/hooks/home/type";
 import Link from "next/link";
 import Image from "next/image";
-import { Plus, ArrowUp } from "@phosphor-icons/react";
+import { Plus, ArrowRight } from "@phosphor-icons/react";
 import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
@@ -31,8 +31,8 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
     <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-[120px]">
         {/* Intro */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-0">
-          <div className="flex items-center gap-3 shrink-0 lg:w-[340px]">
+        <div className="flex flex-col items-start lg:flex-row gap-10 lg:gap-0">
+          <div className="flex items-center gap-3 shrink-0 lg:w-[340px] lg:pt-[6px]">
             <KickerIcon className="text-white" />
             <span className="font-abel text-white text-xl uppercase tracking-tight">
               {homeData?.aboutKicker || "A propos de nous"}
@@ -77,10 +77,10 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center justify-center p-3 border border-white/10">
-                    <Plus size={16} className="text-white/60" />
+                    <Plus size={16} className="text-white" />
                   </div>
                   <div className="flex items-center justify-center p-3 bg-[#141414]">
-                    <ArrowUp size={16} className="text-white/60" />
+                    <ArrowRight size={16} className="text-white" />
                   </div>
                 </div>
               </div>

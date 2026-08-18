@@ -54,7 +54,7 @@ export default function FaqSection({ faqs, homeData }: FaqSectionProps) {
                       <p className="font-inter font-medium text-[#333] text-sm leading-relaxed">{answerText}</p>
                     )}
                   </div>
-                  <div className="shrink-0 size-6 flex items-center justify-center border border-black/5 mt-1">
+                  <div className="shrink-0 size-6 flex items-center justify-center border border-black/5 mt-1 text-black">
                     {isOpen ? <X size={16} /> : <Plus size={16} />}
                   </div>
                 </button>

@@ -54,13 +54,9 @@ export default function CertificationsSection({ certifications, homeData }: Cert
                   </div>
                 );
               })
-            : ["ISO 9001", "ISO 14001"].map((code) => (
-                <div
-                  key={code}
-                  className="flex flex-col items-center justify-center gap-2 h-[220px] w-[220px] rounded-full border border-white/20 text-white shrink-0"
-                >
-                  <SealCheck size={40} />
-                  <span className="text-sm font-semibold">{code}</span>
+            : ["/enterprise_ready1.png", "/enteprise_ready2.png"].map((src) => (
+                <div key={src} className="relative h-[220px] w-[220px] shrink-0">
+                  <Image src={src} alt="" fill className="object-contain" />
                 </div>
               ))}
         </div>
