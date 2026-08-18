@@ -6,8 +6,9 @@ import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CaretUpDown, List, X } from "@phosphor-icons/react";
+import { cn } from "@/lib/utils";
 
 const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
   { id: "1", label: "Le groupe", url: "/a-propos" },
@@ -29,6 +30,14 @@ export default function Header() {
   const { locale, setLocale } = useLocaleStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const { data: headerData } = useQuery({
     queryKey: ["header", locale],
@@ -45,7 +54,12 @@ export default function Header() {
   const currentLangLabel = locale?.toUpperCase() || "FR";
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 transition-colors duration-300",
+        isScrolled && "bg-[#0d0d0d]/90 backdrop-blur-sm",
+      )}
+    >
       <div className="border-b border-white/20">
         <div className="flex items-center justify-between px-6 lg:px-20 py-5">
           <Link href="/" className="flex items-center shrink-0">
