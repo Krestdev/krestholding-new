@@ -81,7 +81,7 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
 
           <div className="flex flex-wrap gap-4">
             {FIELDS.map((field) => (
-              <div key={field.label} className="flex flex-col gap-1.5 w-[calc(50%-8px)]">
+              <div key={field.label} className="flex flex-col gap-1.5 w-full sm:w-[calc(50%-8px)]">
                 <label className="font-mono text-[#878887] text-[10px] uppercase tracking-wide">{field.label}</label>
                 <input
                   type="text"

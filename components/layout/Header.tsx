@@ -61,7 +61,7 @@ export default function Header() {
       )}
     >
       <div className="border-b border-white/20">
-        <div className="flex items-center justify-between px-6 lg:px-20 py-5">
+        <div className="flex items-center justify-between px-6 lg:px-10 py-5">
           <Link href="/" className="flex items-center shrink-0">
             <Image src={logoUrl} alt={logoAlt} width={140} height={43} priority className="h-10 w-auto object-contain" />
           </Link>
@@ -137,6 +137,21 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+
+          <div className="flex items-center gap-2">
+            {LANGUAGES.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => setLocale(lang.code as "fr" | "en" | "it")}
+                className={`px-3 py-2 text-[15px] font-medium border border-white/16 transition-colors ${
+                  locale === lang.code ? "text-white border-white/40" : "text-white/60 hover:text-white"
+                }`}
+              >
+                {lang.label}
+              </button>
+            ))}
+          </div>
+
           <Link
             href={headerData?.ctaUrl || "/contact"}
             onClick={() => setMobileMenuOpen(false)}

@@ -46,7 +46,7 @@ export default function FaqSection({ faqs, homeData }: FaqSectionProps) {
               <div key={item.id ?? idx} className="border-b border-black/[0.05]">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full flex items-start gap-20 p-10 text-left"
+                  className="w-full flex items-start gap-6 sm:gap-20 p-6 sm:p-10 text-left"
                 >
                   <div className="flex-1 flex flex-col gap-4">
                     <h3 className="font-inter font-medium text-black text-lg sm:text-xl">{item.question}</h3>
