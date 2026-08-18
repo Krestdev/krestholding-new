@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Plus, ArrowRight } from "@phosphor-icons/react";
 import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
+import ScrollRevealText from "@/components/ui/ScrollRevealText";
 
 interface AboutIntroSectionProps {
   homeData?: HomePageContent | null;
@@ -26,6 +27,9 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
   const tags = homeData?.aboutTags?.length ? homeData.aboutTags.map((t) => t.label) : DEFAULT_TAGS;
   const stats = homeData?.aboutStats?.length ? homeData.aboutStats : DEFAULT_STATS;
   const quoteAvatar = typeof homeData?.aboutQuoteAvatar === "object" ? homeData.aboutQuoteAvatar : undefined;
+  const introHeading =
+    homeData?.aboutIntroHeading ||
+    "Depuis 2018, KREST HOLDING identifie, structure et accompagne des entreprises à travers 5 pôles d'expertise mutualisés. Un modèle de création de valeur durable ancré dans l'économie camerounaise.";
 
   return (
     <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
@@ -40,10 +44,11 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
           </div>
 
           <div className="flex flex-col gap-8 lg:max-w-[600px]">
-            <h2 className="font-sans font-medium text-white text-3xl sm:text-4xl leading-tight">
-              {homeData?.aboutIntroHeading ||
-                "Depuis 2018, KREST HOLDING identifie, structure et accompagne des entreprises à travers 5 pôles d'expertise mutualisés. Un modèle de création de valeur durable ancré dans l'économie camerounaise."}
-            </h2>
+            <ScrollRevealText
+              as="h2"
+              text={introHeading}
+              className="font-sans font-medium text-3xl sm:text-4xl leading-tight"
+            />
             <p className="text-[#ccc] text-lg sm:text-xl leading-relaxed">
               {homeData?.aboutIntroBody ||
                 "Chaque participation bénéficie d'un accompagnement mensuel structuré autour de nos 5 pôles d'expertise : marketing, IT, finance, achats et ressources humaines."}
