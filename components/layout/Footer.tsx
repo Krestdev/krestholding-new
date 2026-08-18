@@ -20,10 +20,10 @@ const DEFAULT_COLUMNS = [
   {
     columnTitle: "Notre modèle",
     links: [
-      { label: "Thèse d'investissement", url: "#notre-modele" },
-      { label: "Processus", url: "#notre-modele" },
-      { label: "Les 5 pôles", url: "#notre-modele" },
-      { label: "Éligibilité", url: "#soumettre-dossier" },
+      { label: "Thèse d'investissement", url: "/notre-modele#these" },
+      { label: "Processus", url: "/notre-modele#processus" },
+      { label: "Les 5 pôles", url: "/notre-modele#poles" },
+      { label: "Éligibilité", url: "/#soumettre-dossier" },
     ],
   },
   {
