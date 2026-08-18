@@ -155,8 +155,24 @@
   animation: vertical-ticker linear infinite;
 }
 
+@keyframes horizontal-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Same seamless-loop trick as the vertical ticker, on the X axis: content
+       is duplicated, so -50% is exactly one full set's width. */
+    transform: translateX(-50%);
+  }
+}
+
+.animate-horizontal-ticker {
+  animation: horizontal-ticker linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-vertical-ticker {
+  .animate-vertical-ticker,
+  .animate-horizontal-ticker {
     animation: none;
   }
 }

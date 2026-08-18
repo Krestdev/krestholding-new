@@ -27,7 +27,7 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
   });
 
   const tickerItems = (services ?? []).filter((s) => s.featuredInHero !== false);
-  const logos = (subsidiaries ?? []).filter((s) => s.featuredInHome !== false).slice(0, 6);
+  const logos = (subsidiaries ?? []).filter((s) => s.featuredInHome !== false);
 
   const bgMedia = typeof homeData?.heroBgMedia === "object" ? homeData.heroBgMedia : undefined;
 
@@ -71,20 +71,29 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-10 pt-24 lg:pt-[90px]">
-          <div className="flex flex-wrap items-center gap-8 opacity-90">
-            {logos.map((sub) => {
-              const logo = typeof sub.logo === "object" ? sub.logo : undefined;
-              return logo?.url ? (
-                <div key={sub.id} className="relative h-8 w-28 grayscale brightness-0 invert">
-                  <Image src={logo.url} alt={sub.name} fill className="object-contain object-left" />
-                </div>
-              ) : (
-                <span key={sub.id} className="text-white text-sm font-semibold tracking-wide uppercase">
-                  {sub.name}
-                </span>
-              );
-            })}
-          </div>
+          {logos.length > 0 && (
+            <div className="relative w-full sm:w-[340px] h-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+              <div
+                className="animate-horizontal-ticker flex items-center gap-10 w-max"
+                style={{ animationDuration: `${logos.length * 4}s` }}
+              >
+                {[...logos, ...logos].map((sub, idx) => {
+                  const logo = typeof sub.logo === "object" ? sub.logo : undefined;
+                  return (
+                    <div key={`${sub.id}-${idx}`} className="relative h-8 w-28 shrink-0">
+                      {logo?.url ? (
+                        <Image src={logo.url} alt={sub.name} fill className="object-contain object-left" />
+                      ) : (
+                        <span className="flex items-center h-full text-white text-sm font-semibold tracking-wide uppercase whitespace-nowrap">
+                          {sub.name}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {tickerItems.length > 0 && (
             <div
