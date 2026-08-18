@@ -2,7 +2,7 @@
 
 import { HomePageContent } from "@/hooks/home/type";
 import Link from "next/link";
-import { Asterisk } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
 interface InvestmentProcessSectionProps {
@@ -44,7 +44,7 @@ export default function InvestmentProcessSection({ homeData }: InvestmentProcess
         <div className="grid grid-cols-1 lg:grid-cols-[389px_1fr] gap-10 lg:gap-16">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <Asterisk size={20} weight="fill" className="text-black" />
+              <KickerIcon className="text-black" />
               <span className="font-abel text-black text-xl uppercase tracking-tight">
                 {homeData?.modelKicker || "Comment nous créons de la valeur"}
               </span>

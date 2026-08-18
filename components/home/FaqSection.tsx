@@ -32,15 +32,9 @@ export default function FaqSection({ faqs, homeData }: FaqSectionProps) {
     <section className="bg-white border-b border-black/10 px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row">
         <div className="w-full lg:w-[340px] shrink-0 bg-[#f7f7f7] flex items-center justify-center p-10">
-          {faqImage?.url ? (
-            <div className="relative w-full h-[260px]">
-              <Image src={faqImage.url} alt="" fill className="object-cover" />
-            </div>
-          ) : (
-            <div className="w-full h-[260px] flex items-center justify-center text-black/20 text-sm">
-              Visuel à venir
-            </div>
-          )}
+          <div className="relative w-full h-[260px]">
+            <Image src={faqImage?.url || "/visuel.png"} alt="" fill className="object-contain" />
+          </div>
         </div>
 
         <div className="flex-1">

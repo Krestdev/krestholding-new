@@ -4,7 +4,8 @@ import { Testimonial } from "@/hooks/testimonials/type";
 import { HomePageContent } from "@/hooks/home/type";
 import Link from "next/link";
 import Image from "next/image";
-import { Asterisk, User } from "@phosphor-icons/react";
+import { User } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
 interface TestimonialsSectionProps {
@@ -47,7 +48,7 @@ export default function TestimonialsSection({ testimonials, homeData }: Testimon
       <div className="max-w-[1278px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="flex items-center gap-3 lg:w-[340px] shrink-0">
-            <Asterisk size={20} weight="fill" className="text-black" />
+            <KickerIcon className="text-black" />
             <span className="font-mono text-black text-xl uppercase tracking-tight">
               {homeData?.testimonialsKicker || "Témoignages"}
             </span>

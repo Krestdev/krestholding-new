@@ -3,6 +3,7 @@
 import { HomePageContent } from "@/hooks/home/type";
 import { servicesQuery } from "@/hooks/services/servicesQuery";
 import { subsidiariesQuery } from "@/hooks/subsidiaries/subsidiariesQuery";
+import { newsQuery } from "@/hooks/news/newsQuery";
 import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -26,8 +27,15 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
     queryFn: () => subsidiariesQuery.get({ locale, limit: 12 }),
   });
 
+  const { data: latestNews } = useQuery({
+    queryKey: ["news", locale, "hero"],
+    queryFn: () => newsQuery.get({ locale, limit: 1, sort: "-publishedAt" }),
+  });
+
   const tickerItems = (services ?? []).filter((s) => s.featuredInHero !== false);
   const logos = (subsidiaries ?? []).filter((s) => s.featuredInHome !== false);
+  const heroNews = latestNews?.[0];
+  const heroNewsImage = typeof heroNews?.featuredImage === "object" ? heroNews.featuredImage : undefined;
 
   const bgMedia = typeof homeData?.heroBgMedia === "object" ? homeData.heroBgMedia : undefined;
 
@@ -70,9 +78,9 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-10 pt-24 lg:pt-[90px]">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8 lg:gap-6 pt-24 lg:pt-[90px]">
           {logos.length > 0 && (
-            <div className="relative w-full sm:w-[340px] h-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+            <div className="relative w-full lg:w-[420px] lg:shrink-0 h-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
               <div
                 className="animate-horizontal-ticker flex items-center gap-10 w-max"
                 style={{ animationDuration: `${logos.length * 4}s` }}
@@ -96,9 +104,7 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
           )}
 
           {tickerItems.length > 0 && (
-            <div
-              className="relative h-[200px] w-full sm:w-[430px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]"
-            >
+            <div className="relative h-[200px] w-full lg:w-[300px] lg:shrink-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
               <div
                 className="animate-vertical-ticker flex flex-col gap-6"
                 style={{ animationDuration: `${tickerItems.length * 3}s` }}
@@ -111,6 +117,34 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
               </div>
             </div>
           )}
+
+          <div className="flex flex-col gap-3 w-full lg:flex-1 lg:min-w-[320px]">
+            <div className="flex items-center justify-between font-dm-mono text-[10px] uppercase">
+              <span className="text-white/80">Dernier communiqué</span>
+              <span className="text-[#f29308] tracking-[1px]">
+                {heroNews?.publishedAt
+                  ? new Date(heroNews.publishedAt)
+                      .toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })
+                      .toUpperCase()
+                  : "12 JUIN 2026"}
+              </span>
+            </div>
+            <Link
+              href={heroNews?.slug ? `/actualite/${heroNews.slug}` : "/actualite"}
+              className="flex flex-col h-[200px] items-center border border-white/10"
+            >
+              <div className="relative h-[142px] w-full bg-white/10 shrink-0">
+                {heroNewsImage?.url && (
+                  <Image src={heroNewsImage.url} alt={heroNews?.title ?? ""} fill className="object-cover" />
+                )}
+              </div>
+              <div className="flex flex-1 items-center min-h-0 w-full px-3">
+                <p className="font-inter font-medium text-white text-sm leading-relaxed tracking-tight line-clamp-2">
+                  {heroNews?.title || "KREST HOLDING renforce sa participation dans CREACONSULT à 70 %"}
+                </p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

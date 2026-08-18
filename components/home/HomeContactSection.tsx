@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HomePageContent } from "@/hooks/home/type";
+import KickerIcon from "@/components/ui/KickerIcon";
 
 interface HomeContactSectionProps {
   homeData?: HomePageContent | null;
@@ -32,9 +33,12 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
     <section id="soumettre-dossier" className="bg-[#0d0d0d] py-24 lg:py-[197px] pb-24 lg:pb-[180px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
         <div className="flex flex-col gap-8 max-w-[487px]">
-          <span className="font-mono text-white text-xl uppercase tracking-tight">
-            {homeData?.contactKicker || "Candidater"}
-          </span>
+          <div className="flex items-center gap-3">
+            <KickerIcon className="text-white" />
+            <span className="font-mono text-white text-xl uppercase tracking-tight">
+              {homeData?.contactKicker || "Candidater"}
+            </span>
+          </div>
 
           <h2 className="font-sans text-white text-4xl">{homeData?.contactHeading || "Soumettre un dossier"}</h2>
 

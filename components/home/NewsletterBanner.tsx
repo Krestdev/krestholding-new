@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { HomePageContent } from "@/hooks/home/type";
 import { Check } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 
 interface NewsletterBannerProps {
   homeData?: HomePageContent | null;
@@ -21,9 +22,12 @@ export default function NewsletterBanner({ homeData }: NewsletterBannerProps) {
   return (
     <section className="bg-[#0d0d0d] border-y border-white/10 py-16 px-6 lg:px-20">
       <div className="max-w-[1920px] mx-auto flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
-        <span className="font-mono text-white text-xl uppercase tracking-tight">
-          {homeData?.newsletterKicker || "Notre newsletter"}
-        </span>
+        <div className="flex items-center gap-3">
+          <KickerIcon className="text-white" />
+          <span className="font-mono text-white text-xl uppercase tracking-tight">
+            {homeData?.newsletterKicker || "Notre newsletter"}
+          </span>
+        </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6">
           <h3 className="font-sans text-white text-3xl sm:text-4xl leading-tight">

@@ -2,7 +2,7 @@
 
 import { Subsidiary, SubsidiaryAccentColor } from "@/hooks/subsidiaries/type";
 import { HomePageContent } from "@/hooks/home/type";
-import { Asterisk } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
 interface SubsidiariesSectionProps {
@@ -28,7 +28,7 @@ export default function SubsidiariesSection({ subsidiaries, homeData }: Subsidia
     <section className="bg-[#0d0d0d] py-24 lg:py-[112px] px-6 lg:px-10 border-y border-white/10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-15">
         <div className="flex items-center gap-3">
-          <Asterisk size={20} weight="fill" className="text-white" />
+          <KickerIcon className="text-white" />
           <span className="font-abel text-white text-xl uppercase tracking-tight">
             {homeData?.subsidiariesKicker || "Ce que nous apportons au-delà du capital"}
           </span>

@@ -6,6 +6,7 @@ import { useLocaleStore } from "@/store/localeStore";
 import Image from "next/image";
 import Link from "next/link";
 import { Newspaper } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
 interface NewsSectionProps {
@@ -22,7 +23,7 @@ export default function NewsSection({ news, newsCalloutText, homeData }: NewsSec
       <div className="max-w-[1277px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex items-center gap-3 lg:w-[340px] shrink-0">
-            <Newspaper size={18} className="text-black" />
+            <KickerIcon className="text-black" />
             <span className="font-mono text-black text-xl uppercase tracking-tight">
               {homeData?.newsKicker || "Actualités"}
             </span>

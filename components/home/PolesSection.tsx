@@ -2,7 +2,8 @@
 
 import { HomePageContent } from "@/hooks/home/type";
 import { ServiceItem } from "@/hooks/services/type";
-import { Asterisk, Briefcase } from "@phosphor-icons/react";
+import { Briefcase } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
 import Image from "next/image";
 
 interface PolesSectionProps {
@@ -25,7 +26,7 @@ export default function PolesSection({ poles, homeData }: PolesSectionProps) {
     <section className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <Asterisk size={20} weight="fill" className="text-black" />
+          <KickerIcon className="text-black" />
           <span className="font-abel text-black text-xl uppercase tracking-tight">
             {homeData?.polesKicker || "Ce que nous apportons au-delà du capital"}
           </span>
