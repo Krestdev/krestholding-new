@@ -1,4 +1,4 @@
-import { Media, RichText } from "../type";
+import { Media } from "../type";
 import { Subsidiary } from "../subsidiaries/type";
 
 export interface StatItem {
@@ -50,7 +50,11 @@ export interface HomePageContent {
   // About
   aboutKicker?: string | null;
   aboutIntroHeading?: string | null;
-  aboutIntroBody?: RichText | string | null;
+  aboutIntroBody?: string | null;
+  aboutQuoteAvatar?: Media | number | null;
+  aboutQuoteAuthorName?: string | null;
+  aboutQuoteAuthorTitle?: string | null;
+  aboutQuoteText?: string | null;
   aboutTags?: TagItem[] | null;
   aboutSecondKicker?: string | null;
   aboutStatsHeading?: string | null;

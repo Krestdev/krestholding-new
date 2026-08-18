@@ -2,6 +2,8 @@
 
 import { HomePageContent } from "@/hooks/home/type";
 import Link from "next/link";
+import Image from "next/image";
+import { Plus, ArrowUp } from "@phosphor-icons/react";
 import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
 
@@ -23,6 +25,7 @@ const DEFAULT_STATS = [
 export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) {
   const tags = homeData?.aboutTags?.length ? homeData.aboutTags.map((t) => t.label) : DEFAULT_TAGS;
   const stats = homeData?.aboutStats?.length ? homeData.aboutStats : DEFAULT_STATS;
+  const quoteAvatar = typeof homeData?.aboutQuoteAvatar === "object" ? homeData.aboutQuoteAvatar : undefined;
 
   return (
     <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
@@ -41,9 +44,47 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
               {homeData?.aboutIntroHeading ||
                 "Depuis 2018, KREST HOLDING identifie, structure et accompagne des entreprises à travers 5 pôles d'expertise mutualisés. Un modèle de création de valeur durable ancré dans l'économie camerounaise."}
             </h2>
-            {homeData?.aboutIntroBody && typeof homeData.aboutIntroBody === "string" && (
-              <p className="text-[#ccc] text-lg sm:text-xl leading-relaxed">{homeData.aboutIntroBody}</p>
-            )}
+            <p className="text-[#ccc] text-lg sm:text-xl leading-relaxed">
+              {homeData?.aboutIntroBody ||
+                "Chaque participation bénéficie d'un accompagnement mensuel structuré autour de nos 5 pôles d'expertise : marketing, IT, finance, achats et ressources humaines."}
+            </p>
+
+            <div className="flex flex-col w-full lg:w-[680px] bg-[#141414]">
+              <div className="flex items-center gap-3 p-5">
+                <div className="relative shrink-0 size-16 rounded-full border-[1.6px] border-white/10 overflow-hidden">
+                  {quoteAvatar?.url && (
+                    <Image src={quoteAvatar.url} alt="" fill className="object-cover" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <p className="font-sans font-bold text-white text-[15px] leading-tight">
+                    {homeData?.aboutQuoteAuthorName || "La Direction Générale"}
+                  </p>
+                  <p className="text-white/90 text-[15px] leading-tight">
+                    {homeData?.aboutQuoteAuthorTitle || "KREST HOLDING"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between h-[140px] bg-[#0d0d0d] p-5">
+                <div className="flex items-end gap-0.5">
+                  <p className="text-[#ccc] text-xs leading-relaxed">
+                    {homeData?.aboutQuoteText ||
+                      "Chaque participation bénéficie d'un accompagnement mensuel structuré."}
+                  </p>
+                  <span className="shrink-0 w-0.5 h-3.5 bg-[#49ccc1]" aria-hidden />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-center p-3 border border-white/10">
+                    <Plus size={16} className="text-white/60" />
+                  </div>
+                  <div className="flex items-center justify-center p-3 bg-[#141414]">
+                    <ArrowUp size={16} className="text-white/60" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

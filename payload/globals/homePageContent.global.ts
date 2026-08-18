@@ -54,7 +54,30 @@ export const HomePageContent: GlobalConfig = {
     },
     {
       name: 'aboutIntroBody',
-      type: 'richText',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'aboutQuoteAvatar',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Portrait (encart citation)',
+    },
+    {
+      name: 'aboutQuoteAuthorName',
+      type: 'text',
+      label: 'Nom (encart citation)',
+    },
+    {
+      name: 'aboutQuoteAuthorTitle',
+      type: 'text',
+      label: 'Fonction (encart citation)',
+      localized: true,
+    },
+    {
+      name: 'aboutQuoteText',
+      type: 'text',
+      label: 'Citation',
       localized: true,
     },
     {
