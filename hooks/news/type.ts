@@ -1,4 +1,5 @@
 import { Media, RichText } from "../type";
+import { Subsidiary } from "../subsidiaries/type";
 
 export interface News {
   id: number;
@@ -10,6 +11,7 @@ export interface News {
   featuredImage?: Media | number | null;
   content?: RichText | null;
   publishedAt?: string | null;
+  relatedSubsidiaries?: (Subsidiary | number)[] | null;
   createdAt?: string | null;
   updatedAt?: string | null;
 }

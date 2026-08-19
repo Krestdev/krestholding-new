@@ -53,5 +53,12 @@ export const News: CollectionConfig = {
       name: 'publishedAt',
       type: 'date',
     },
+    {
+      name: 'relatedSubsidiaries',
+      type: 'relationship',
+      relationTo: 'subsidiaries',
+      hasMany: true,
+      label: 'Participations concernées',
+    },
   ],
 }

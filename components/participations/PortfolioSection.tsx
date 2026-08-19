@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Subsidiary, SubsidiaryAccentColor } from "@/hooks/subsidiaries/type";
 import { ParticipationsPageContent } from "@/hooks/participations/type";
 import KickerIcon from "@/components/ui/KickerIcon";
 import CtaArrow from "@/components/ui/CtaArrow";
+import SubsidiaryCard from "@/components/participations/SubsidiaryCard";
+import { getSubsidiarySlug } from "@/lib/subsidiarySlug";
 
 interface PortfolioSectionProps {
   pageData?: ParticipationsPageContent | null;
@@ -71,57 +74,9 @@ export default function PortfolioSection({ pageData, subsidiaries }: PortfolioSe
 
         {view === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item) => {
-              const accent = ACCENT[item.accentColor || "teal"];
-              return (
-                <div
-                  key={item.id}
-                  className={`group border ${accent.border} overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-1`}
-                >
-                  <div className={`h-1 w-full ${accent.bar}`} />
-                  <div className="p-6 flex flex-col gap-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex flex-col gap-3">
-                        <span className={`font-abel text-xs uppercase tracking-[1px] ${accent.text}`}>
-                          {item.category}
-                        </span>
-                        <h3 className="font-sans text-[#111] text-xl">{item.name}</h3>
-                      </div>
-                      <div className="h-14 w-[108px] shrink-0 bg-[#d9d9d9]" />
-                    </div>
-
-                    <div className="flex items-center gap-3 text-xs">
-                      {item.participationLabel && (
-                        <span className="text-[rgba(17,17,17,0.8)]">
-                          Participation :{" "}
-                          <span className="text-[#111] font-medium">{item.participationLabel}</span>
-                        </span>
-                      )}
-                      {item.entryYear && (
-                        <>
-                          <span className="text-[#4d5766]">·</span>
-                          <span className="text-[rgba(17,17,17,0.8)]">
-                            Entrée <span className="text-[#111]">{item.entryYear}</span>
-                          </span>
-                        </>
-                      )}
-                    </div>
-
-                    <p className="text-[rgba(17,17,17,0.8)] text-base leading-relaxed">
-                      {item.shortDescription}
-                    </p>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-[rgba(17,17,17,0.06)]">
-                      <span className="text-[rgba(17,17,17,0.8)] text-xs">Voir la fiche</span>
-                      <CtaArrow
-                        size={14}
-                        className={`${accent.text} transition-transform duration-300 group-hover:translate-x-1`}
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {items.map((item) => (
+              <SubsidiaryCard key={item.id} subsidiary={item} theme="light" />
+            ))}
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -159,13 +114,16 @@ export default function PortfolioSection({ pageData, subsidiaries }: PortfolioSe
                         {item.shortDescription}
                       </td>
                       <td className="py-4 pl-0">
-                        <div className="flex items-center gap-2 text-xs text-[rgba(17,17,17,0.8)] whitespace-nowrap">
+                        <Link
+                          href={`/partenaires/${getSubsidiarySlug(item)}`}
+                          className="flex items-center gap-2 text-xs text-[rgba(17,17,17,0.8)] whitespace-nowrap"
+                        >
                           <span>Voir la fiche</span>
                           <CtaArrow
                             size={14}
                             className={`${accent.text} transition-transform duration-300 group-hover:translate-x-1`}
                           />
-                        </div>
+                        </Link>
                       </td>
                     </tr>
                   );
