@@ -15,14 +15,14 @@ import { homeQuery } from "@/hooks/home/homeQuery";
 export default function NotreModelePage() {
   const { locale, t } = useLocaleStore();
 
-   const {
-      data: homeData,
-      isLoading: isHomeLoading,
-      error: homeError,
-    } = useQuery({
-      queryKey: ["home", locale],
-      queryFn: () => homeQuery.getBlobal({ locale }),
-    });
+  const {
+    data: homeData,
+    isLoading: isHomeLoading,
+    error: homeError,
+  } = useQuery({
+    queryKey: ["home", locale],
+    queryFn: () => homeQuery.getBlobal({ locale }),
+  });
 
   const {
     data: pageData,
@@ -33,7 +33,7 @@ export default function NotreModelePage() {
     queryFn: () => notreModeleQuery.getBlobal({ locale }),
   });
 
-  if (isLoading) {
+  if (isLoading || isHomeLoading) {
     return (
       <div className="flex flex-1 items-center justify-center min-h-[60vh] text-slate-400">
         <div className="flex items-center gap-3">
@@ -44,8 +44,13 @@ export default function NotreModelePage() {
     );
   }
 
-  if (error) {
-    return <FetchError error={error} data={pageData === null || pageData === undefined} />;
+  if (error || homeError) {
+    return (
+      <FetchError
+        error={error}
+        data={pageData === null || pageData === undefined}
+      />
+    );
   }
 
   return (

@@ -69,10 +69,11 @@ export default function SubsidiaryDetailPage() {
       <PolesAndOutcomesSection subsidiary={subsidiary} />
       <GallerySection subsidiary={subsidiary} />
       <GovernanceSection subsidiary={subsidiary} />
-      <SynergiesSection subsidiary={subsidiary} pageData={pageData} />
+      <SynergiesSection subsidiary={subsidiary} pageData={pageData} allSubsidiaries={allSubsidiaries ?? []} />
       <NewsSection subsidiary={subsidiary} news={news ?? []} />
       <DetailNavRow subsidiary={subsidiary} allSubsidiaries={allSubsidiaries ?? []} />
       <CtaBanner pageData={pageData} />
     </div>
   );
 }
+

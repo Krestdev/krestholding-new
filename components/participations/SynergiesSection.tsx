@@ -9,7 +9,7 @@ interface SynergiesSectionProps {
   pageData?: ParticipationsPageContent | null;
 }
 
-const DEFAULT_SYNERGIES = [
+export const DEFAULT_SYNERGIES = [
   {
     entityA: "CREACONSULT",
     entityB: "67 DESIGN & BUILD",
