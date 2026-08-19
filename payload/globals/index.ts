@@ -4,6 +4,7 @@ import { ContactInfo } from "./contactInfo.global";
 import { HomePageContent } from "./homePageContent.global";
 import { AboutPageContent } from "./aboutPageContent.global";
 import { NotreModeleContent } from "./notreModeleContent.global";
+import { ParticipationsPageContent } from "./participationsPageContent.global";
 
 export const globals = [
   Header,
@@ -12,4 +13,5 @@ export const globals = [
   HomePageContent,
   AboutPageContent,
   NotreModeleContent,
+  ParticipationsPageContent,
 ];

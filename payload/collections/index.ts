@@ -17,5 +17,5 @@ export const collections = [
   Testimonials,
   Faqs,
   Certifications,
-  Service,
+  Service
 ];

@@ -9,9 +9,20 @@ import FetchError from "@/components/errors";
 import { notreModeleQuery } from "@/hooks/notreModele/notreModeleQuery";
 import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
+import NewsletterBanner from "@/components/home/NewsletterBanner";
+import { homeQuery } from "@/hooks/home/homeQuery";
 
 export default function NotreModelePage() {
   const { locale, t } = useLocaleStore();
+
+   const {
+      data: homeData,
+      isLoading: isHomeLoading,
+      error: homeError,
+    } = useQuery({
+      queryKey: ["home", locale],
+      queryFn: () => homeQuery.getBlobal({ locale }),
+    });
 
   const {
     data: pageData,
@@ -44,6 +55,7 @@ export default function NotreModelePage() {
       <SectorsSection pageData={pageData} />
       <PolesSection pageData={pageData} />
       <ImpactSection pageData={pageData} />
+      <NewsletterBanner homeData={homeData} />
     </div>
   );
 }
