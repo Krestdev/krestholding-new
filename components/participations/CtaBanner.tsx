@@ -43,7 +43,7 @@ export default function CtaBanner({ pageData }: CtaBannerProps) {
           </p>
           <div className="flex flex-wrap gap-6 lg:gap-[38px]">
             <PrimaryButton
-              href={pageData?.ctaLeftPrimaryUrl || "/contact"}
+              href={pageData?.ctaLeftPrimaryUrl || "/contact/soumettre-un-dossier"}
               label={pageData?.ctaLeftPrimaryLabel || "Soumettre un dossier"}
             />
             <SecondaryButton

@@ -18,7 +18,7 @@ const MOTIF_CARDS: MotifCard[] = [
     heading: "Vous dirigez une entreprise",
     meta: "Réponse sous 15 jours ouvrés",
     buttonLabel: "Soumettre un dossier",
-    href: "#formulaire-general",
+    href: "/contact/soumettre-un-dossier",
     icon: "right",
   },
   {

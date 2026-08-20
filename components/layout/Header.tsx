@@ -6,6 +6,7 @@ import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CaretUpDown, List, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -28,6 +29,7 @@ const LANGUAGES = [
 
 export default function Header() {
   const { locale, setLocale } = useLocaleStore();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +54,8 @@ export default function Header() {
     headerData?.navItems && headerData.navItems.length > 0 ? headerData.navItems : DEFAULT_NAV_ITEMS;
 
   const currentLangLabel = locale?.toUpperCase() || "FR";
+
+  if (pathname?.startsWith("/contact/soumettre-un-dossier")) return null;
 
   return (
     <header

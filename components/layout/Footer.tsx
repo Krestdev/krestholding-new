@@ -6,6 +6,7 @@ import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const DEFAULT_COLUMNS = [
   {
@@ -40,6 +41,7 @@ const DEFAULT_COLUMNS = [
 
 export default function Footer() {
   const { locale } = useLocaleStore();
+  const pathname = usePathname();
 
   const { data: footerData } = useQuery({
     queryKey: ["footer", locale],
@@ -52,6 +54,8 @@ export default function Footer() {
   });
 
   const columns = footerData?.columns?.length ? footerData.columns : DEFAULT_COLUMNS;
+
+  if (pathname?.startsWith("/contact/soumettre-un-dossier")) return null;
 
   return (
     <footer className="bg-[#0d0d0d] text-white">
