@@ -4,9 +4,11 @@ import ArticleHeader from "@/components/news/ArticleHeader";
 import ArticleContent from "@/components/news/ArticleContent";
 import FetchError from "@/components/errors";
 import { newsQuery } from "@/hooks/news/newsQuery";
+import { actualitesQuery } from "@/hooks/actualites/actualitesQuery";
 import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
+import PressNewsletterBanner from "@/components/news/PressNewsletterBanner";
 
 export default function NewsArticlePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -19,6 +21,11 @@ export default function NewsArticlePage() {
   } = useQuery({
     queryKey: ["news", locale, slug],
     queryFn: () => newsQuery.getBySlug(slug, { locale }),
+  });
+
+  const { data: pageData } = useQuery({
+    queryKey: ["actualites", locale],
+    queryFn: () => actualitesQuery.getBlobal({ locale }),
   });
 
   if (isLoading) {
@@ -34,9 +41,12 @@ export default function NewsArticlePage() {
   }
 
   return (
+    <>
     <article className="max-w-4xl mx-auto px-6 py-16 space-y-10">
       <ArticleHeader article={article} />
       <ArticleContent article={article} />
     </article>
+    <PressNewsletterBanner pageData={pageData} />
+    </>
   );
 }
