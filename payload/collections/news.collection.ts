@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { lexicalEditor, UploadFeature } from '@payloadcms/richtext-lexical'
 
 export const News: CollectionConfig = {
   slug: 'news',
@@ -48,6 +49,9 @@ export const News: CollectionConfig = {
       name: 'content',
       type: 'richText',
       localized: true,
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, UploadFeature()],
+      }),
     },
     {
       name: 'publishedAt',
