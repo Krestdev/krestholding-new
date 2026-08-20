@@ -7,6 +7,7 @@ import { Testimonials } from "./testimonials.collection";
 import { Faqs } from "./faqs.collection";
 import { Certifications } from "./certifications.collection";
 import { Service } from "./service.collection";
+import { ContactSubmissions } from "./contactSubmissions.collection";
 
 export const collections = [
   Media,
@@ -17,5 +18,6 @@ export const collections = [
   Testimonials,
   Faqs,
   Certifications,
-  Service
+  Service,
+  ContactSubmissions
 ];

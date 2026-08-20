@@ -1,12 +1,16 @@
 "use client";
 
-import ContactHeader from "@/components/contact/ContactHeader";
-import EmailCard from "@/components/contact/EmailCard";
-import PhoneCard from "@/components/contact/PhoneCard";
-import AddressCard from "@/components/contact/AddressCard";
-import MapSection from "@/components/contact/MapSection";
+import ContactHero from "@/components/contact/ContactHero";
+import GeneralFormSection from "@/components/contact/GeneralFormSection";
+import HeadquartersSection from "@/components/contact/HeadquartersSection";
+import LocationsSection from "@/components/contact/LocationsSection";
+import LegalSection from "@/components/contact/LegalSection";
+import CtaBanner from "@/components/participations/CtaBanner";
 import FetchError from "@/components/errors";
 import { contactQuery } from "@/hooks/contact/contactQuery";
+import { notreModeleQuery } from "@/hooks/notreModele/notreModeleQuery";
+import { subsidiariesQuery } from "@/hooks/subsidiaries/subsidiariesQuery";
+import { participationsQuery } from "@/hooks/participations/participationsQuery";
 import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 
@@ -22,10 +26,28 @@ export default function ContactPage() {
     queryFn: () => contactQuery.getBlobal({ locale }),
   });
 
+  const { data: notreModeleData } = useQuery({
+    queryKey: ["notreModele", locale],
+    queryFn: () => notreModeleQuery.getBlobal({ locale }),
+  });
+
+  const { data: subsidiaries } = useQuery({
+    queryKey: ["subsidiaries", locale, "all"],
+    queryFn: () => subsidiariesQuery.get({ locale }),
+  });
+
+  const { data: participationsData } = useQuery({
+    queryKey: ["participations", locale],
+    queryFn: () => participationsQuery.getBlobal({ locale }),
+  });
+
   if (isLoading) {
     return (
-      <div className="flex flex-1 items-center justify-center min-h-[50vh] text-slate-400">
-        {t("common.loading")}
+      <div className="flex flex-1 items-center justify-center min-h-[60vh] text-slate-400">
+        <div className="flex items-center gap-3">
+          <div className="w-5 h-5 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+          <span>{t("common.loading")}</span>
+        </div>
       </div>
     );
   }
@@ -34,20 +56,14 @@ export default function ContactPage() {
     return <FetchError error={error} data={contactData === null || contactData === undefined} />;
   }
 
-  const emails = contactData?.emails || [];
-  const phones = contactData?.phones || [];
-
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 space-y-16">
-      <ContactHeader />
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <EmailCard emails={emails} />
-        <PhoneCard phones={phones} />
-        <AddressCard contactData={contactData} />
-      </div>
-
-      {contactData?.mapIframeUrl && <MapSection mapIframeUrl={contactData.mapIframeUrl} />}
+    <div className="bg-[#0d0d0d] -mt-[81px]">
+      <ContactHero />
+      <GeneralFormSection />
+      <HeadquartersSection contactData={contactData} notreModeleData={notreModeleData} />
+      <LocationsSection subsidiaries={subsidiaries ?? []} />
+      <LegalSection contactData={contactData} />
+      <CtaBanner pageData={participationsData} />
     </div>
   );
 }
