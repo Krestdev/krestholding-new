@@ -1,42 +1,155 @@
+"use client";
+
 import { HomePageContent } from "@/hooks/home/type";
+import { servicesQuery } from "@/hooks/services/servicesQuery";
+import { subsidiariesQuery } from "@/hooks/subsidiaries/subsidiariesQuery";
+import { newsQuery } from "@/hooks/news/newsQuery";
 import { useLocaleStore } from "@/store/localeStore";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import CtaArrow from "@/components/ui/CtaArrow";
 
 interface HeroSectionProps {
   homeData?: HomePageContent | null;
 }
 
 export default function HeroSection({ homeData }: HeroSectionProps) {
-  const { t } = useLocaleStore();
+  const { locale } = useLocaleStore();
+
+  const { data: services } = useQuery({
+    queryKey: ["services", locale, "hero"],
+    queryFn: () => servicesQuery.get({ locale, limit: 50, sort: "order" }),
+  });
+
+  const { data: subsidiaries } = useQuery({
+    queryKey: ["subsidiaries", locale, "hero"],
+    queryFn: () => subsidiariesQuery.get({ locale, limit: 12 }),
+  });
+
+  const { data: latestNews } = useQuery({
+    queryKey: ["news", locale, "hero"],
+    queryFn: () => newsQuery.get({ locale, limit: 1, sort: "-publishedAt" }),
+  });
+
+  const tickerItems = (services ?? []).filter((s) => s.featuredInHero !== false);
+  const logos = (subsidiaries ?? []).filter((s) => s.featuredInHome !== false);
+  const heroNews = latestNews?.[0];
+  const heroNewsImage = typeof heroNews?.featuredImage === "object" ? heroNews.featuredImage : undefined;
+
   const bgMedia = typeof homeData?.heroBgMedia === "object" ? homeData.heroBgMedia : undefined;
 
   return (
-    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-slate-900 px-6">
-      {bgMedia?.url && (
-        <Image
-          src={bgMedia.url}
-          alt={bgMedia.alt || "Hero Background"}
-          fill
-          priority
-          className="object-cover opacity-25"
-        />
-      )}
-      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-          {homeData?.heroHeading || "Transformer le futur par l'innovation et l'excellence"}
-        </h1>
-        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
-          {homeData?.heroSubheading ||
-            "Krest Holding fédère des filiales de premier plan dans le digital, la restauration, l'architecture et les infrastructures."}
-        </p>
-        <div className="pt-4">
-          <Link
-            href={homeData?.heroCtaUrl || "/partenaires"}
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white hover:from-blue-600 hover:to-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/25"
-          >
-            {homeData?.heroCtaLabel || t("home.discoverSubsidiaries")} &rarr;
-          </Link>
+    <section className="relative flex flex-col items-center pt-[120px] pb-10 px-6 lg:px-10 bg-[#0d0d0d] border-b border-white/10 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        {bgMedia?.url && (
+          <Image src={bgMedia.url} alt="" fill priority className="object-cover" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d]/80 to-[#0d0d0d]" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-[1280px]">
+        <div className="max-w-[560px] flex flex-col gap-6">
+          <h1 className="font-sans font-medium text-white text-4xl sm:text-6xl lg:text-[5.5rem] leading-[1.05] tracking-tight">
+            {homeData?.heroHeading || "Une courte phrase d'accroche"}
+          </h1>
+
+          <p className="text-[#ccc] text-lg sm:text-xl leading-relaxed max-w-xl">
+            {homeData?.heroSubheading ||
+              "Nous prenons des participations dans des entreprises camerounaises à fort potentiel, et nous les développons."}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
+            <Link
+              href={homeData?.heroCtaUrl || "#notre-modele"}
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+            >
+              <span>{homeData?.heroCtaLabel || "Notre modèle"}</span>
+              <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            <Link
+              href={homeData?.heroSecondaryCtaUrl || "/partenaires"}
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-colors"
+            >
+              <span>{homeData?.heroSecondaryCtaLabel || "Nos participations"}</span>
+              <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8 lg:gap-6 pt-24 lg:pt-[90px]">
+          {logos.length > 0 && (
+            <div className="relative w-full lg:w-[420px] lg:shrink-0 h-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+              <div
+                className="animate-horizontal-ticker flex items-center gap-10 w-max"
+                style={{ animationDuration: `${logos.length * 4}s` }}
+              >
+                {[...logos, ...logos].map((sub, idx) => {
+                  const logo = typeof sub.logo === "object" ? sub.logo : undefined;
+                  return (
+                    <div key={`${sub.id}-${idx}`} className="relative h-8 w-28 shrink-0">
+                      {logo?.url ? (
+                        <Image src={logo.url} alt={sub.name} fill className="object-contain object-left" />
+                      ) : (
+                        <span className="flex items-center h-full text-white text-sm font-semibold tracking-wide uppercase whitespace-nowrap">
+                          {sub.name}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {tickerItems.length > 0 && (
+            <div className="relative h-[200px] w-full lg:w-[300px] lg:shrink-0 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+              <div
+                className="animate-vertical-ticker flex flex-col gap-6"
+                style={{ animationDuration: `${tickerItems.length * 3}s` }}
+              >
+                {[...tickerItems, ...tickerItems].map((item, idx) => (
+                  <p key={`${item.id}-${idx}`} className="font-medium text-white text-lg shrink-0">
+                    {item.title}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3 w-full lg:flex-1 lg:min-w-[320px]">
+            <div className="flex items-center justify-between font-dm-mono text-[10px] uppercase">
+              <span className="text-white/80">Dernier communiqué</span>
+              <span className="text-[#f29308] tracking-[1px]">
+                {heroNews?.publishedAt
+                  ? new Date(heroNews.publishedAt)
+                      .toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })
+                      .toUpperCase()
+                  : "12 JUIN 2026"}
+              </span>
+            </div>
+            <Link
+              href={heroNews?.slug ? `/actualite/${heroNews.slug}` : "/actualite"}
+              className="group flex flex-col h-[200px] items-center border border-white/10 transition-colors hover:border-white/30"
+            >
+              <div className="relative h-[142px] w-full bg-white/10 shrink-0 overflow-hidden">
+                {heroNewsImage?.url && (
+                  <Image
+                    src={heroNewsImage.url}
+                    alt={heroNews?.title ?? ""}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+              </div>
+              <div className="flex flex-1 items-center min-h-0 w-full px-3">
+                <p className="font-inter font-medium text-white text-sm leading-relaxed tracking-tight line-clamp-2">
+                  {heroNews?.title || "KREST HOLDING renforce sa participation dans CREACONSULT à 70 %"}
+                </p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

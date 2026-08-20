@@ -17,6 +17,9 @@ export interface Header {
   id: number;
   logo?: Media | number | null;
   navItems?: HeaderNavItem[] | null;
+  ctaLabel?: string | null;
+  ctaUrl?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
 }
+

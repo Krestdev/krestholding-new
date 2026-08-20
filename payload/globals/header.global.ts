@@ -47,5 +47,16 @@ export const Header: GlobalConfig = {
         },
       ],
     },
+    {
+      name: 'ctaLabel',
+      type: 'text',
+      localized: true,
+      defaultValue: 'Soumettre',
+    },
+    {
+      name: 'ctaUrl',
+      type: 'text',
+      defaultValue: '/contact',
+    },
   ],
 }

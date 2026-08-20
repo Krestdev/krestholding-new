@@ -1,72 +1,82 @@
+"use client";
+
 import { News } from "@/hooks/news/type";
+import { HomePageContent } from "@/hooks/home/type";
 import { useLocaleStore } from "@/store/localeStore";
 import Image from "next/image";
 import Link from "next/link";
+import { Newspaper } from "@phosphor-icons/react";
+import KickerIcon from "@/components/ui/KickerIcon";
+import CtaArrow from "@/components/ui/CtaArrow";
 
 interface NewsSectionProps {
   news: News[];
   newsCalloutText?: string | null;
+  homeData?: HomePageContent | null;
 }
 
-export default function NewsSection({ news, newsCalloutText }: NewsSectionProps) {
-  const { locale, t } = useLocaleStore();
+export default function NewsSection({ news, newsCalloutText, homeData }: NewsSectionProps) {
+  const { locale } = useLocaleStore();
 
   return (
-    <section className="max-w-7xl mx-auto px-6 space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-          <h2 className="text-3xl font-bold text-white">{t("home.newsTitle")}</h2>
-          <p className="text-slate-400 mt-2">
-            {newsCalloutText || "Restez informés des dernières nouveautés du groupe."}
-          </p>
+    <section className="bg-white py-24 lg:py-[120px] px-6 lg:px-10 border-b border-black/10">
+      <div className="max-w-[1277px] mx-auto flex flex-col gap-20">
+        <div className="flex flex-col lg:flex-row gap-10">
+          <div className="flex items-center gap-3 lg:w-[340px] shrink-0">
+            <KickerIcon className="text-black" />
+            <span className="font-mono text-black text-xl uppercase tracking-tight">
+              {homeData?.newsKicker || "Actualités"}
+            </span>
+          </div>
+          <h2 className="font-sans text-black text-3xl sm:text-4xl leading-tight max-w-2xl">
+            {newsCalloutText || homeData?.newsHeading || "Suivez les temps forts et communiqués du groupe KREST HOLDING."}
+          </h2>
         </div>
-      </div>
 
-      {news.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {news.map((item) => {
-            const image = typeof item.featuredImage === "object" ? item.featuredImage : undefined;
-            return (
-              <Link
-                key={item.id}
-                href={`/actualite/${item.slug}`}
-                className="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all shadow-md flex flex-col"
-              >
-                {image?.url && (
-                  <div className="relative h-48 w-full bg-slate-800">
-                    <Image
-                      src={image.url}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    {item.publishedAt && (
-                      <span className="text-xs text-slate-500">
-                        {new Date(item.publishedAt).toLocaleDateString(locale)}
-                      </span>
+        {news.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+            {news.map((item) => {
+              const image = typeof item.featuredImage === "object" ? item.featuredImage : undefined;
+              return (
+                <Link
+                  key={item.id}
+                  href={`/actualite/${item.slug}`}
+                  className="group flex flex-col border border-black/10 transition-colors hover:border-black/30"
+                >
+                  <div className="relative h-[280px] w-full bg-black/5 overflow-hidden">
+                    {image?.url ? (
+                      <Image src={image.url} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="flex items-center justify-center h-full text-black/20">
+                        <Newspaper size={32} />
+                      </div>
                     )}
-                    <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors mt-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-slate-400 line-clamp-3 mt-2">{item.excerpt}</p>
                   </div>
-                  <span className="text-xs font-semibold text-indigo-400 group-hover:underline">
-                    {t("home.readArticle")} &rarr;
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="text-center py-12 text-slate-500 bg-slate-900/40 rounded-2xl border border-slate-800">
-          {t("home.noNews")}
-        </div>
-      )}
+
+                  <div className="flex items-end gap-4 p-6">
+                    <div className="flex-1 flex flex-col gap-3">
+                      <div className="flex items-center gap-4 font-mono text-[10px] uppercase">
+                        {item.publishedAt && (
+                          <span className="text-[#218da8] tracking-wide">
+                            {new Date(item.publishedAt).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" })}
+                          </span>
+                        )}
+                        <span className="text-[#878887]">{item.category || "Communiqué"}</span>
+                      </div>
+                      <p className="font-inter font-medium text-black text-base leading-snug line-clamp-3">{item.title}</p>
+                    </div>
+                    <div className="shrink-0 size-6 flex items-center justify-center border border-black/10 text-black transition-colors group-hover:border-black/30">
+                      <CtaArrow size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-16 px-6 text-black/40 border border-black/10">Aucune actualité pour le moment.</div>
+        )}
+      </div>
     </section>
   );
 }

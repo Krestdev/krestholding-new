@@ -42,6 +42,13 @@ export const Footer: GlobalConfig = {
       ],
     },
     {
+      name: 'participationsColumnTitle',
+      type: 'text',
+      label: 'Titre de la colonne "Participations" (liste générée automatiquement depuis les filiales)',
+      localized: true,
+      defaultValue: 'Participations',
+    },
+    {
       name: 'socialLinks',
       type: 'array',
       label: 'Social Links',
