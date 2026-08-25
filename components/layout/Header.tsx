@@ -15,7 +15,7 @@ const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
   { id: "1", label: "Le groupe", url: "/a-propos" },
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
   { id: "3", label: "Participation", url: "/partenaires" },
-  { id: "4", label: "Impact", url: "#impact" },
+  { id: "4", label: "Impact", url: "/impact" },
   { id: "5", label: "Actualité", url: "/actualite" },
   { id: "6", label: "Carrières", url: "/carrieres" },
   { id: "7", label: "Contact", url: "/contact" },

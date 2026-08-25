@@ -22,7 +22,7 @@ function SecondaryButton({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center justify-center px-6 py-4 border border-white/32 text-white font-mono text-sm uppercase tracking-[0.08em] transition-colors hover:bg-white/10"
+      className="hidden sm:inline-flex items-center justify-center px-6 py-4 border border-white/32 text-white font-mono text-sm uppercase tracking-[0.08em] transition-colors hover:bg-white/10"
     >
       {label}
     </Link>
