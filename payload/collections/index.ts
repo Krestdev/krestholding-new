@@ -10,6 +10,8 @@ import { Service } from "./service.collection";
 import { ContactSubmissions } from "./contactSubmissions.collection";
 import { DossierDocuments } from "./dossierDocuments.collection";
 import { DossierSubmissions } from "./dossierSubmissions.collection";
+import { JobOpenings } from "./jobOpenings.collection";
+import { JobApplications } from "./jobApplications.collection";
 
 export const collections = [
   Media,
@@ -23,5 +25,7 @@ export const collections = [
   Service,
   ContactSubmissions,
   DossierDocuments,
-  DossierSubmissions
+  DossierSubmissions,
+  JobOpenings,
+  JobApplications
 ];

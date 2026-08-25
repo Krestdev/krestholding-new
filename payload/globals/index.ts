@@ -7,6 +7,7 @@ import { NotreModeleContent } from "./notreModeleContent.global";
 import { ParticipationsPageContent } from "./participationsPageContent.global";
 import { ActualitesPageContent } from "./actualitesPageContent.global";
 import { ImpactPageContent } from "./impactPageContent.global";
+import { CarrieresPageContent } from "./carrieresPageContent.global";
 
 export const globals = [
   Header,
@@ -18,4 +19,5 @@ export const globals = [
   ParticipationsPageContent,
   ActualitesPageContent,
   ImpactPageContent,
+  CarrieresPageContent,
 ];
