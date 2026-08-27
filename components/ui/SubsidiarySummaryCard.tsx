@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { Subsidiary } from "@/hooks/subsidiaries/type";
@@ -8,11 +9,23 @@ interface SubsidiarySummaryCardProps {
 }
 
 export default function SubsidiarySummaryCard({ subsidiary }: SubsidiarySummaryCardProps) {
+  const logo = typeof subsidiary.logo === "object" ? subsidiary.logo : undefined;
+
   return (
     <div className="bg-black/[0.08] border border-black/30 p-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
       <div className="flex items-center gap-6">
         <div className="h-[92px] w-[166px] bg-[#d9d9d9] flex items-center justify-center shrink-0">
-          <span className="font-abel text-black text-xl uppercase">Logo</span>
+          {logo?.url ? (
+            <Image
+              src={logo.url}
+              alt={subsidiary.name}
+              width={166}
+              height={92}
+              className="h-full w-full object-contain p-3"
+            />
+          ) : (
+            <span className="font-abel text-black text-xl uppercase">Logo</span>
+          )}
         </div>
         <div className="flex flex-col gap-4">
           <span className="font-abel text-black text-base tracking-[1px] uppercase">{subsidiary.category}</span>
