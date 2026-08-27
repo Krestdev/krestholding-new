@@ -1,7 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { CaretRight, ArrowRight, ArrowDown, ArrowUpRight } from "@phosphor-icons/react";
+import {
+  CaretRight,
+  ArrowRight,
+  ArrowDown,
+  ArrowUpRight,
+} from "@phosphor-icons/react";
 
 interface MotifCard {
   kicker: string;
@@ -54,7 +59,10 @@ export default function ContactHero() {
     <section className="relative flex flex-col items-center px-6 lg:px-10 pt-[120px] pb-10 bg-gradient-to-b from-[rgba(13,13,13,0.8)] to-[#0d0d0d]">
       <div className="w-full max-w-[1280px] flex flex-col gap-16">
         <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-2 w-fit text-xs">
-          <Link href="/" className="text-white/64 hover:text-white transition-colors">
+          <Link
+            href="/"
+            className="text-white/64 hover:text-white transition-colors"
+          >
             Accueil
           </Link>
           <CaretRight size={12} className="text-white/64" />
@@ -62,10 +70,12 @@ export default function ContactHero() {
         </div>
 
         <div className="flex flex-col gap-8 max-w-[624px]">
-          <h1 className="font-sans font-medium text-white text-4xl sm:text-[42px]">Nous contacter</h1>
+          <h1 className="font-sans font-medium text-white text-4xl sm:text-[42px]">
+            Nous contacter
+          </h1>
           <p className="text-white/80 text-xl sm:text-2xl leading-relaxed max-w-[566px]">
-            Choisissez le motif de votre demande : chaque parcours est traité par l&apos;interlocuteur
-            concerné, avec un délai de réponse annoncé.
+            Choisissez le motif de votre demande : chaque parcours est traité
+            par l&apos;interlocuteur concerné, avec un délai de réponse annoncé.
           </p>
         </div>
 
@@ -82,7 +92,9 @@ export default function ContactHero() {
                     {card.kicker}
                   </span>
                   <div className="flex flex-col gap-3">
-                    <p className="font-sans font-medium text-white text-xl">{card.heading}</p>
+                    <p className="font-sans font-medium text-white text-xl">
+                      {card.heading}
+                    </p>
                     <p className="text-white/70 text-base">{card.meta}</p>
                   </div>
                 </div>
