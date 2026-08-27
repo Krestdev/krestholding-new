@@ -34,21 +34,21 @@ export default function PolesSection({ pageData }: PolesSectionProps) {
   const poles = pageData?.poleCards?.length ? pageData.poleCards : DEFAULT_POLES;
 
   return (
-    <section id="poles" className="bg-[#0d0d0d] px-6 lg:px-10">
+    <section id="poles" className="bg-white dark:bg-[#0d0d0d] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20 py-24 lg:py-[120px]">
         <div className="flex flex-col gap-20">
           <div className="flex items-center gap-3">
-            <KickerIcon className="text-white" />
-            <span className="font-abel text-white text-xl uppercase tracking-tight">
+            <KickerIcon className="text-black dark:text-white" />
+            <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
               {pageData?.polesKicker || "Les 5 pôles d'expertise"}
             </span>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
-            <h2 className="font-sans text-white text-3xl sm:text-4xl leading-tight lg:max-w-[621px]">
+            <h2 className="font-sans text-black dark:text-white text-3xl sm:text-4xl leading-tight lg:max-w-[621px]">
               {pageData?.polesHeading || "Ce que vous gagnez au-delà du capital"}
             </h2>
-            <p className="text-white/80 text-lg sm:text-xl leading-relaxed lg:flex-1">
+            <p className="text-black/80 dark:text-white/80 text-lg sm:text-xl leading-relaxed lg:flex-1">
               {pageData?.polesIntro ||
                 "Chaque participation active dès son entrée les 5 pôles d'expertise mutualisés du groupe."}
             </p>
@@ -56,13 +56,16 @@ export default function PolesSection({ pageData }: PolesSectionProps) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
             {poles.map((pole, idx) => (
-              <div key={idx} className="group relative border border-white/24 overflow-hidden flex flex-col">
-                <div className="h-1 w-full bg-white" />
+              <div
+                key={idx}
+                className="group relative border border-black/24 dark:border-white/24 overflow-hidden flex flex-col"
+              >
+                <div className="h-1 w-full bg-black dark:bg-white" />
                 <div className="p-6 flex flex-col gap-8 pb-20">
-                  <p className="text-white text-2xl leading-relaxed">{pole.title}</p>
+                  <p className="text-black dark:text-white text-2xl leading-relaxed">{pole.title}</p>
                   {pole.examples?.length ? (
                     <div className="flex flex-col gap-3">
-                      <span className="font-abel text-white/60 text-xs uppercase tracking-[1px]">
+                      <span className="font-abel text-black/60 dark:text-white/60 text-xs uppercase tracking-[1px]">
                         Exemple de participation
                       </span>
                       <div className="flex flex-col gap-3">
@@ -71,10 +74,10 @@ export default function PolesSection({ pageData }: PolesSectionProps) {
                             key={exIdx}
                             className={
                               exIdx === 0
-                                ? "text-white text-sm"
+                                ? "text-black dark:text-white text-sm"
                                 : exIdx === 1
-                                  ? "text-white/80 text-sm"
-                                  : "text-white/50 text-sm"
+                                  ? "text-black/80 dark:text-white/80 text-sm"
+                                  : "text-black/50 dark:text-white/50 text-sm"
                             }
                           >
                             {ex.text}
@@ -84,10 +87,13 @@ export default function PolesSection({ pageData }: PolesSectionProps) {
                     </div>
                   ) : null}
                 </div>
-                <div className="absolute inset-x-0 bottom-0 h-[176px] bg-gradient-to-b from-transparent to-white/10 pointer-events-none" />
-                <div className="absolute right-0 bottom-0 backdrop-blur-md bg-white/24 flex items-center gap-2 pl-6 pr-3.5 py-3">
-                  <span className="text-sm font-medium text-white/93 tracking-wide">VOIR PLUS</span>
-                  <CtaArrow size={14} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
+                <div className="absolute inset-x-0 bottom-0 h-[176px] bg-gradient-to-b from-transparent to-black/10 dark:to-white/10 pointer-events-none" />
+                <div className="absolute right-0 bottom-0 backdrop-blur-md bg-black/12 dark:bg-white/24 flex items-center gap-2 pl-6 pr-3.5 py-3">
+                  <span className="text-sm font-medium text-black/93 dark:text-white/93 tracking-wide">VOIR PLUS</span>
+                  <CtaArrow
+                    size={14}
+                    className="text-black dark:text-white transition-transform duration-300 group-hover:translate-x-1"
+                  />
                 </div>
               </div>
             ))}
@@ -104,50 +110,50 @@ function CaseStudy({ pageData }: PolesSectionProps) {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex items-center gap-3">
-        <KickerIcon className="text-white" />
-        <span className="font-abel text-white text-xl uppercase tracking-tight">
+        <KickerIcon className="text-black dark:text-white" />
+        <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
           {pageData?.caseStudyKicker || "Un accompagnement, raconté"}
         </span>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
-        <h2 className="font-sans text-white text-3xl sm:text-4xl leading-tight lg:max-w-[621px]">
+        <h2 className="font-sans text-black dark:text-white text-3xl sm:text-4xl leading-tight lg:max-w-[621px]">
           {pageData?.caseStudyHeading ||
             "Cheminer avec Krest, c'est écrire une page de l'histoire avec l'encre de l'espoir et le souffle du progrès"}
         </h2>
-        <p className="text-white/80 text-lg sm:text-xl leading-relaxed lg:flex-1">
+        <p className="text-black/80 dark:text-white/80 text-lg sm:text-xl leading-relaxed lg:flex-1">
           {pageData?.caseStudyIntro ||
             "C'est la raison pour laquelle chaque participation suit le même chemin : un diagnostic honnête, un plan d'action partagé, des résultats mesurés."}
         </p>
       </div>
 
-      <div id="processus" className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="border border-white/24 overflow-hidden flex flex-col">
-            <div className="h-1 w-full bg-white" />
+          <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+            <div className="h-1 w-full bg-black dark:bg-white" />
             <div className="p-6 flex flex-col gap-8">
-              <p className="text-white text-2xl">{pageData?.caseStudySituationTitle || "Situation de départ"}</p>
-              <p className="text-white text-base leading-relaxed">
+              <p className="text-black dark:text-white text-2xl">{pageData?.caseStudySituationTitle || "Situation de départ"}</p>
+              <p className="text-black dark:text-white text-base leading-relaxed">
                 {pageData?.caseStudySituationBody ||
                   "CREACONSULT était un bureau d'études techniques rentable mais limité par une gestion administrative manuelle et l'absence de certifications reconnues à l'international."}
               </p>
             </div>
           </div>
-          <div className="border border-white/24 overflow-hidden flex flex-col">
-            <div className="h-1 w-full bg-white" />
+          <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+            <div className="h-1 w-full bg-black dark:bg-white" />
             <div className="p-6 flex flex-col gap-8">
-              <p className="text-white text-2xl">{pageData?.caseStudyActionTitle || "Ce que KREST a fait"}</p>
-              <p className="text-white text-base leading-relaxed">
+              <p className="text-black dark:text-white text-2xl">{pageData?.caseStudyActionTitle || "Ce que KREST a fait"}</p>
+              <p className="text-black dark:text-white text-base leading-relaxed">
                 {pageData?.caseStudyActionBody ||
                   "Entrée au capital à hauteur de 70 %, mise en place d'une comptabilité structurée, accompagnement vers la double certification ISO 9001 et ISO 14001, digitalisation des processus internes."}
               </p>
             </div>
           </div>
-          <div className="border border-white/24 overflow-hidden flex flex-col">
-            <div className="h-1 w-full bg-white" />
+          <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+            <div className="h-1 w-full bg-black dark:bg-white" />
             <div className="p-6 flex flex-col gap-8">
-              <p className="text-white text-2xl">{pageData?.caseStudyResultTitle || "Résultat"}</p>
-              <p className="text-white text-base leading-relaxed">
+              <p className="text-black dark:text-white text-2xl">{pageData?.caseStudyResultTitle || "Résultat"}</p>
+              <p className="text-black dark:text-white text-base leading-relaxed">
                 {pageData?.caseStudyResultBody ||
                   "Ingénierie certifiée ISO 9001 & ISO 14001, éligibilité à de nouveaux appels d'offres internationaux, et une gouvernance financière alignée sur les standards du groupe."}
               </p>

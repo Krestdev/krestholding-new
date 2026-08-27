@@ -9,10 +9,10 @@ interface PageHeroProps {
 }
 
 const PILLS = [
-  { label: "Thèse", href: "#these" },
-  { label: "Secteurs & géographies", href: "#secteurs" },
-  { label: "Éligibilité & Processus", href: "#processus" },
-  { label: "Les 5 pôles", href: "#poles" },
+  { label: "Thèse", mobileLabel: "Thèse", href: "#these" },
+  { label: "Secteurs & géographies", mobileLabel: "Secteurs", href: "#secteurs" },
+  { label: "Éligibilité & Processus", mobileLabel: "Processus", href: "#processus" },
+  { label: "Les 5 pôles", mobileLabel: "Les 5 pôles", href: "#poles" },
 ];
 
 export default function PageHero({ pageData }: PageHeroProps) {
@@ -38,7 +38,8 @@ export default function PageHero({ pageData }: PageHeroProps) {
               href={pill.href}
               className="bg-white/12 border border-white/12 px-4 py-2.5 text-sm font-medium text-white/64 hover:text-white hover:bg-white/16 transition-colors"
             >
-              {pill.label}
+              <span className="lg:hidden">{pill.mobileLabel}</span>
+              <span className="hidden lg:inline">{pill.label}</span>
             </a>
           ))}
         </div>
