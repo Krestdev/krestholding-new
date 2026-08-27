@@ -6,6 +6,7 @@ import { useLocaleStore } from "@/store/localeStore";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CaretUpDown, List, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -14,7 +15,7 @@ const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
   { id: "1", label: "Le groupe", url: "/a-propos" },
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
   { id: "3", label: "Participation", url: "/partenaires" },
-  { id: "4", label: "Impact", url: "#impact" },
+  { id: "4", label: "Impact", url: "/impact" },
   { id: "5", label: "Actualité", url: "/actualite" },
   { id: "6", label: "Carrières", url: "/carrieres" },
   { id: "7", label: "Contact", url: "/contact" },
@@ -28,6 +29,7 @@ const LANGUAGES = [
 
 export default function Header() {
   const { locale, setLocale } = useLocaleStore();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,14 +46,19 @@ export default function Header() {
     queryFn: () => headerQuery.getBlobal({ locale }),
   });
 
-  const logo = typeof headerData?.logo === "object" ? headerData.logo : undefined;
+  const logo =
+    typeof headerData?.logo === "object" ? headerData.logo : undefined;
   const logoUrl = logo?.url?.trim() || "/krestholding_logo.png";
   const logoAlt = logo?.alt || "Krest Holding";
 
   const navItems: HeaderNavItem[] =
-    headerData?.navItems && headerData.navItems.length > 0 ? headerData.navItems : DEFAULT_NAV_ITEMS;
+    headerData?.navItems && headerData.navItems.length > 0
+      ? headerData.navItems
+      : DEFAULT_NAV_ITEMS;
 
   const currentLangLabel = locale?.toUpperCase() || "FR";
+
+  if (pathname?.startsWith("/contact/soumettre-un-dossier")) return null;
 
   return (
     <header
@@ -63,7 +70,14 @@ export default function Header() {
       <div className="border-b border-white/20">
         <div className="flex items-center justify-between px-6 lg:px-10 py-5">
           <Link href="/" className="flex items-center shrink-0">
-            <Image src={logoUrl} alt={logoAlt} width={140} height={43} priority className="h-10 w-auto object-contain" />
+            <Image
+              src={logoUrl}
+              alt={logoAlt}
+              width={140}
+              height={43}
+              priority
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6 text-[15px] font-medium text-white">
@@ -99,7 +113,9 @@ export default function Header() {
                         setLangDropdownOpen(false);
                       }}
                       className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                        locale === lang.code ? "text-white font-semibold" : "text-white/60 hover:text-white"
+                        locale === lang.code
+                          ? "text-white font-semibold"
+                          : "text-white/60 hover:text-white"
                       }`}
                     >
                       {lang.label}
@@ -148,7 +164,9 @@ export default function Header() {
                 key={lang.code}
                 onClick={() => setLocale(lang.code as "fr" | "en" | "it")}
                 className={`px-3 py-2 text-[15px] font-medium border border-white/16 transition-colors ${
-                  locale === lang.code ? "text-white border-white/40" : "text-white/60 hover:text-white"
+                  locale === lang.code
+                    ? "text-white border-white/40"
+                    : "text-white/60 hover:text-white"
                 }`}
               >
                 {lang.label}

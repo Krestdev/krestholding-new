@@ -8,6 +8,10 @@ import { Faqs } from "./faqs.collection";
 import { Certifications } from "./certifications.collection";
 import { Service } from "./service.collection";
 import { ContactSubmissions } from "./contactSubmissions.collection";
+import { DossierDocuments } from "./dossierDocuments.collection";
+import { DossierSubmissions } from "./dossierSubmissions.collection";
+import { JobOpenings } from "./jobOpenings.collection";
+import { JobApplications } from "./jobApplications.collection";
 
 export const collections = [
   Media,
@@ -19,5 +23,9 @@ export const collections = [
   Faqs,
   Certifications,
   Service,
-  ContactSubmissions
+  ContactSubmissions,
+  DossierDocuments,
+  DossierSubmissions,
+  JobOpenings,
+  JobApplications
 ];
