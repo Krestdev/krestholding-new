@@ -4,6 +4,7 @@ export interface JobApplication {
   phone: string;
   email: string;
   targetEntityOrSector: string;
+  relatedJobOpening?: number | null;
   desiredRole: string;
   targetCity: string;
   documents?: number[] | null;

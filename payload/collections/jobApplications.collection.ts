@@ -35,6 +35,12 @@ export const JobApplications: CollectionConfig = {
       label: 'Entité ou secteur visé',
     },
     {
+      name: 'relatedJobOpening',
+      type: 'relationship',
+      relationTo: 'job-openings',
+      label: "Offre d'emploi visée (si candidature depuis une fiche offre)",
+    },
+    {
       name: 'desiredRole',
       type: 'text',
       required: true,
