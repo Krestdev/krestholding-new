@@ -15,7 +15,7 @@ const VISIBLE_COUNT = 3;
 export default function GallerySection({ subsidiary }: GallerySectionProps) {
   const images = (subsidiary.gallery || [])
     .map((item) => (typeof item.image === "object" ? item.image : undefined))
-    .filter((img): img is NonNullable<typeof img> => Boolean(img?.url));
+    .filter((img): img is NonNullable<typeof img> & { url: string } => Boolean(img?.url));
 
   const [start, setStart] = useState(0);
   const total = images.length;

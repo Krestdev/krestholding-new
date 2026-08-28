@@ -43,6 +43,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Payload auto-generates this from the schema on every dev-server boot; it's
+# not a dependency and not a source of truth — hooks/*/type.ts is (hand-kept
+# in sync with the schema). Never commit or import from this file.
+payload-types.ts
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies

@@ -2,20 +2,20 @@ import { Media, RichText } from "../type";
 
 export interface FooterLink {
   id?: string | null;
-  label?: string | null;
-  url?: string | null;
+  label: string;
+  url: string;
 }
 
 export interface FooterColumn {
   id?: string | null;
-  columnTitle?: string | null;
+  columnTitle: string;
   links?: FooterLink[] | null;
 }
 
 export interface FooterSocialLink {
   id?: string | null;
-  platform?: string | null;
-  url?: string | null;
+  platform: string;
+  url: string;
   icon?: Media | number | null;
 }
 
