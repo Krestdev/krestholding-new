@@ -35,7 +35,8 @@ export default function CtaBanner({ pageData }: CtaBannerProps) {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col justify-end gap-9 p-10 lg:p-20">
           <h3 className="font-sans text-white text-3xl sm:text-4xl tracking-tight max-w-[513px]">
-            {pageData?.ctaLeftHeading || "Vous dirigez une entreprise à fort potentiel ?"}
+            {pageData?.ctaLeftHeading ||
+              "Vous dirigez une entreprise à fort potentiel ?"}
           </h3>
           <p className="text-white/80 text-xl sm:text-2xl leading-relaxed">
             {pageData?.ctaLeftBody ||
@@ -43,7 +44,9 @@ export default function CtaBanner({ pageData }: CtaBannerProps) {
           </p>
           <div className="flex flex-wrap gap-6 lg:gap-[38px]">
             <PrimaryButton
-              href={pageData?.ctaLeftPrimaryUrl || "/contact/soumettre-un-dossier"}
+              href={
+                pageData?.ctaLeftPrimaryUrl || "/contact/soumettre-un-dossier"
+              }
               label={pageData?.ctaLeftPrimaryLabel || "Soumettre un dossier"}
             />
             <SecondaryButton
@@ -55,7 +58,8 @@ export default function CtaBanner({ pageData }: CtaBannerProps) {
 
         <div className="flex flex-col justify-end gap-9 p-10 lg:p-20 bg-[#f29308]/10">
           <h3 className="font-sans text-white text-3xl sm:text-4xl tracking-tight max-w-[513px]">
-            {pageData?.ctaRightHeading || "Investisseur, partenaire ou journaliste ?"}
+            {pageData?.ctaRightHeading ||
+              "Investisseur, partenaire ou journaliste ?"}
           </h3>
           <p className="text-white/80 text-xl sm:text-2xl leading-relaxed">
             {pageData?.ctaRightBody ||

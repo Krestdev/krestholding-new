@@ -46,12 +46,15 @@ export default function Header() {
     queryFn: () => headerQuery.getBlobal({ locale }),
   });
 
-  const logo = typeof headerData?.logo === "object" ? headerData.logo : undefined;
+  const logo =
+    typeof headerData?.logo === "object" ? headerData.logo : undefined;
   const logoUrl = logo?.url?.trim() || "/krestholding_logo.png";
   const logoAlt = logo?.alt || "Krest Holding";
 
   const navItems: HeaderNavItem[] =
-    headerData?.navItems && headerData.navItems.length > 0 ? headerData.navItems : DEFAULT_NAV_ITEMS;
+    headerData?.navItems && headerData.navItems.length > 0
+      ? headerData.navItems
+      : DEFAULT_NAV_ITEMS;
 
   const currentLangLabel = locale?.toUpperCase() || "FR";
 
@@ -67,7 +70,14 @@ export default function Header() {
       <div className="border-b border-white/20">
         <div className="flex items-center justify-between px-6 lg:px-10 py-5">
           <Link href="/" className="flex items-center shrink-0">
-            <Image src={logoUrl} alt={logoAlt} width={140} height={43} priority className="h-10 w-auto object-contain" />
+            <Image
+              src={logoUrl}
+              alt={logoAlt}
+              width={140}
+              height={43}
+              priority
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6 text-[15px] font-medium text-white">
@@ -103,7 +113,9 @@ export default function Header() {
                         setLangDropdownOpen(false);
                       }}
                       className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                        locale === lang.code ? "text-white font-semibold" : "text-white/60 hover:text-white"
+                        locale === lang.code
+                          ? "text-white font-semibold"
+                          : "text-white/60 hover:text-white"
                       }`}
                     >
                       {lang.label}
@@ -152,7 +164,9 @@ export default function Header() {
                 key={lang.code}
                 onClick={() => setLocale(lang.code as "fr" | "en" | "it")}
                 className={`px-3 py-2 text-[15px] font-medium border border-white/16 transition-colors ${
-                  locale === lang.code ? "text-white border-white/40" : "text-white/60 hover:text-white"
+                  locale === lang.code
+                    ? "text-white border-white/40"
+                    : "text-white/60 hover:text-white"
                 }`}
               >
                 {lang.label}
