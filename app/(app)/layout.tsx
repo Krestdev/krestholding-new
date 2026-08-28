@@ -5,22 +5,6 @@ import { cn } from "@/lib/utils";
 import QueryProvider from "@/providers/queryProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ThemeSync from "@/components/layout/ThemeSync";
-
-// Reads the persisted theme before hydration and stamps the `dark` class on
-// <html> synchronously, so the correct theme paints on first frame instead of
-// flashing the default and then switching once React hydrates.
-const THEME_INIT_SCRIPT = `
-(function () {
-  try {
-    var stored = localStorage.getItem("krestholding-theme");
-    var theme = stored ? JSON.parse(stored).state.theme : "dark";
-    document.documentElement.classList.toggle("dark", theme !== "light");
-  } catch (e) {
-    document.documentElement.classList.add("dark");
-  }
-})();
-`;
 
 // Plus Jakarta Sans stands in for the Figma design's "Neue Montreal" / "PP Neue Montreal",
 // a paid Pangram Pangram font not available via next/font/google. Swap in real font files
@@ -44,7 +28,6 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
@@ -56,12 +39,8 @@ export default function RootLayout({
         "font-sans",
       )}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
       <QueryProvider>
         <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 font-sans">
-          <ThemeSync />
           <Header />
           {/* Header floats over content (fixed, transparent) to match Figma, where the
               nav overlays the hero background instead of sitting above it. This padding
