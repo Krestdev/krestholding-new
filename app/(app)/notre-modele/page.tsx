@@ -3,6 +3,7 @@
 import PageHero from "@/components/notre-modele/PageHero";
 import ThesisSection from "@/components/notre-modele/ThesisSection";
 import SectorsSection from "@/components/notre-modele/SectorsSection";
+import EligibilitySection from "@/components/notre-modele/EligibilitySection";
 import PolesSection from "@/components/notre-modele/PolesSection";
 import ImpactSection from "@/components/notre-modele/ImpactSection";
 import FetchError from "@/components/errors";
@@ -54,10 +55,11 @@ export default function NotreModelePage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <PageHero pageData={pageData} />
       <ThesisSection pageData={pageData} />
       <SectorsSection pageData={pageData} />
+      <EligibilitySection />
       <PolesSection pageData={pageData} />
       <ImpactSection pageData={pageData} />
       <NewsletterBanner homeData={homeData} />
