@@ -9,8 +9,15 @@ import { CarrieresPageContent } from "@/hooks/carrieres/type";
 import { dossierDocumentsQuery } from "@/hooks/dossierSubmissions/dossierDocumentsQuery";
 import { jobApplicationsQuery } from "@/hooks/jobApplications/jobApplicationsQuery";
 
+interface SpontaneousApplicationPrefill {
+  desiredRole?: string;
+  targetEntityOrSector?: string;
+  relatedJobOpeningId?: number;
+}
+
 interface SpontaneousApplicationSectionProps {
   pageData?: CarrieresPageContent | null;
+  prefill?: SpontaneousApplicationPrefill;
 }
 
 interface UploadingFile {
@@ -35,12 +42,12 @@ const inputClass =
   "w-full h-[42px] px-3 bg-white/[0.04] border border-white/10 text-base text-white placeholder:text-white/32 focus:outline-none focus:border-white/32 transition-colors";
 const labelClass = "font-mono text-white text-xs tracking-[0.5px] uppercase";
 
-export default function SpontaneousApplicationSection({ pageData }: SpontaneousApplicationSectionProps) {
+export default function SpontaneousApplicationSection({ pageData, prefill }: SpontaneousApplicationSectionProps) {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [targetEntityOrSector, setTargetEntityOrSector] = useState("");
-  const [desiredRole, setDesiredRole] = useState("");
+  const [targetEntityOrSector, setTargetEntityOrSector] = useState(prefill?.targetEntityOrSector || "");
+  const [desiredRole, setDesiredRole] = useState(prefill?.desiredRole || "");
   const [targetCity, setTargetCity] = useState("");
   const [consentAccepted, setConsentAccepted] = useState(false);
   const [documentIds, setDocumentIds] = useState<number[]>([]);
@@ -55,6 +62,7 @@ export default function SpontaneousApplicationSection({ pageData }: SpontaneousA
         phone,
         email,
         targetEntityOrSector,
+        relatedJobOpening: prefill?.relatedJobOpeningId,
         desiredRole,
         targetCity,
         documents: documentIds,
