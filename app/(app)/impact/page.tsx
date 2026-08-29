@@ -52,7 +52,7 @@ export default function ImpactPage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <ImpactHero pageData={pageData} />
       <StatsSection pageData={pageData} />
       <JobsSection pageData={pageData} />
