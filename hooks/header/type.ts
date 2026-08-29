@@ -2,14 +2,14 @@ import { Media } from "../type";
 
 export interface HeaderNavSubItem {
   id?: string | null;
-  label?: string | null;
-  url?: string | null;
+  label: string;
+  url: string;
 }
 
 export interface HeaderNavItem {
   id?: string | null;
-  label?: string | null;
-  url?: string | null;
+  label: string;
+  url: string;
   subItems?: HeaderNavSubItem[] | null;
 }
 

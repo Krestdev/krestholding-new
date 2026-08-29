@@ -1,6 +1,6 @@
 export interface Media {
   id: number;
-  url: string;
+  url?: string | null;
   alt?: string | null;
   filename?: string | null;
   mimeType?: string | null;

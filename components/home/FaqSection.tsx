@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Faq } from "@/hooks/faqs/type";
 import { HomePageContent } from "@/hooks/home/type";
 import { Plus, X } from "@phosphor-icons/react";
+import RichTextRenderer from "@/components/ui/RichTextRenderer";
 
 interface FaqSectionProps {
   faqs?: Faq[];
@@ -40,7 +41,6 @@ export default function FaqSection({ faqs, homeData }: FaqSectionProps) {
         <div className="flex-1">
           {items.map((item, idx) => {
             const isOpen = openIndex === idx;
-            const answerText = typeof item.answer === "string" ? item.answer : undefined;
 
             return (
               <div key={item.id ?? idx} className="border-b border-black/[0.05]">
@@ -50,8 +50,12 @@ export default function FaqSection({ faqs, homeData }: FaqSectionProps) {
                 >
                   <div className="flex-1 flex flex-col gap-4">
                     <h3 className="font-inter font-medium text-black text-lg sm:text-xl">{item.question}</h3>
-                    {isOpen && answerText && (
-                      <p className="font-inter font-medium text-[#333] text-sm leading-relaxed">{answerText}</p>
+                    {isOpen && item.answer && (
+                      typeof item.answer === "string" ? (
+                        <p className="font-inter font-medium text-[#333] text-sm leading-relaxed">{item.answer}</p>
+                      ) : (
+                        <RichTextRenderer data={item.answer} className="font-inter text-[#333] text-sm" />
+                      )
                     )}
                   </div>
                   <div className="shrink-0 size-6 flex items-center justify-center border border-black/5 mt-1 text-black transition-all duration-300 group-hover:border-black/30 group-hover:scale-110">
