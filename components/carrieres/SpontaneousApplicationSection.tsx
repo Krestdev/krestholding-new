@@ -42,11 +42,16 @@ const inputClass =
   "w-full h-[42px] px-3 bg-white/[0.04] border border-white/10 text-base text-white placeholder:text-white/32 focus:outline-none focus:border-white/32 transition-colors";
 const labelClass = "font-mono text-white text-xs tracking-[0.5px] uppercase";
 
-export default function SpontaneousApplicationSection({ pageData, prefill }: SpontaneousApplicationSectionProps) {
+export default function SpontaneousApplicationSection({
+  pageData,
+  prefill,
+}: SpontaneousApplicationSectionProps) {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [targetEntityOrSector, setTargetEntityOrSector] = useState(prefill?.targetEntityOrSector || "");
+  const [targetEntityOrSector, setTargetEntityOrSector] = useState(
+    prefill?.targetEntityOrSector || "",
+  );
   const [desiredRole, setDesiredRole] = useState(prefill?.desiredRole || "");
   const [targetCity, setTargetCity] = useState("");
   const [consentAccepted, setConsentAccepted] = useState(false);
@@ -77,21 +82,39 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
       const localId = `${file.name}-${Date.now()}-${Math.random()}`;
       setUploads((prev) => [
         ...prev,
-        { localId, name: file.name, sizeLabel: formatSize(file.size), progress: 0, status: "uploading" },
+        {
+          localId,
+          name: file.name,
+          sizeLabel: formatSize(file.size),
+          progress: 0,
+          status: "uploading",
+        },
       ]);
 
       dossierDocumentsQuery
         .upload(file, (percent) => {
-          setUploads((prev) => prev.map((u) => (u.localId === localId ? { ...u, progress: percent } : u)));
+          setUploads((prev) =>
+            prev.map((u) =>
+              u.localId === localId ? { ...u, progress: percent } : u,
+            ),
+          );
         })
         .then((doc) => {
           setUploads((prev) =>
-            prev.map((u) => (u.localId === localId ? { ...u, status: "done", progress: 100, mediaId: doc.id } : u)),
+            prev.map((u) =>
+              u.localId === localId
+                ? { ...u, status: "done", progress: 100, mediaId: doc.id }
+                : u,
+            ),
           );
           setDocumentIds((prev) => [...prev, doc.id]);
         })
         .catch(() => {
-          setUploads((prev) => prev.map((u) => (u.localId === localId ? { ...u, status: "error" } : u)));
+          setUploads((prev) =>
+            prev.map((u) =>
+              u.localId === localId ? { ...u, status: "error" } : u,
+            ),
+          );
         });
     });
   };
@@ -105,7 +128,13 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
   };
 
   const isComplete =
-    fullName && phone && email && targetEntityOrSector && desiredRole && targetCity && consentAccepted;
+    fullName &&
+    phone &&
+    email &&
+    targetEntityOrSector &&
+    desiredRole &&
+    targetCity &&
+    consentAccepted;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,20 +144,31 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
 
   if (mutation.isSuccess) {
     return (
-      <section id="candidature-spontanee" className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
+      <section
+        id="candidature-spontanee"
+        className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10"
+      >
         <div className="max-w-[1280px] mx-auto flex flex-col gap-4">
           <div className="flex items-center gap-3 text-white">
             <Check size={24} className="text-[#f29308]" />
-            <p className="font-sans text-2xl">Merci, votre candidature a bien été envoyée.</p>
+            <p className="font-sans text-2xl">
+              Merci, votre candidature a bien été envoyée.
+            </p>
           </div>
-          <p className="text-white/64 text-base">Notre équipe RH revient vers vous si un poste correspond à votre profil.</p>
+          <p className="text-white/64 text-base">
+            Notre équipe RH revient vers vous si un poste correspond à votre
+            profil.
+          </p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="candidature-spontanee" className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
+    <section
+      id="candidature-spontanee"
+      className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10"
+    >
       <div className="max-w-[1280px] mx-auto flex flex-col gap-14">
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
           <div className="flex items-center gap-4">
@@ -142,10 +182,14 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
         <h3 className="font-sans text-white text-3xl sm:text-4xl leading-tight">
           {pageData?.spontaneousHeadingLine1 || "Aucune offre ne correspond ?"}
           <br />
-          {pageData?.spontaneousHeadingLine2 || "Envoyez-nous votre candidature spontanée."}
+          {pageData?.spontaneousHeadingLine2 ||
+            "Envoyez-nous votre candidature spontanée."}
         </h3>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8 pt-8 border-t border-white/16 max-w-[840px]">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-8 pt-8 border-t border-white/16 max-w-[840px]"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-3">
               <label className={labelClass}>Nom et prénom *</label>
@@ -238,9 +282,13 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
                     Choisir un fichier
                   </button>
                   <span className="text-white/60 text-base">Ou</span>
-                  <span className="text-white text-sm">Déposer votre(vos) fichier(s) ici</span>
+                  <span className="text-white text-sm">
+                    Déposer votre(vos) fichier(s) ici
+                  </span>
                 </div>
-                <p className="text-white/60 text-base">Zip, PDF ou Word · 10 Mo maximum</p>
+                <p className="text-white/60 text-base">
+                  Zip, PDF ou Word · 10 Mo maximum
+                </p>
               </div>
               <input
                 ref={inputRef}
@@ -254,20 +302,36 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
 
             {uploads.length > 0 && (
               <div className="flex flex-col gap-6 w-full">
-                <p className="font-bold text-xs text-white/64">Fichiers téléchargés</p>
+                <p className="font-bold text-xs text-white/64">
+                  Fichiers téléchargés
+                </p>
                 <div className="flex flex-col gap-3 w-full">
                   {uploads.map((u) => (
-                    <div key={u.localId} className="flex items-start justify-between w-full gap-4">
+                    <div
+                      key={u.localId}
+                      className="flex items-start justify-between w-full gap-4"
+                    >
                       <div className="flex gap-2 items-center min-w-0">
-                        {u.status === "done" && <span className="size-3 rounded-full bg-[#00b445] shrink-0" />}
-                        <FileArrowUp size={24} className="text-white shrink-0" />
+                        {u.status === "done" && (
+                          <span className="size-3 rounded-full bg-[#00b445] shrink-0" />
+                        )}
+                        <FileArrowUp
+                          size={24}
+                          className="text-white shrink-0"
+                        />
                         <div className="flex flex-col gap-1.5 min-w-0">
-                          <p className="text-white text-xs truncate">{u.name}</p>
+                          <p className="text-white text-xs truncate">
+                            {u.name}
+                          </p>
                           <div className="flex gap-4 text-xs">
                             {u.status === "done" ? (
-                              <span className="text-[#00b445]">Téléchargé · {u.sizeLabel}</span>
+                              <span className="text-[#00b445]">
+                                Téléchargé · {u.sizeLabel}
+                              </span>
                             ) : u.status === "error" ? (
-                              <span className="text-[#cf2538]">Échec de l&apos;envoi</span>
+                              <span className="text-[#cf2538]">
+                                Échec de l&apos;envoi
+                              </span>
                             ) : (
                               <span className="text-white/80">
                                 En cours · {u.progress}% de {u.sizeLabel}
@@ -276,8 +340,16 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
                           </div>
                         </div>
                       </div>
-                      <button type="button" onClick={() => removeFile(u)} aria-label="Supprimer" className="shrink-0">
-                        <Trash size={16} className="text-white/60 hover:text-white transition-colors" />
+                      <button
+                        type="button"
+                        onClick={() => removeFile(u)}
+                        aria-label="Supprimer"
+                        className="shrink-0"
+                      >
+                        <Trash
+                          size={16}
+                          className="text-white/60 hover:text-white transition-colors"
+                        />
                       </button>
                     </div>
                   ))}
@@ -295,21 +367,31 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
               className="mt-1 size-2 accent-white"
             />
             <span className="text-white/64 text-xs leading-relaxed">
-              J&apos;accepte que mes données soient traitées dans le cadre de l&apos;examen de mon dossier.{" "}
-              <a href="/mentions-legales" className="underline hover:text-white">
+              J&apos;accepte que mes données soient traitées dans le cadre de
+              l&apos;examen de mon dossier.{" "}
+              <a
+                href="/mentions-legales"
+                className="underline hover:text-white"
+              >
                 Politique de confidentialité
               </a>
             </span>
           </label>
 
-          {mutation.isError && <p className="text-[#cf2538] text-sm">Une erreur est survenue, veuillez réessayer.</p>}
+          {mutation.isError && (
+            <p className="text-[#cf2538] text-sm">
+              Une erreur est survenue, veuillez réessayer.
+            </p>
+          )}
 
           <button
             type="submit"
             disabled={!isComplete || mutation.isPending}
             className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-[#f29308] text-black font-mono text-sm uppercase tracking-wide transition-colors hover:bg-[#f29308]/85 disabled:opacity-40 disabled:cursor-not-allowed w-fit"
           >
-            <span>{mutation.isPending ? "Envoi..." : "Envoyer ma candidature"}</span>
+            <span>
+              {mutation.isPending ? "Envoi..." : "Envoyer ma candidature"}
+            </span>
             <CtaArrow size={18} />
           </button>
         </form>

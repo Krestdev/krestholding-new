@@ -7,7 +7,9 @@ interface RelatedSubsidiaryCardProps {
   article: News;
 }
 
-export default function RelatedSubsidiaryCard({ article }: RelatedSubsidiaryCardProps) {
+export default function RelatedSubsidiaryCard({
+  article,
+}: RelatedSubsidiaryCardProps) {
   const ref = article.relatedSubsidiaries?.[0];
   const subsidiary = typeof ref === "object" ? (ref as Subsidiary) : undefined;
 

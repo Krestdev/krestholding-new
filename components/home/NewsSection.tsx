@@ -19,16 +19,16 @@ export default function NewsSection({ news, newsCalloutText, homeData }: NewsSec
   const { locale } = useLocaleStore();
 
   return (
-    <section className="bg-white py-24 lg:py-[120px] px-6 lg:px-10 border-b border-black/10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10 border-b border-black/10 dark:border-white/10">
       <div className="max-w-[1277px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="flex items-center gap-3 lg:w-[340px] shrink-0">
-            <KickerIcon className="text-black" />
-            <span className="font-mono text-black text-xl uppercase tracking-tight">
+            <KickerIcon className="text-black dark:text-white" />
+            <span className="font-mono text-black dark:text-white text-xl uppercase tracking-tight">
               {homeData?.newsKicker || "Actualités"}
             </span>
           </div>
-          <h2 className="font-sans text-black text-3xl sm:text-4xl leading-tight max-w-2xl">
+          <h2 className="font-sans text-black dark:text-white text-3xl sm:text-4xl leading-tight max-w-2xl">
             {newsCalloutText || homeData?.newsHeading || "Suivez les temps forts et communiqués du groupe KREST HOLDING."}
           </h2>
         </div>
@@ -41,13 +41,13 @@ export default function NewsSection({ news, newsCalloutText, homeData }: NewsSec
                 <Link
                   key={item.id}
                   href={`/actualite/${item.slug}`}
-                  className="group flex flex-col border border-black/10 transition-colors hover:border-black/30"
+                  className="group flex flex-col border border-black/10 dark:border-white/10 transition-colors hover:border-black/30 dark:hover:border-white/30"
                 >
-                  <div className="relative h-[280px] w-full bg-black/5 overflow-hidden">
+                  <div className="relative h-[280px] w-full bg-black/5 dark:bg-white/5 overflow-hidden">
                     {image?.url ? (
                       <Image src={image.url} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
-                      <div className="flex items-center justify-center h-full text-black/20">
+                      <div className="flex items-center justify-center h-full text-black/20 dark:text-white/20">
                         <Newspaper size={32} />
                       </div>
                     )}
@@ -63,9 +63,9 @@ export default function NewsSection({ news, newsCalloutText, homeData }: NewsSec
                         )}
                         <span className="text-[#878887]">{item.category || "Communiqué"}</span>
                       </div>
-                      <p className="font-inter font-medium text-black text-base leading-snug line-clamp-3">{item.title}</p>
+                      <p className="font-inter font-medium text-black dark:text-white text-base leading-snug line-clamp-3">{item.title}</p>
                     </div>
-                    <div className="shrink-0 size-6 flex items-center justify-center border border-black/10 text-black transition-colors group-hover:border-black/30">
+                    <div className="shrink-0 size-6 flex items-center justify-center border border-black/10 dark:border-white/10 text-black dark:text-white transition-colors group-hover:border-black/30 dark:group-hover:border-white/30">
                       <CtaArrow size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                     </div>
                   </div>
@@ -74,7 +74,9 @@ export default function NewsSection({ news, newsCalloutText, homeData }: NewsSec
             })}
           </div>
         ) : (
-          <div className="text-center py-16 px-6 text-black/40 border border-black/10">Aucune actualité pour le moment.</div>
+          <div className="text-center py-16 px-6 text-black/40 dark:text-white/40 border border-black/10 dark:border-white/10">
+            Aucune actualité pour le moment.
+          </div>
         )}
       </div>
     </section>

@@ -20,7 +20,7 @@ export default function NewsletterBanner({ homeData }: NewsletterBannerProps) {
   };
 
   return (
-    <section className="bg-[#0d0d0d] border-y border-white/10 py-16 px-6 lg:px-10">
+    <section className="bg-[#218da8] dark:bg-[#0d0d0d] border-y border-white/10 py-16 px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
         <div className="flex items-center gap-3">
           <KickerIcon className="text-white" />

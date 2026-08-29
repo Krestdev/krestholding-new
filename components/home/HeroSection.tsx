@@ -40,12 +40,16 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
   const bgMedia = typeof homeData?.heroBgMedia === "object" ? homeData.heroBgMedia : undefined;
 
   return (
-    <section className="relative flex flex-col items-center pt-[120px] pb-10 px-6 lg:px-10 bg-[#0d0d0d] border-b border-white/10 overflow-hidden">
+    <section className="relative flex flex-col items-center pt-[120px] pb-10 px-6 lg:px-10 bg-[#218da8] dark:bg-[#0d0d0d] border-b border-white/10 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         {bgMedia?.url && (
           <Image src={bgMedia.url} alt="" fill priority className="object-cover" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d]/80 to-[#0d0d0d]" />
+        {/* Light theme: transparent at top fading to solid teal at the bottom.
+            Dark theme: solid near-black at top fading to transparent at the bottom.
+            Directions are genuinely opposite between themes — confirmed via the
+            Figma API (gradient stops on the hero image node), not guessed. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#218da8]/0 to-[#218da8] dark:from-[#0d0d0d] dark:to-[#0d0d0d]/0" />
       </div>
 
       <div className="relative z-10 w-full max-w-[1280px]">
