@@ -30,7 +30,7 @@ export interface SubsidiaryTextPoint {
 
 export interface SubsidiaryGalleryItem {
   id?: string;
-  image?: Media | number | null;
+  image: Media | number;
 }
 
 export interface Subsidiary {

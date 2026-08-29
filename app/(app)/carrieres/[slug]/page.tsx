@@ -53,10 +53,15 @@ export default function JobOpeningDetailPage() {
   }
 
   if (error || !job) {
-    return <FetchError error={error} data={job === null || job === undefined} />;
+    return (
+      <FetchError error={error} data={job === null || job === undefined} />
+    );
   }
 
-  const entity = typeof job.relatedSubsidiary === "object" ? (job.relatedSubsidiary as Subsidiary) : undefined;
+  const entity =
+    typeof job.relatedSubsidiary === "object"
+      ? (job.relatedSubsidiary as Subsidiary)
+      : undefined;
 
   return (
     <div className="bg-[#0d0d0d] -mt-[81px]">
