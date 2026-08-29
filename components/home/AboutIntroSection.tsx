@@ -54,7 +54,7 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
                 "Chaque participation bénéficie d'un accompagnement mensuel structuré autour de nos 5 pôles d'expertise : marketing, IT, finance, achats et ressources humaines."}
             </p>
 
-            <div className="flex flex-col w-full lg:w-[680px] bg-[#141414]">
+            <div className="flex flex-col w-full lg:w-[680px] bg-[#1f7e96] dark:bg-[#141414]">
               <div className="flex items-center gap-3 p-5">
                 <div className="relative shrink-0 size-16 rounded-full border-[1.6px] border-white/10 overflow-hidden">
                   {quoteAvatar?.url && (
@@ -125,7 +125,7 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
                 {stats.map((stat, idx) => (
                   <div key={idx} className="flex flex-col gap-2">
                     <span className="font-sans text-white text-4xl sm:text-5xl tracking-tight">{stat.value}</span>
-                    <span className="font-abel text-[#f29308] text-xs uppercase tracking-[0.2em] leading-tight">
+                    <span className="font-abel text-black dark:text-[#f29308] text-xs uppercase tracking-[0.2em] leading-tight">
                       {stat.label}
                     </span>
                   </div>

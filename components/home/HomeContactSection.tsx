@@ -82,7 +82,7 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
         <div className="bg-white dark:bg-white/[0.01] border border-black/[0.08] dark:border-white/[0.08] rounded-xl p-8">
           <div className="flex gap-2">
             {[1, 2, 3].map((s) => (
-              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#f29308]" : "bg-black/10 dark:bg-[#1a2c38]"}`} />
+              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#f29308]" : "bg-[#1a2c38]"}`} />
             ))}
           </div>
 
