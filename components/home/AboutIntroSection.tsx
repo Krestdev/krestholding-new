@@ -32,8 +32,8 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
     "Depuis 2018, KREST HOLDING identifie, structure et accompagne des entreprises à travers 5 pôles d'expertise mutualisés. Un modèle de création de valeur durable ancré dans l'économie camerounaise.";
 
   return (
-    <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
-      <div className="max-w-[1280px] mx-auto flex flex-col gap-[120px]">
+    <section className="bg-[#218da8] dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+      <div className="max-w-[1280px] mx-auto flex flex-col gap-16 lg:gap-[120px] divide-y divide-white/10 lg:divide-y-0 [&>*+*]:pt-16 lg:[&>*+*]:pt-0">
         {/* Intro */}
         <div className="flex flex-col items-start lg:flex-row gap-10 lg:gap-0">
           <div className="flex items-center gap-3 shrink-0 lg:w-[340px] lg:pt-[6px]">
@@ -132,11 +132,11 @@ export default function AboutIntroSection({ homeData }: AboutIntroSectionProps) 
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-3 border-t border-white/[0.06] pt-6">
+              <div className="flex flex-wrap gap-3 border-t border-white/[0.15] dark:border-white/[0.06] pt-6">
                 {tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="font-abel text-[#218da8] text-xs uppercase tracking-widest border border-[#218da8]/30 rounded-full px-3 py-1"
+                    className="font-abel text-white dark:text-[#218da8] text-xs uppercase tracking-widest border border-white/40 dark:border-[#218da8]/30 rounded-full px-3 py-1"
                   >
                     {tag}
                   </span>

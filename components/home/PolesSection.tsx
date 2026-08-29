@@ -23,16 +23,16 @@ export default function PolesSection({ poles, homeData }: PolesSectionProps) {
   const items = poles && poles.length > 0 ? poles : DEFAULT_POLES;
 
   return (
-    <section className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <KickerIcon className="text-black" />
-          <span className="font-abel text-black text-xl uppercase tracking-tight">
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
             {homeData?.polesKicker || "Ce que nous apportons au-delà du capital"}
           </span>
         </div>
 
-        <h2 className="font-sans font-medium text-[#010101] text-3xl sm:text-4xl tracking-tight pt-2">
+        <h2 className="font-sans font-medium text-[#010101] dark:text-white text-3xl sm:text-4xl tracking-tight pt-2">
           {homeData?.polesHeading || "Les 5 pôles d'accompagnement"}
         </h2>
 
@@ -40,17 +40,20 @@ export default function PolesSection({ poles, homeData }: PolesSectionProps) {
           {items.map((pole, idx) => {
             const icon = typeof pole.icon === "object" ? pole.icon : undefined;
             return (
-              <div key={idx} className="flex flex-col justify-between gap-6 px-6 py-10 border-t border-black/[0.06]">
+              <div
+                key={idx}
+                className="flex flex-col justify-between gap-6 px-6 py-10 border-t border-black/[0.06] dark:border-white/[0.08]"
+              >
                 {icon?.url ? (
                   <div className="relative size-16">
                     <Image src={icon.url} alt="" fill className="object-contain" />
                   </div>
                 ) : (
-                  <Briefcase size={40} className="text-black" />
+                  <Briefcase size={40} className="text-black dark:text-white" />
                 )}
 
                 <div className="flex flex-col gap-4">
-                  <h3 className="font-inter font-bold text-[#111] text-lg leading-snug">{pole.title}</h3>
+                  <h3 className="font-inter font-bold text-[#111] dark:text-white text-lg leading-snug">{pole.title}</h3>
                   {pole.example && <p className="font-inter font-medium text-[#288fa5] text-sm">{pole.example}</p>}
                 </div>
               </div>

@@ -82,18 +82,26 @@ export default function HomePage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <HeroSection homeData={homeData} />
-      <AboutIntroSection homeData={homeData} />
-      <PolesSection poles={poles ?? []} homeData={homeData} />
+      <div className="hidden lg:block">
+        <PolesSection poles={poles ?? []} homeData={homeData} />
+      </div>
       <InvestmentProcessSection homeData={homeData} />
       <FaqSection faqs={faqs ?? []} homeData={homeData} />
       <SubsidiariesSection subsidiaries={subsidiaries ?? []} homeData={homeData} />
       <CertificationsSection certifications={certifications ?? []} homeData={homeData} />
-      <TestimonialsSection testimonials={testimonials ?? []} homeData={homeData} />
       <NewsSection news={news ?? []} newsCalloutText={homeData?.newsHeading} homeData={homeData} />
-      <HomeContactSection homeData={homeData} />
-      <NewsletterBanner homeData={homeData} />
+      <AboutIntroSection homeData={homeData} />
+      <TestimonialsSection testimonials={testimonials ?? []} homeData={homeData} />
+      <div className="flex flex-col">
+        <div className="order-2 lg:order-1">
+          <HomeContactSection homeData={homeData} />
+        </div>
+        <div className="order-1 lg:order-2">
+          <NewsletterBanner homeData={homeData} />
+        </div>
+      </div>
     </div>
   );
 }

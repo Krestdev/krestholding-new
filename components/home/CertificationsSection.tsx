@@ -15,7 +15,7 @@ export default function CertificationsSection({ certifications, homeData }: Cert
   const items = (certifications ?? []).slice(0, 2);
 
   return (
-    <section className="bg-[#0d0d0d] py-20 px-6 lg:px-10 border-y border-white/10">
+    <section className="bg-[#218da8] dark:bg-[#0d0d0d] py-20 px-6 lg:px-10 border-y border-white/10">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-10 items-center">
         <div className="flex-1 flex flex-col gap-8">
           <div className="flex items-center gap-3">
@@ -30,7 +30,7 @@ export default function CertificationsSection({ certifications, homeData }: Cert
               "Construit avec les standards de qualité, de gouvernance et de conformité que nos partenaires exigent."}
           </h2>
 
-          <p className="text-[#ccc] text-lg sm:text-xl leading-relaxed">
+          <p className="text-white/80 text-lg sm:text-xl leading-relaxed">
             {homeData?.certificationsBody ||
               "ISO 9001 · ISO 14001 · Gouvernance actionnariale · Audits annuels · Conformité CEMAC"}
           </p>

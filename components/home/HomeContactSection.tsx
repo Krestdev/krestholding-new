@@ -30,22 +30,29 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
     : DEFAULT_CHECKLIST;
 
   return (
-    <section id="soumettre-dossier" className="bg-[#0d0d0d] py-24 lg:py-[197px] pb-24 lg:pb-[180px] px-6 lg:px-10">
+    <section
+      id="soumettre-dossier"
+      className="bg-[#f3fdff] dark:bg-[#0d0d0d] py-24 lg:py-[197px] pb-24 lg:pb-[180px] px-6 lg:px-10"
+    >
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
         <div className="flex flex-col gap-8 max-w-[487px]">
           <div className="flex items-center gap-3">
-            <KickerIcon className="text-white" />
-            <span className="font-mono text-white text-xl uppercase tracking-tight">
+            <KickerIcon className="text-black dark:text-white" />
+            <span className="font-mono text-black dark:text-white text-xl uppercase tracking-tight">
               {homeData?.contactKicker || "Candidater"}
             </span>
           </div>
 
-          <h2 className="font-sans text-white text-4xl">{homeData?.contactHeading || "Soumettre un dossier"}</h2>
+          <h2 className="font-sans text-black dark:text-white text-4xl">
+            {homeData?.contactHeading || "Soumettre un dossier"}
+          </h2>
 
           <div className="border-l-2 border-[#cf2538] pl-4">
             <p className="text-sm leading-relaxed">
-              <span className="font-bold text-white">{homeData?.contactConfidentialityTitle || "Confidentialité."}</span>{" "}
-              <span className="text-[#878887]">
+              <span className="font-bold text-black dark:text-white">
+                {homeData?.contactConfidentialityTitle || "Confidentialité."}
+              </span>{" "}
+              <span className="text-black/60 dark:text-[#878887]">
                 {homeData?.contactConfidentialityBody ||
                   "Votre dossier est transmis uniquement à la Direction Générale de KREST HOLDING. Aucune information n'est partagée avec des tiers."}
               </span>
@@ -53,41 +60,47 @@ export default function HomeContactSection({ homeData }: HomeContactSectionProps
           </div>
 
           <div className="flex flex-col gap-1">
-            <p className="font-mono text-[#878887] text-xs uppercase tracking-widest pb-2">Avant de commencer</p>
+            <p className="font-mono text-black/60 dark:text-[#878887] text-xs uppercase tracking-widest pb-2">
+              Avant de commencer
+            </p>
             {checklist.map((item, idx) => (
-              <p key={idx} className="text-[#878887] text-sm px-4 py-2">
+              <p key={idx} className="text-black/60 dark:text-[#878887] text-sm px-4 py-2">
                 {item}
               </p>
             ))}
           </div>
 
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-lg p-4 flex flex-col gap-1">
-            <p className="font-mono text-[#878887] text-[10px] uppercase tracking-widest">Contact direct</p>
-            <p className="text-white text-sm">{homeData?.contactEmail || "contact@krestholding.com"}</p>
-            <p className="text-[#878887] text-xs">{homeData?.contactAddress || "Douala, Cameroun · Zone CEMAC"}</p>
+          <div className="bg-black/[0.02] dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-4 flex flex-col gap-1">
+            <p className="font-mono text-black/60 dark:text-[#878887] text-[10px] uppercase tracking-widest">Contact direct</p>
+            <p className="text-black dark:text-white text-sm">{homeData?.contactEmail || "contact@krestholding.com"}</p>
+            <p className="text-black/60 dark:text-[#878887] text-xs">
+              {homeData?.contactAddress || "Douala, Cameroun · Zone CEMAC"}
+            </p>
           </div>
         </div>
 
-        <div className="bg-white/[0.01] border border-white/[0.08] rounded-xl p-8">
+        <div className="bg-white dark:bg-white/[0.01] border border-black/[0.08] dark:border-white/[0.08] rounded-xl p-8">
           <div className="flex gap-2">
             {[1, 2, 3].map((s) => (
-              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#f29308]" : "bg-[#1a2c38]"}`} />
+              <div key={s} className={`flex-1 h-1 rounded-full ${s <= step ? "bg-[#f29308]" : "bg-black/10 dark:bg-[#1a2c38]"}`} />
             ))}
           </div>
 
-          <p className="font-mono text-[#878887] text-[10px] uppercase tracking-widest pt-8 pb-6">
+          <p className="font-mono text-black/60 dark:text-[#878887] text-[10px] uppercase tracking-widest pt-8 pb-6">
             Étape {step} sur 3 — Votre entreprise
           </p>
 
           <div className="flex flex-wrap gap-4">
             {FIELDS.map((field) => (
               <div key={field.label} className="flex flex-col gap-1.5 w-full sm:w-[calc(50%-8px)]">
-                <label className="font-mono text-[#878887] text-[10px] uppercase tracking-wide">{field.label}</label>
+                <label className="font-mono text-black/60 dark:text-[#878887] text-[10px] uppercase tracking-wide">
+                  {field.label}
+                </label>
                 <input
                   type="text"
                   placeholder={field.placeholder}
                   disabled
-                  className="bg-white/[0.04] border border-white/10 rounded px-3 py-2.5 text-base text-white/32 placeholder:text-white/32 cursor-not-allowed"
+                  className="bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded px-3 py-2.5 text-base text-black/40 dark:text-white/32 placeholder:text-black/40 dark:placeholder:text-white/32 cursor-not-allowed"
                 />
               </div>
             ))}

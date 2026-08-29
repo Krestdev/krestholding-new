@@ -83,7 +83,7 @@ export default function Footer() {
     //     <div className="flex flex-col gap-4">
     //       <h4 className="text-lg font-medium uppercase tracking-wide">
     //         {footerData?.participationsColumnTitle || "Participations"}
-    <footer className="bg-[#0d0d0d] text-white">
+    <footer className="bg-[#218da8] dark:bg-[#0d0d0d] text-white">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
         {columns.map((col, idx) => (
           <div key={idx} className="flex flex-col gap-4">
@@ -95,7 +95,7 @@ export default function Footer() {
                 <li key={lIdx}>
                   <Link
                     href={link.url ?? "#"}
-                    className="relative inline-block py-0.5 text-[#4d5766] text-lg transition-colors hover:text-white after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                    className="relative inline-block py-0.5 text-white/70 text-lg transition-colors hover:text-white after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {link.label}
                   </Link>
@@ -112,7 +112,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2">
             {(subsidiaries ?? []).map((sub) => (
               <li key={sub.id}>
-                <span className="text-[#4d5766] hover:text-white transition-colors text-lg cursor-default">
+                <span className="text-white/70 hover:text-white transition-colors text-lg cursor-default">
                   {sub.name}
                 </span>
               </li>
@@ -121,7 +121,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2">
             {(subsidiaries ?? []).map((sub) => (
               <li key={sub.id}>
-                <span className="text-[#4d5766] hover:text-white transition-colors text-lg cursor-default">
+                <span className="text-white/70 hover:text-white transition-colors text-lg cursor-default">
                   {sub.name}
                 </span>
               </li>
@@ -144,7 +144,7 @@ export default function Footer() {
             height={42}
             className="h-9 w-auto object-contain"
           />
-          <p className="text-[#b3b3b3] text-lg">
+          <p className="text-white/70 text-lg">
             {footerData?.copyrightNotice || "Copyright © Krest Holding 2026"}
           </p>
         </div>
