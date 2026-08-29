@@ -31,19 +31,19 @@ export default function ArticleBody({ article }: ArticleBodyProps) {
   };
 
   return (
-    <section className="bg-white px-6 lg:px-10 py-24 lg:py-[120px]">
+    <section className="bg-white dark:bg-[#0d0d0d] px-6 lg:px-10 py-24 lg:py-[120px]">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-8">
         <div className="flex-1 max-w-[840px] flex flex-col gap-16">
           <RichTextRenderer data={article.content} />
 
-          <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-black/10">
-            <span className="text-[#111] text-sm">Partager cette page :</span>
+          <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-black/32 dark:border-white/32">
+            <span className="text-[#111] dark:text-white text-sm">Partager cette page :</span>
 
             <a
               href={shareLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#111] text-sm hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 text-[#111] dark:text-white text-sm hover:opacity-70 transition-opacity"
             >
               <span>LinkedIn</span>
               <LinkedinLogo size={16} />
@@ -53,7 +53,7 @@ export default function ArticleBody({ article }: ArticleBodyProps) {
               href={shareLinks.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#111] text-sm hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 text-[#111] dark:text-white text-sm hover:opacity-70 transition-opacity"
             >
               <span>X</span>
               <XLogo size={16} />
@@ -62,7 +62,7 @@ export default function ArticleBody({ article }: ArticleBodyProps) {
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center gap-2 text-[#111] text-sm hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 text-[#111] dark:text-white text-sm hover:opacity-70 transition-opacity"
             >
               <span>{copied ? "Copié !" : "Copier le lien"}</span>
               <LinkSimple size={16} />
@@ -70,7 +70,7 @@ export default function ArticleBody({ article }: ArticleBodyProps) {
 
             <a
               href={shareLinks.mail}
-              className="inline-flex items-center gap-2 text-[#111] text-sm hover:opacity-70 transition-opacity"
+              className="inline-flex items-center gap-2 text-[#111] dark:text-white text-sm hover:opacity-70 transition-opacity"
             >
               <span>Envoyer par courriel</span>
               <Envelope size={16} />
@@ -78,7 +78,7 @@ export default function ArticleBody({ article }: ArticleBodyProps) {
           </div>
         </div>
 
-        <div className="hidden lg:block w-[408px] shrink-0 bg-black/[0.04] min-h-[600px]" />
+        <div className="hidden lg:block w-[408px] shrink-0 bg-[#d9d9d9] dark:bg-white/[0.08] min-h-[600px]" />
       </div>
     </section>
   );

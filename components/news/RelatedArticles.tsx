@@ -1,5 +1,5 @@
 import KickerIcon from "@/components/ui/KickerIcon";
-import NewsCard from "@/components/news/NewsCard";
+import RelatedArticleCard from "@/components/news/RelatedArticleCard";
 import { News } from "@/hooks/news/type";
 
 interface RelatedArticlesProps {
@@ -16,16 +16,16 @@ export default function RelatedArticles({ current, allNews }: RelatedArticlesPro
   if (related.length === 0) return null;
 
   return (
-    <section className="bg-white px-6 lg:px-10 pb-24 lg:pb-[120px]">
+    <section className="bg-white dark:bg-[#0d0d0d] px-6 lg:px-10 pb-24 lg:pb-[120px]">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-14">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-[#111]" />
-          <span className="font-abel text-[#111] text-xl uppercase tracking-tight">A lire egalement</span>
+          <KickerIcon className="text-[#111] dark:text-white" />
+          <span className="font-abel text-[#111] dark:text-white text-xl uppercase tracking-tight">A lire egalement</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
           {related.map((item) => (
-            <NewsCard key={item.id} item={item} />
+            <RelatedArticleCard key={item.id} item={item} />
           ))}
         </div>
       </div>
