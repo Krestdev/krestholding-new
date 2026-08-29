@@ -26,27 +26,27 @@ export default function SectorsSection({ pageData }: SectorsSectionProps) {
   const zonesImage = typeof pageData?.interventionZonesImage === "object" ? pageData.interventionZonesImage : undefined;
 
   return (
-    <section id="secteurs" className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+    <section id="secteurs" className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
           <div className="flex items-center gap-3 shrink-0">
-            <KickerIcon className="text-black dark:text-white" />
-            <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
+            <KickerIcon className="text-black" />
+            <span className="font-abel text-black text-xl uppercase tracking-tight">
               {pageData?.sectorsKicker || "Secteurs & géographies"}
             </span>
           </div>
-          <p className="text-black/80 dark:text-white/80 text-xl sm:text-2xl leading-relaxed lg:text-right lg:max-w-[566px]">
+          <p className="text-black/80 text-xl sm:text-2xl leading-relaxed lg:text-right lg:max-w-[566px]">
             {pageData?.sectorsIntro || "Cinq secteurs prioritaires, ancrés dans l'économie réelle camerounaise."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sectors.map((sector, idx) => (
-            <div key={idx} className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
-              <div className="h-1 w-full bg-black dark:bg-white" />
+            <div key={idx} className="border border-black/24 overflow-hidden flex flex-col">
+              <div className="h-1 w-full bg-black" />
               <div className="p-6 flex flex-col gap-8">
-                <span className="font-abel text-black dark:text-white text-xs uppercase tracking-[1px]">{sector.title}</span>
-                <p className="text-black/80 dark:text-white/80 text-base leading-relaxed">{sector.description}</p>
+                <span className="font-abel text-black text-xs uppercase tracking-[1px]">{sector.title}</span>
+                <p className="text-black/80 text-base leading-relaxed">{sector.description}</p>
               </div>
             </div>
           ))}
