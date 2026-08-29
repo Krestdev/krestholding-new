@@ -35,7 +35,7 @@ export default function JobsDistributionSection({ pageData }: JobsDistributionSe
   const max = Math.max(...chart.map((c) => c.value), 1);
 
   return (
-    <section id="ou-sont-les-postes" className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
+    <section id="ou-sont-les-postes" className="bg-[#218da8] dark:bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-14">
         <div className="flex items-center gap-4">
           <KickerIcon className="text-white" />

@@ -52,10 +52,12 @@ export default function CarrieresPage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <CareersHero pageData={pageData} />
       <JobsDistributionSection pageData={pageData} />
-      <WhyJoinSection pageData={pageData} />
+      <div className="hidden lg:block">
+        <WhyJoinSection pageData={pageData} />
+      </div>
       <OpenPositionsSection pageData={pageData} jobs={jobs ?? []} />
       <RecruitmentProcessSection pageData={pageData} />
       <SpontaneousApplicationSection pageData={pageData} />
