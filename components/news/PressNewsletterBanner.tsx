@@ -36,7 +36,7 @@ export default function PressNewsletterBanner({ pageData }: PressNewsletterBanne
   };
 
   return (
-    <section className="bg-[#0d0d0d] border-y border-white/10">
+    <section className="bg-[#218da8] dark:bg-[#0d0d0d] border-y border-white/10">
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col justify-end gap-9 p-10 lg:p-20">
           <h3 className="font-sans text-white text-3xl sm:text-4xl tracking-tight">
@@ -61,7 +61,7 @@ export default function PressNewsletterBanner({ pageData }: PressNewsletterBanne
           </Link>
         </div>
 
-        <div className="flex flex-col justify-end gap-9 p-10 lg:p-20 bg-[#f29308]/10">
+        <div className="flex flex-col justify-end gap-9 p-10 lg:p-20 bg-black/10 dark:bg-[#f29308]/10">
           <h3 className="font-sans text-white text-3xl sm:text-4xl tracking-tight">Rester informé</h3>
           <div className="flex flex-col gap-4">
             {newsletterInfo.map((line, idx) =>

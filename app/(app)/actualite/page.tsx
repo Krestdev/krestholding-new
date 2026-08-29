@@ -44,7 +44,7 @@ export default function ActualitePage() {
   const items = news ?? [];
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <NewsHero news={items} />
       <PublicationsSection news={items} pageData={pageData} />
       <PressNewsletterBanner pageData={pageData} />
