@@ -16,8 +16,8 @@ const MOTIF_OPTIONS: { value: ContactMotif; label: string }[] = [
 ];
 
 const inputClass =
-  "w-full h-[42px] px-3 bg-black/[0.04] border border-black/10 text-base text-black placeholder:text-black/32 focus:outline-none focus:border-black/32 transition-colors";
-const labelClass = "font-mono text-black text-xs tracking-[0.5px] uppercase";
+  "w-full h-[42px] px-3 bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-base text-black dark:text-white placeholder:text-black/32 dark:placeholder:text-white/32 focus:outline-none focus:border-black/32 dark:focus:border-white/32 transition-colors";
+const labelClass = "font-mono text-black dark:text-white text-xs tracking-[0.5px] uppercase";
 
 export default function GeneralFormSection() {
   const [fullName, setFullName] = useState("");
@@ -56,31 +56,31 @@ export default function GeneralFormSection() {
 
   if (mutation.isSuccess) {
     return (
-      <section id="formulaire-general" className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
+      <section id="formulaire-general" className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
         <div className="max-w-[1280px] mx-auto flex flex-col items-start gap-4">
-          <div className="flex items-center gap-3 text-[#111]">
+          <div className="flex items-center gap-3 text-[#111] dark:text-white">
             <Check size={24} className="text-[#218da8]" />
             <p className="font-sans text-2xl">Merci, votre demande a bien été envoyée.</p>
           </div>
-          <p className="text-black/64 text-base">Nous revenons vers vous dans le délai annoncé ci-dessus.</p>
+          <p className="text-black/64 dark:text-white/64 text-base">Nous revenons vers vous dans le délai annoncé ci-dessus.</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="formulaire-general" className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
+    <section id="formulaire-general" className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-[#111]" />
-          <span className="font-abel text-[#111] text-xl uppercase tracking-tight">Formulaire général</span>
+          <KickerIcon className="text-[#111] dark:text-white" />
+          <span className="font-abel text-[#111] dark:text-white text-xl uppercase tracking-tight">Formulaire général</span>
         </div>
 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
-          <h2 className="font-sans text-[#111] text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
+          <h2 className="font-sans text-[#111] dark:text-white text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
             Pour toute autre demande
           </h2>
-          <p className="text-[rgba(17,17,17,0.9)] text-lg sm:text-xl leading-snug max-w-[514px]">
+          <p className="text-[rgba(17,17,17,0.9)] dark:text-white/90 text-lg sm:text-xl leading-snug max-w-[514px]">
             Une phrase sur trois lignes qui donne brièvement l&apos;idée entreprise affiché sur cette page, de
             ce côté.
           </p>
@@ -140,7 +140,7 @@ export default function GeneralFormSection() {
                   className="w-10 bg-transparent focus:outline-none"
                   aria-label="Indicatif"
                 />
-                <span className="text-black/32">·</span>
+                <span className="text-black/32 dark:text-white/32">·</span>
                 <input
                   required
                   value={phoneNumber}
@@ -167,7 +167,7 @@ export default function GeneralFormSection() {
               <label className={labelClass}>Pays *</label>
               <div className={`flex items-center gap-2 ${inputClass}`}>
                 <span>🇨🇲</span>
-                <span className="text-black/32">—</span>
+                <span className="text-black/32 dark:text-white/32">—</span>
                 <input
                   required
                   value={country}
@@ -186,7 +186,7 @@ export default function GeneralFormSection() {
                 onChange={(e) => setProjectDescription(e.target.value)}
                 placeholder="Décrivez votre projet en quelques lignes *"
                 rows={5}
-                className="w-full px-3 py-4 bg-black/[0.04] border border-black/10 text-base text-black placeholder:text-black/32 focus:outline-none focus:border-black/32 transition-colors resize-none"
+                className="w-full px-3 py-4 bg-black/[0.04] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-base text-black dark:text-white placeholder:text-black/32 dark:placeholder:text-white/32 focus:outline-none focus:border-black/32 dark:focus:border-white/32 transition-colors resize-none"
               />
             </div>
           </div>
@@ -197,11 +197,11 @@ export default function GeneralFormSection() {
               type="checkbox"
               checked={consentAccepted}
               onChange={(e) => setConsentAccepted(e.target.checked)}
-              className="mt-1 size-2 accent-black"
+              className="mt-1 size-2 accent-black dark:accent-white"
             />
-            <span className="text-black/64 text-xs leading-relaxed">
+            <span className="text-black/64 dark:text-white/64 text-xs leading-relaxed">
               J&apos;accepte que mes données soient traitées dans le cadre de l&apos;examen de mon dossier.{" "}
-              <a href="/mentions-legales" className="underline hover:text-black">
+              <a href="/mentions-legales" className="underline hover:text-black dark:hover:text-white">
                 Politique de confidentialité
               </a>
             </span>
