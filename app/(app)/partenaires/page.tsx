@@ -46,7 +46,7 @@ export default function PartenairesPage() {
   const items = subsidiaries ?? [];
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <PageHero pageData={pageData} />
       <PortfolioSection pageData={pageData} subsidiaries={items} />
       <SynergiesSection pageData={pageData} />
