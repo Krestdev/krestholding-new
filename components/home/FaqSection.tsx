@@ -6,7 +6,6 @@ import { Faq } from "@/hooks/faqs/type";
 import { HomePageContent } from "@/hooks/home/type";
 import { Plus, X } from "@phosphor-icons/react";
 import RichTextRenderer from "@/components/ui/RichTextRenderer";
-import RichTextRenderer from "@/components/ui/RichTextRenderer";
 
 interface FaqSectionProps {
   faqs?: Faq[];

@@ -536,10 +536,34 @@ export interface DossierSubmission {
 export interface JobOpening {
   id: number;
   title: string;
+  slug?: string | null;
   relatedSubsidiary?: (number | null) | Subsidiary;
   contractType?: ('CDI' | 'CDD' | 'Stage' | 'Freelance') | null;
+  workTime?: ('Temps plein' | 'Temps partiel') | null;
   location?: string | null;
+  experienceLevel?: string | null;
+  compensation?: string | null;
   description?: string | null;
+  missions?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  profile?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  whatWeOffer?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  workEnvironment?: string | null;
+  recruitmentStepsText?: string | null;
   publishedAt?: string | null;
   applicationDeadline?: string | null;
   updatedAt: string;
@@ -555,6 +579,7 @@ export interface JobApplication {
   phone: string;
   email: string;
   targetEntityOrSector: string;
+  relatedJobOpening?: (number | null) | JobOpening;
   desiredRole: string;
   targetCity: string;
   documents?: (number | DossierDocument)[] | null;
@@ -997,10 +1022,34 @@ export interface DossierSubmissionsSelect<T extends boolean = true> {
  */
 export interface JobOpeningsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   relatedSubsidiary?: T;
   contractType?: T;
+  workTime?: T;
   location?: T;
+  experienceLevel?: T;
+  compensation?: T;
   description?: T;
+  missions?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  profile?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  whatWeOffer?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  workEnvironment?: T;
+  recruitmentStepsText?: T;
   publishedAt?: T;
   applicationDeadline?: T;
   updatedAt?: T;
@@ -1015,6 +1064,7 @@ export interface JobApplicationsSelect<T extends boolean = true> {
   phone?: T;
   email?: T;
   targetEntityOrSector?: T;
+  relatedJobOpening?: T;
   desiredRole?: T;
   targetCity?: T;
   documents?: T;
