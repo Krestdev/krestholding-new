@@ -53,18 +53,18 @@ export default function SynergiesSection({ subsidiary, pageData, allSubsidiaries
   }
 
   return (
-    <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-white" />
-          <span className="font-abel text-white text-xl uppercase tracking-tight">Synergies</span>
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">Synergies</span>
         </div>
 
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
-          <h2 className="font-sans text-white text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
+          <h2 className="font-sans text-black dark:text-white text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
             Avec les autres entités du groupe
           </h2>
-          <p className="text-white/64 text-lg sm:text-xl leading-snug max-w-[514px]">
+          <p className="text-black/64 dark:text-white/64 text-lg sm:text-xl leading-snug max-w-[514px]">
             {subsidiary.synergiesIntro ||
               "Une phrase sur trois lignes qui donne brièvement l'idée entreprise affiché sur cette page, de ce côté."}
           </p>
@@ -73,11 +73,11 @@ export default function SynergiesSection({ subsidiary, pageData, allSubsidiaries
         {counterparts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {counterparts.map((c) => (
-              <SubsidiaryCard key={c.id} subsidiary={c.subsidiary} theme="dark" />
+              <SubsidiaryCard key={c.id} subsidiary={c.subsidiary} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 px-6 text-white/40 border border-white/10">
+          <div className="text-center py-16 px-6 text-black/40 dark:text-white/40 border border-black/10 dark:border-white/10">
             Aucune synergie renseignée pour cette participation pour le moment.
           </div>
         )}

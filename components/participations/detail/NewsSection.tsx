@@ -22,17 +22,17 @@ export default function NewsSection({ subsidiary, news }: NewsSectionProps) {
   );
 
   return (
-    <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-white" />
-          <span className="font-abel text-white text-xl uppercase tracking-tight">
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
             Actualités de cette participation
           </span>
         </div>
 
         {related.length === 0 ? (
-          <div className="text-center py-16 px-6 text-white/40 border border-white/10">
+          <div className="text-center py-16 px-6 text-black/40 dark:text-white/40 border border-black/10 dark:border-white/10">
             Aucune actualité liée à cette participation pour le moment.
           </div>
         ) : (
@@ -41,7 +41,7 @@ export default function NewsSection({ subsidiary, news }: NewsSectionProps) {
               const image = typeof item.featuredImage === "object" ? item.featuredImage : undefined;
               return (
                 <Link key={item.id} href={`/actualite/${item.slug}`} className="group flex flex-col">
-                  <div className="relative h-[369px] w-full bg-white/5 overflow-hidden">
+                  <div className="relative h-[369px] w-full bg-black/5 dark:bg-white/5 overflow-hidden">
                     {image?.url && (
                       <Image
                         src={image.url}
@@ -51,7 +51,7 @@ export default function NewsSection({ subsidiary, news }: NewsSectionProps) {
                       />
                     )}
                   </div>
-                  <div className="flex items-end gap-6 px-4 py-8 border-b border-white/10">
+                  <div className="flex items-end gap-6 px-4 py-8 border-b border-black/10 dark:border-white/10">
                     <div className="flex-1 flex flex-col gap-4">
                       <div className="flex items-center gap-6 font-mono text-[10px] uppercase">
                         {item.publishedAt && (
@@ -65,11 +65,11 @@ export default function NewsSection({ subsidiary, news }: NewsSectionProps) {
                         )}
                         <span className="text-[#878887]">{item.category || "Communiqué"}</span>
                       </div>
-                      <p className="font-inter font-medium text-white text-lg leading-snug tracking-tight line-clamp-3">
+                      <p className="font-inter font-medium text-black dark:text-white text-lg leading-snug tracking-tight line-clamp-3">
                         {item.title}
                       </p>
                     </div>
-                    <div className="shrink-0 size-6 flex items-center justify-center border border-white/10 text-white" />
+                    <div className="shrink-0 size-6 flex items-center justify-center border border-black/10 dark:border-white/10 text-black dark:text-white" />
                   </div>
                 </Link>
               );

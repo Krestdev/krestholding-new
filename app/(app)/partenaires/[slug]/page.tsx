@@ -62,16 +62,26 @@ export default function SubsidiaryDetailPage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <DetailHero subsidiary={subsidiary} />
       <CompanyOverviewSection subsidiary={subsidiary} />
       <WhyJoinedSection subsidiary={subsidiary} />
       <PolesAndOutcomesSection subsidiary={subsidiary} />
-      <GallerySection subsidiary={subsidiary} />
-      <GovernanceSection subsidiary={subsidiary} />
-      <SynergiesSection subsidiary={subsidiary} pageData={pageData} allSubsidiaries={allSubsidiaries ?? []} />
-      <NewsSection subsidiary={subsidiary} news={news ?? []} />
-      <DetailNavRow subsidiary={subsidiary} allSubsidiaries={allSubsidiaries ?? []} />
+      <div className="hidden lg:block">
+        <GallerySection subsidiary={subsidiary} />
+      </div>
+      <div className="hidden lg:block">
+        <GovernanceSection subsidiary={subsidiary} />
+      </div>
+      <div className="hidden lg:block">
+        <SynergiesSection subsidiary={subsidiary} pageData={pageData} allSubsidiaries={allSubsidiaries ?? []} />
+      </div>
+      <div className="hidden lg:block">
+        <NewsSection subsidiary={subsidiary} news={news ?? []} />
+      </div>
+      <div className="hidden lg:block">
+        <DetailNavRow subsidiary={subsidiary} allSubsidiaries={allSubsidiaries ?? []} />
+      </div>
       <CtaBanner pageData={pageData} />
     </div>
   );

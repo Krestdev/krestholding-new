@@ -75,7 +75,7 @@ export default function PortfolioSection({ pageData, subsidiaries }: PortfolioSe
         {view === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => (
-              <SubsidiaryCard key={item.id} subsidiary={item} theme="light" />
+              <SubsidiaryCard key={item.id} subsidiary={item} />
             ))}
           </div>
         ) : (

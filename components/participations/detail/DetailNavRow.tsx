@@ -18,7 +18,7 @@ export default function DetailNavRow({ subsidiary, allSubsidiaries }: DetailNavR
   const hasOthers = ordered.length > 1;
 
   return (
-    <section className="bg-white/10">
+    <section className="bg-[#218da8] dark:bg-white/10">
       <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-stretch justify-between gap-4 px-6 lg:px-10 py-10 lg:py-20">
         {hasOthers && previous ? (
           <Link

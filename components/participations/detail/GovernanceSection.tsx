@@ -34,11 +34,11 @@ export default function GovernanceSection({ subsidiary }: GovernanceSectionProps
   ];
 
   return (
-    <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-white" />
-          <span className="font-abel text-white text-xl uppercase tracking-tight leading-snug">
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight leading-snug">
             Gouvernance & modalités
             <br />
             de détention
@@ -46,16 +46,16 @@ export default function GovernanceSection({ subsidiary }: GovernanceSectionProps
         </div>
 
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8">
-          <h2 className="font-sans text-white text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
+          <h2 className="font-sans text-black dark:text-white text-3xl sm:text-[32px] leading-tight tracking-tight max-w-[512px]">
             Comment KREST exerce son rôle d&apos;actionnaire ici
           </h2>
-          <p className="text-white/64 text-lg sm:text-xl leading-snug max-w-[514px]">
+          <p className="text-black/64 dark:text-white/64 text-lg sm:text-xl leading-snug max-w-[514px]">
             {subsidiary.governanceIntro ||
               "Une phrase sur trois lignes qui donne brièvement l'idée entreprise affiché sur cette page, de ce côté."}
           </p>
         </div>
 
-        <InfoGrid leftRows={leftRows} rightRows={rightRows} theme="dark" />
+        <InfoGrid leftRows={leftRows} rightRows={rightRows} />
       </div>
     </section>
   );

@@ -26,21 +26,21 @@ export default function WhyJoinedSection({ subsidiary }: WhyJoinedSectionProps) 
     : DEFAULT_ENTRY_SITUATION;
 
   return (
-    <section className="bg-white pb-24 lg:pb-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] pb-24 lg:pb-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-[#111]" />
-          <span className="font-abel text-[#111] text-xl uppercase tracking-tight">
+          <KickerIcon className="text-[#111] dark:text-white" />
+          <span className="font-abel text-[#111] dark:text-white text-xl uppercase tracking-tight">
             Pourquoi avons-nous rejoint {subsidiary.name} ?
           </span>
         </div>
 
-        <h2 className="font-sans text-[#111] text-3xl sm:text-[32px] leading-tight max-w-[512px]">
+        <h2 className="font-sans text-[#111] dark:text-white text-3xl sm:text-[32px] leading-tight max-w-[512px]">
           Une phrase sur trois lignes qui présente brièvement l&apos;entreprise affiché sur cette page,
           d&apos;un côté
         </h2>
 
-        <div className="flex flex-col sm:flex-row gap-6 text-[#111]">
+        <div className="flex flex-col sm:flex-row gap-6 text-[#111] dark:text-white">
           <div className="flex-1 bg-[#f29308]/15 border border-[#f29308] p-6 flex flex-col gap-6">
             <h3 className="font-abel font-bold text-lg uppercase">Ce qui a motivé la prise de participation</h3>
             <ul className="flex flex-col gap-4 px-4 text-base list-disc marker:text-[#f29308]">

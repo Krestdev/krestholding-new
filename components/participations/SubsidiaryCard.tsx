@@ -5,7 +5,6 @@ import { getSubsidiarySlug } from "@/lib/subsidiarySlug";
 
 interface SubsidiaryCardProps {
   subsidiary: Subsidiary;
-  theme?: "light" | "dark";
 }
 
 const ACCENT: Record<SubsidiaryAccentColor, { bar: string; text: string; border: string }> = {
@@ -15,12 +14,12 @@ const ACCENT: Record<SubsidiaryAccentColor, { bar: string; text: string; border:
   gray: { bar: "bg-[#4d5766]", text: "text-[#4d5766]", border: "border-[#4d5766]/24" },
 };
 
-export default function SubsidiaryCard({ subsidiary, theme = "light" }: SubsidiaryCardProps) {
+const titleColor = "text-[#111] dark:text-white";
+const bodyColor = "text-[rgba(17,17,17,0.8)] dark:text-white/80";
+const dividerColor = "border-[rgba(17,17,17,0.06)] dark:border-white/[0.06]";
+
+export default function SubsidiaryCard({ subsidiary }: SubsidiaryCardProps) {
   const accent = ACCENT[subsidiary.accentColor || "teal"];
-  const isDark = theme === "dark";
-  const titleColor = isDark ? "text-white" : "text-[#111]";
-  const bodyColor = isDark ? "text-white/80" : "text-[rgba(17,17,17,0.8)]";
-  const dividerColor = isDark ? "border-white/[0.06]" : "border-[rgba(17,17,17,0.06)]";
 
   return (
     <Link
