@@ -13,7 +13,7 @@ import { CaretUpDown, List, Moon, Sun, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
-  { id: "1", label: "Le groupe", url: "/a-propos" },
+  { id: "1", label: "Le groupe", url: "/" },
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
   { id: "3", label: "Participation", url: "/partenaires" },
   { id: "4", label: "Impact", url: "/impact" },
@@ -63,8 +63,6 @@ export default function Header() {
 
   if (pathname?.startsWith("/contact/soumettre-un-dossier")) return null;
 
-  if (pathname?.startsWith("/contact/soumettre-un-dossier")) return null;
-
   // Every page's hero sits behind the header in a fixed dark style, so while
   // the header is transparent (not yet scrolled) its chrome must stay white
   // to stay legible — only once it gets an opaque background (isScrolled)
@@ -88,6 +86,7 @@ export default function Header() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-colors duration-300",
         isScrolled && "bg-white/90 dark:bg-[#0d0d0d]/90 backdrop-blur-sm",
+        isScrolled && "bg-white/90 dark:bg-[#0d0d0d]/90 backdrop-blur-sm",
       )}
     >
       <div
@@ -106,7 +105,10 @@ export default function Header() {
               width={140}
               height={43}
               priority
-              className="h-10 w-auto object-contain"
+              className={cn(
+                "h-10 w-auto object-contain",
+                isScrolled && theme === "light" && "invert",
+              )}
             />
           </Link>
 
@@ -245,10 +247,10 @@ export default function Header() {
               <button
                 key={lang.code}
                 onClick={() => setLocale(lang.code as "fr" | "en" | "it")}
-                className={`px-3 py-2 text-[15px] font-medium border border-white/16 transition-colors ${
+                className={`px-3 py-2 text-[15px] font-medium border border-black/16 dark:border-white/16 transition-colors ${
                   locale === lang.code
-                    ? "text-white border-white/40"
-                    : "text-white/60 hover:text-white"
+                    ? "text-black dark:text-white border-black/40 dark:border-white/40"
+                    : "text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
                 }`}
               >
                 {lang.label}

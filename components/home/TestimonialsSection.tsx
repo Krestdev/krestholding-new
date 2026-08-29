@@ -44,24 +44,24 @@ export default function TestimonialsSection({ testimonials, homeData }: Testimon
   const items = testimonials && testimonials.length > 0 ? testimonials : DEFAULT_TESTIMONIALS;
 
   return (
-    <section className="bg-white py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1278px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row lg:items-start gap-10">
           <div className="flex items-center gap-3 lg:w-[340px] shrink-0">
-            <KickerIcon className="text-black" />
-            <span className="font-mono text-black text-xl uppercase tracking-tight">
+            <KickerIcon className="text-black dark:text-white" />
+            <span className="font-mono text-black dark:text-white text-xl uppercase tracking-tight">
               {homeData?.testimonialsKicker || "Témoignages"}
             </span>
           </div>
 
           <div className="flex flex-col gap-8">
-            <h2 className="font-sans text-black text-3xl sm:text-4xl leading-tight max-w-2xl">
+            <h2 className="font-sans text-black dark:text-white text-3xl sm:text-4xl leading-tight max-w-2xl">
               {homeData?.testimonialsHeading ||
                 "Les dirigeants de nos filiales témoignent d'un accompagnement qui va au-delà du capital."}
             </h2>
             <Link
               href={homeData?.testimonialsCtaUrl || "/contact"}
-              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white text-sm font-medium w-fit transition-colors hover:bg-black/80"
+              className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white dark:bg-white dark:text-black text-sm font-medium w-fit transition-colors hover:opacity-90"
             >
               <span>{homeData?.testimonialsCtaLabel || "Nous rejoindre"}</span>
               <CtaArrow className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -73,20 +73,23 @@ export default function TestimonialsSection({ testimonials, homeData }: Testimon
           {items.map((item, idx) => {
             const avatarUrl = typeof item.avatar === "object" ? item.avatar?.url : undefined;
             return (
-              <div key={item.id ?? idx} className="flex flex-col justify-between gap-10 p-6 min-h-[300px] border border-black/[0.06]">
-                <p className="font-inter font-medium text-black text-xl leading-snug">&ldquo;{item.quote}&rdquo;</p>
+              <div
+                key={item.id ?? idx}
+                className="flex flex-col justify-between gap-10 p-6 min-h-[300px] border border-black/[0.06] dark:border-white/[0.1]"
+              >
+                <p className="font-inter font-medium text-black dark:text-white text-xl leading-snug">&ldquo;{item.quote}&rdquo;</p>
 
                 <div className="flex items-center gap-4">
                   {avatarUrl ? (
                     <Image src={avatarUrl} alt={item.authorName || ""} width={56} height={56} className="rounded-full object-cover size-14" />
                   ) : (
-                    <div className="size-14 rounded-full bg-black/5 flex items-center justify-center text-black/40">
+                    <div className="size-14 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-black/40 dark:text-white/40">
                       <User size={22} />
                     </div>
                   )}
                   <div>
-                    <p className="font-inter font-medium text-black text-lg">{item.authorName}</p>
-                    {item.authorTitle && <p className="font-inter text-[#333] text-sm">{item.authorTitle}</p>}
+                    <p className="font-inter font-medium text-black dark:text-white text-lg">{item.authorName}</p>
+                    {item.authorTitle && <p className="font-inter text-[#333] dark:text-white/60 text-sm">{item.authorTitle}</p>}
                   </div>
                 </div>
               </div>
