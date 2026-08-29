@@ -1,13 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import KickerIcon from "@/components/ui/KickerIcon";
 import Pagination from "@/components/ui/Pagination";
 import { CarrieresPageContent } from "@/hooks/carrieres/type";
 import { JobOpening } from "@/hooks/jobOpenings/type";
 import { Subsidiary } from "@/hooks/subsidiaries/type";
-import { getJobOpeningSlug } from "@/lib/jobOpeningSlug";
 
 interface OpenPositionsSectionProps {
   pageData?: CarrieresPageContent | null;
