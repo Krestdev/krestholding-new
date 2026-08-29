@@ -13,7 +13,7 @@ import { CaretUpDown, List, Moon, Sun, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
-  { id: "1", label: "Le groupe", url: "/a-propos" },
+  { id: "1", label: "Le groupe", url: "/" },
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
   { id: "3", label: "Participation", url: "/partenaires" },
   { id: "4", label: "Impact", url: "/impact" },
