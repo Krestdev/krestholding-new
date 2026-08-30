@@ -27,11 +27,11 @@ export default function GallerySection({ subsidiary }: GallerySectionProps) {
   const goNext = () => setStart((s) => Math.min(Math.max(0, total - VISIBLE_COUNT), s + 1));
 
   return (
-    <section className="bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] py-24 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-10">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-white" />
-          <span className="font-abel text-white text-xl uppercase tracking-tight">
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
             Ce que fait {subsidiary.name}
           </span>
         </div>
@@ -57,11 +57,11 @@ export default function GallerySection({ subsidiary }: GallerySectionProps) {
               onClick={goPrev}
               disabled={!canScroll || start === 0}
               aria-label="Précédent"
-              className="flex h-10 w-[65px] items-center justify-center rounded-full border border-white/64 bg-white/20 text-white disabled:opacity-40 transition-opacity"
+              className="flex h-10 w-[65px] items-center justify-center rounded-full border border-black/64 dark:border-white/64 bg-black/10 dark:bg-white/20 text-black dark:text-white disabled:opacity-40 transition-opacity"
             >
               <CaretLeft size={18} />
             </button>
-            <span className="text-white/64 text-base">
+            <span className="text-black/64 dark:text-white/64 text-base">
               {String(total ? start + 1 : 0).padStart(2, "0")}/{String(total).padStart(2, "0")}
             </span>
             <button
@@ -69,7 +69,7 @@ export default function GallerySection({ subsidiary }: GallerySectionProps) {
               onClick={goNext}
               disabled={!canScroll || start >= total - VISIBLE_COUNT}
               aria-label="Suivant"
-              className="flex h-10 w-[65px] items-center justify-center rounded-full border border-white/64 bg-white/20 text-white disabled:opacity-40 transition-opacity"
+              className="flex h-10 w-[65px] items-center justify-center rounded-full border border-black/64 dark:border-white/64 bg-black/10 dark:bg-white/20 text-black dark:text-white disabled:opacity-40 transition-opacity"
             >
               <CaretRight size={18} />
             </button>

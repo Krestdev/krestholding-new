@@ -57,12 +57,16 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <ContactHero />
       <GeneralFormSection />
       <HeadquartersSection contactData={contactData} notreModeleData={notreModeleData} />
-      <LocationsSection subsidiaries={subsidiaries ?? []} />
-      <LegalSection contactData={contactData} />
+      <div className="hidden lg:block">
+        <LocationsSection subsidiaries={subsidiaries ?? []} />
+      </div>
+      <div className="hidden lg:block">
+        <LegalSection contactData={contactData} />
+      </div>
       <CtaBanner pageData={participationsData} />
     </div>
   );

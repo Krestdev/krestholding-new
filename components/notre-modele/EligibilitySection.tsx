@@ -9,6 +9,7 @@ const CRITERIA_MATCH = [
   "Entreprise établie au Cameroun / CEMAC",
   "Activité en exploitation avec CA récurrent",
   "Secteur figurant dans notre périmètre",
+  "Dirigeant prêt à ouvrir son capital",
   "Horizon d'engagement de 5 à 10 ans",
 ];
 
@@ -17,6 +18,7 @@ const CRITERIA_MISMATCH = [
   "Demandes de prêt ou subvention",
   "Prises de participation passives",
   "Recherche d'une sortie rapide",
+  "Secteurs hors périmètre",
 ];
 
 const STEPS = [
@@ -66,15 +68,20 @@ export default function EligibilitySection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-black/12 p-6 flex flex-col gap-5">
-              <div className="flex items-center gap-2 text-[#1a9c5c]">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full border border-[#1a9c5c]">
+              <div className="flex items-center gap-2">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full border border-[#218da8] dark:border-[#cf2538] text-[#218da8] dark:text-[#cf2538]">
                   <Check size={14} weight="bold" />
                 </span>
-                <span className="text-sm font-semibold uppercase tracking-wide">Ce que nous recherchons</span>
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#288fa5]">Ce que nous recherchons</span>
               </div>
               <ul className="flex flex-col gap-3">
-                {CRITERIA_MATCH.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-black/80 text-base leading-relaxed">
+                {CRITERIA_MATCH.map((item, idx) => (
+                  <li
+                    key={item}
+                    className={`flex items-start gap-2.5 text-black/80 text-base leading-relaxed ${
+                      idx === CRITERIA_MATCH.length - 1 ? "hidden lg:flex" : ""
+                    }`}
+                  >
                     <Check size={16} weight="bold" className="text-[#1a9c5c] shrink-0 mt-1" />
                     <span>{item}</span>
                   </li>
@@ -83,15 +90,22 @@ export default function EligibilitySection() {
             </div>
 
             <div className="border border-black/12 p-6 flex flex-col gap-5">
-              <div className="flex items-center gap-2 text-[#d9382c]">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full border border-[#d9382c]">
-                  <X size={14} weight="bold" />
+              <div className="flex items-center gap-2">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full border border-[#218da8] dark:border-[#cf2538] text-[#218da8] dark:text-[#cf2538]">
+                  <Check size={14} weight="bold" />
                 </span>
-                <span className="text-sm font-semibold uppercase tracking-wide">Ce que nous n&apos;accompagnons pas</span>
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#cf2538]">
+                  Ce que nous n&apos;accompagnons pas
+                </span>
               </div>
               <ul className="flex flex-col gap-3">
-                {CRITERIA_MISMATCH.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-black/80 text-base leading-relaxed">
+                {CRITERIA_MISMATCH.map((item, idx) => (
+                  <li
+                    key={item}
+                    className={`flex items-start gap-2.5 text-black/80 text-base leading-relaxed ${
+                      idx === CRITERIA_MISMATCH.length - 1 ? "hidden lg:flex" : ""
+                    }`}
+                  >
                     <X size={16} weight="bold" className="text-[#d9382c] shrink-0 mt-1" />
                     <span>{item}</span>
                   </li>

@@ -8,17 +8,16 @@ interface PageHeroProps {
   pageData?: NotreModeleContent | null;
 }
 
-const PILLS = [
-  { label: "Thèse", mobileLabel: "Thèse", href: "#these" },
-  { label: "Secteurs & géographies", mobileLabel: "Secteurs", href: "#secteurs" },
-  { label: "Éligibilité & Processus", mobileLabel: "Processus", href: "#processus" },
-  { label: "Les 5 pôles", mobileLabel: "Les 5 pôles", href: "#poles" },
-];
-
 export default function PageHero({ pageData }: PageHeroProps) {
   return (
-    <section className="relative flex flex-col items-center px-6 lg:px-10 pt-[120px] pb-10 bg-gradient-to-b from-[#0d0d0d]/80 to-[#2c2c2c]">
-      <div className="w-full max-w-[1280px] flex flex-col gap-10">
+    <section className="relative flex flex-col items-center px-6 lg:px-10 pt-[120px] pb-10 overflow-hidden bg-[#288fa5] dark:bg-[#0d0d0d]">
+      {/* Light theme: transparent at top fading to solid teal at the bottom.
+          Dark theme: solid near-black at top fading to transparent at the bottom.
+          Same opposite-direction gradient pattern confirmed via the Figma API
+          on the home page's Hero — verified here too, not guessed. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#288fa5]/0 to-[#288fa5] dark:from-[#0d0d0d] dark:to-[#0d0d0d]/0 pointer-events-none" />
+
+      <div className="relative w-full max-w-[1280px] flex flex-col gap-10">
         <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-2 w-fit text-xs">
           <Link href="/" className="text-white/64 hover:text-white transition-colors">
             Accueil
@@ -30,19 +29,6 @@ export default function PageHero({ pageData }: PageHeroProps) {
         <h1 className="font-sans text-white text-4xl sm:text-5xl leading-tight max-w-[624px]">
           {pageData?.heroHeading || "Notre modèle d'investissement et d'accompagnement"}
         </h1>
-
-        <div className="flex flex-wrap items-center gap-3">
-          {PILLS.map((pill) => (
-            <a
-              key={pill.href}
-              href={pill.href}
-              className="bg-white/12 border border-white/12 px-4 py-2.5 text-sm font-medium text-white/64 hover:text-white hover:bg-white/16 transition-colors"
-            >
-              <span className="lg:hidden">{pill.mobileLabel}</span>
-              <span className="hidden lg:inline">{pill.label}</span>
-            </a>
-          ))}
-        </div>
       </div>
     </section>
   );

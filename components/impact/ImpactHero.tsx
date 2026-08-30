@@ -17,8 +17,9 @@ const PILLS = [
 
 export default function ImpactHero({ pageData }: ImpactHeroProps) {
   return (
-    <section className="relative flex flex-col items-center px-6 lg:px-10 pt-[120px] pb-10 bg-gradient-to-b from-[rgba(13,13,13,0.8)] to-[#0d0d0d]">
-      <div className="w-full max-w-[1280px] flex flex-col gap-10">
+    <section className="relative flex flex-col items-center px-6 lg:px-10 pt-[120px] pb-10 overflow-hidden bg-[#288fa5] dark:bg-[#0d0d0d]">
+      <div className="absolute inset-0 pointer-events-none dark:bg-gradient-to-b dark:from-[rgba(13,13,13,0.8)] dark:to-[#0d0d0d]" />
+      <div className="relative w-full max-w-[1280px] flex flex-col gap-10">
         <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-2 w-fit text-xs">
           <Link href="/" className="text-white/64 hover:text-white transition-colors">
             Accueil

@@ -13,29 +13,29 @@ const converters: JSXConvertersFunction<DefaultNodeTypes> = ({ defaultConverters
   heading: ({ node, nodesToJSX }) => {
     const children = nodesToJSX({ nodes: node.children });
     if (node.tag === "h2") {
-      return <h2 className="font-sans text-[#111] text-[32px] leading-tight">{children}</h2>;
+      return <h2 className="font-sans text-[#111] dark:text-white text-[32px] leading-tight">{children}</h2>;
     }
     if (node.tag === "h3") {
-      return <h3 className="font-sans text-[#111] text-2xl leading-snug">{children}</h3>;
+      return <h3 className="font-sans text-[#111] dark:text-white text-2xl leading-snug">{children}</h3>;
     }
     const Tag = node.tag;
-    return <Tag className="font-sans text-[#111]">{children}</Tag>;
+    return <Tag className="font-sans text-[#111] dark:text-white">{children}</Tag>;
   },
   paragraph: ({ node, nodesToJSX }) => {
     const children = nodesToJSX({ nodes: node.children });
-    return <p className="text-[rgba(17,17,17,0.8)] text-base leading-relaxed">{children}</p>;
+    return <p className="text-[rgba(17,17,17,0.8)] dark:text-white/80 text-base leading-relaxed">{children}</p>;
   },
   quote: ({ node, nodesToJSX }) => {
     const children = nodesToJSX({ nodes: node.children });
     return (
-      <blockquote className="border-l-2 border-black/20 pl-6 italic text-lg text-[#111]">{children}</blockquote>
+      <blockquote className="border-l-2 border-black/20 dark:border-white/20 pl-6 italic text-lg text-[#111] dark:text-white">{children}</blockquote>
     );
   },
   list: ({ node, nodesToJSX }) => {
     const children = nodesToJSX({ nodes: node.children });
     const Tag = node.tag;
     return (
-      <Tag className={`pl-6 space-y-2 text-[rgba(17,17,17,0.8)] text-base ${node.tag === "ol" ? "list-decimal" : "list-disc"}`}>
+      <Tag className={`pl-6 space-y-2 text-[rgba(17,17,17,0.8)] dark:text-white/80 text-base ${node.tag === "ol" ? "list-decimal" : "list-disc"}`}>
         {children}
       </Tag>
     );

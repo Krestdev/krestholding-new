@@ -31,7 +31,7 @@ function SecondaryButton({ href, label }: { href: string; label: string }) {
 
 export default function CtaBanner({ pageData }: CtaBannerProps) {
   return (
-    <section className="bg-[#0d0d0d] border-y border-white/10">
+    <section className="bg-[#1a7186] dark:bg-[#0d0d0d] border-y border-white/10">
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col justify-end gap-9 p-10 lg:p-20">
           <h3 className="font-sans text-white text-3xl sm:text-4xl tracking-tight max-w-[513px]">

@@ -9,55 +9,55 @@ interface StorySectionProps {
 
 export default function StorySection({ pageData }: StorySectionProps) {
   return (
-    <section id="un-impact-raconte" className="bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
+    <section id="un-impact-raconte" className="bg-white dark:bg-[#0d0d0d] py-16 lg:py-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-14">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-white" />
-          <span className="font-abel text-white text-xl uppercase tracking-tight">
+          <KickerIcon className="text-black dark:text-white" />
+          <span className="font-abel text-black dark:text-white text-xl uppercase tracking-tight">
             {pageData?.storyKicker || "Un impact raconté"}
           </span>
         </div>
 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
-          <h3 className="font-sans text-white text-3xl sm:text-4xl leading-tight max-w-[621px]">
+          <h3 className="font-sans text-black dark:text-white text-3xl sm:text-4xl leading-tight max-w-[621px]">
             {pageData?.storyHeading ||
               "Cheminer avec Krest, c'est écrire une page de l'histoire avec l'encre de l'espoir et le souffle du progrès"}
           </h3>
-          <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-[514px]">
+          <p className="text-black/80 dark:text-white/80 text-lg sm:text-xl leading-relaxed max-w-[514px]">
             {pageData?.storyIntro ||
               "Une trajectoire concrète, racontée étape par étape : d'où nous sommes partis, ce que nous avons mis en place, et ce que cela a changé sur le terrain."}
           </p>
         </div>
 
-        <div className="bg-gradient-to-b from-white/[0.03] to-white/[0.06]">
+        <div className="bg-gradient-to-b from-black/[0.03] to-black/[0.06] dark:from-white/[0.03] dark:to-white/[0.06]">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-3">
-            <div className="border border-white/24 overflow-hidden flex flex-col">
-              <div className="h-1 w-full bg-white" />
+            <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+              <div className="h-1 w-full bg-black dark:bg-white" />
               <div className="p-6 flex flex-col gap-6">
-                <p className="text-white text-lg">{pageData?.storySituationTitle || "Situation de départ"}</p>
-                <p className="text-white/80 text-sm leading-relaxed">
+                <p className="text-black dark:text-white text-lg">{pageData?.storySituationTitle || "Situation de départ"}</p>
+                <p className="text-black dark:text-white text-sm leading-relaxed">
                   {pageData?.storySituationBody ||
                     "Avant l'entrée de KREST au capital, les entités du portefeuille faisaient face à un accès limité au financement, des process encore artisanaux et peu de visibilité sur leur trajectoire de croissance."}
                 </p>
               </div>
             </div>
 
-            <div className="border border-white/24 overflow-hidden flex flex-col">
-              <div className="h-1 w-full bg-white" />
+            <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+              <div className="h-1 w-full bg-black dark:bg-white" />
               <div className="p-6 flex flex-col gap-6">
-                <p className="text-white text-lg">{pageData?.storyActionTitle || "Ce que KREST a fait"}</p>
-                <p className="text-white/80 text-sm leading-relaxed">
+                <p className="text-black dark:text-white text-lg">{pageData?.storyActionTitle || "Ce que KREST a fait"}</p>
+                <p className="text-black dark:text-white text-sm leading-relaxed">
                   {pageData?.storyActionBody ||
                     "Structuration financière et de gouvernance, accompagnement des équipes locales, mise à disposition des 5 pôles d'expertise du groupe, et suivi rapproché des indicateurs de performance."}
                 </p>
               </div>
             </div>
 
-            <div className="border border-white/24 overflow-hidden flex flex-col">
-              <div className="h-1 w-full bg-white" />
+            <div className="border border-black/24 dark:border-white/24 overflow-hidden flex flex-col">
+              <div className="h-1 w-full bg-black dark:bg-white" />
               <div className="p-6 flex flex-col gap-6">
-                <p className="text-white text-lg">{pageData?.storyResultTitle || "Résultat"}</p>
-                <p className="text-white/80 text-sm leading-relaxed">
+                <p className="text-black dark:text-white text-lg">{pageData?.storyResultTitle || "Résultat"}</p>
+                <p className="text-black dark:text-white text-sm leading-relaxed">
                   {pageData?.storyResultBody ||
                     "Des emplois créés localement, des compétences renforcées, et des entreprises mieux structurées, prêtes à saisir de nouvelles opportunités de croissance."}
                 </p>
@@ -65,10 +65,10 @@ export default function StorySection({ pageData }: StorySectionProps) {
             </div>
           </div>
 
-          <div className="bg-black flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 p-6">
+          <div className="bg-[#218da8] dark:bg-[#010101] flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 p-6">
             <div className="flex flex-col gap-3">
               <p className="text-white text-2xl">{pageData?.storyCtaTitle || "Soumettez votre dossier"}</p>
-              <p className="text-[#878887] text-sm">
+              <p className="text-white dark:text-[#878887] text-sm">
                 {pageData?.storyCtaBody ||
                   "Votre dossier est traité de manière confidentielle. Réponse sous 15 jours ouvrés."}
               </p>

@@ -17,7 +17,6 @@ const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
   { id: "3", label: "Participation", url: "/partenaires" },
   { id: "4", label: "Impact", url: "/impact" },
-  { id: "4", label: "Impact", url: "/impact" },
   { id: "5", label: "Actualité", url: "/actualite" },
   { id: "6", label: "Carrières", url: "/carrieres" },
   { id: "7", label: "Contact", url: "/contact" },
@@ -49,15 +48,12 @@ export default function Header() {
     queryFn: () => headerQuery.getBlobal({ locale }),
   });
 
-  const logo =
-    typeof headerData?.logo === "object" ? headerData.logo : undefined;
+  const logo = typeof headerData?.logo === "object" ? headerData.logo : undefined;
   const logoUrl = logo?.url?.trim() || "/krestholding_logo.png";
   const logoAlt = logo?.alt || "Krest Holding";
 
   const navItems: HeaderNavItem[] =
-    headerData?.navItems && headerData.navItems.length > 0
-      ? headerData.navItems
-      : DEFAULT_NAV_ITEMS;
+    headerData?.navItems && headerData.navItems.length > 0 ? headerData.navItems : DEFAULT_NAV_ITEMS;
 
   const currentLangLabel = locale?.toUpperCase() || "FR";
 
@@ -68,56 +64,35 @@ export default function Header() {
   // to stay legible — only once it gets an opaque background (isScrolled)
   // can it follow the light/dark toggle without going invisible.
   const topBarText = isScrolled ? "text-black dark:text-white" : "text-white";
-  const topBarHoverText = isScrolled
-    ? "hover:text-black/70 dark:hover:text-white/70"
-    : "hover:text-white/70";
-  const topBarUnderline = isScrolled
-    ? "after:bg-black dark:after:bg-white"
-    : "after:bg-white";
-  const topBarBorder = isScrolled
-    ? "border-black/16 dark:border-white/16"
-    : "border-white/16";
-  const topBarBorderHover = isScrolled
-    ? "hover:border-black/30 dark:hover:border-white/30"
-    : "hover:border-white/30";
+  const topBarHoverText = isScrolled ? "hover:text-black/70 dark:hover:text-white/70" : "hover:text-white/70";
+  const topBarUnderline = isScrolled ? "after:bg-black dark:after:bg-white" : "after:bg-white";
+  const topBarBorder = isScrolled ? "border-black/16 dark:border-white/16" : "border-white/16";
+  const topBarBorderHover = isScrolled ? "hover:border-black/30 dark:hover:border-white/30" : "hover:border-white/30";
 
   return (
     <header
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-colors duration-300",
         isScrolled && "bg-white/90 dark:bg-[#0d0d0d]/90 backdrop-blur-sm",
-        isScrolled && "bg-white/90 dark:bg-[#0d0d0d]/90 backdrop-blur-sm",
       )}
     >
-      <div
-        className={cn(
-          "border-b transition-colors duration-300",
-          isScrolled
-            ? "border-black/20 dark:border-white/20"
-            : "border-white/20",
-        )}
-      >
+      <div className={cn("border-b transition-colors duration-300", isScrolled ? "border-black/20 dark:border-white/20" : "border-white/20")}>
         <div className="flex items-center justify-between px-6 lg:px-10 py-5">
           <Link href="/" className="flex items-center shrink-0">
+            {/* krestholding_logo.png's wordmark is white-only (no dark variant exists yet),
+                so it disappears on the light theme's opaque white scrolled header — invert
+                it there to stay legible until a proper dark-wordmark asset is supplied. */}
             <Image
               src={logoUrl}
               alt={logoAlt}
               width={140}
               height={43}
               priority
-              className={cn(
-                "h-10 w-auto object-contain",
-                isScrolled && theme === "light" && "invert",
-              )}
+              className={cn("h-10 w-auto object-contain", isScrolled && theme === "light" && "invert")}
             />
           </Link>
 
-          <nav
-            className={cn(
-              "hidden lg:flex items-center gap-6 text-[15px] font-medium transition-colors",
-              topBarText,
-            )}
-          >
+          <nav className={cn("hidden lg:flex items-center gap-6 text-[15px] font-medium transition-colors", topBarText)}>
             {navItems.map((item, idx) => (
               <Link
                 key={item.id || idx}
@@ -136,11 +111,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              aria-label={
-                theme === "dark"
-                  ? "Passer au thème clair"
-                  : "Passer au thème sombre"
-              }
+              aria-label={theme === "dark" ? "Passer au thème clair" : "Passer au thème sombre"}
               className={cn(
                 "flex items-center justify-center w-12 h-12 border transition-colors",
                 topBarText,
@@ -177,8 +148,8 @@ export default function Header() {
                       }}
                       className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                         locale === lang.code
-                          ? "text-white font-semibold"
-                          : "text-white/60 hover:text-white"
+                          ? "text-black dark:text-white font-semibold"
+                          : "text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
                       }`}
                     >
                       {lang.label}
@@ -199,26 +170,14 @@ export default function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={toggleTheme}
-              aria-label={
-                theme === "dark"
-                  ? "Passer au thème clair"
-                  : "Passer au thème sombre"
-              }
-              className={cn(
-                "p-2 transition-colors",
-                topBarText,
-                topBarHoverText,
-              )}
+              aria-label={theme === "dark" ? "Passer au thème clair" : "Passer au thème sombre"}
+              className={cn("p-2 transition-colors", topBarText, topBarHoverText)}
             >
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className={cn(
-                "p-2 transition-colors",
-                topBarText,
-                topBarHoverText,
-              )}
+              className={cn("p-2 transition-colors", topBarText, topBarHoverText)}
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X size={22} /> : <List size={22} />}

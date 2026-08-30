@@ -48,7 +48,7 @@ export default function NewsArticlePage() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <ArticleHero article={article} />
       <ArticleBody article={article} />
       <RelatedSubsidiaryCard article={article} />

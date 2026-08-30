@@ -64,7 +64,7 @@ export default function JobOpeningDetailPage() {
       : undefined;
 
   return (
-    <div className="bg-[#0d0d0d] -mt-[81px]">
+    <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <JobDetailHero job={job} />
       <CompanySection job={job} />
       <MissionsProfileSection job={job} />

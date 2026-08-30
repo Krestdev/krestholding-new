@@ -1,11 +1,11 @@
 "use client";
 
 import PageHero from "@/components/notre-modele/PageHero";
+import TableOfContents from "@/components/notre-modele/TableOfContents";
 import ThesisSection from "@/components/notre-modele/ThesisSection";
 import SectorsSection from "@/components/notre-modele/SectorsSection";
 import EligibilitySection from "@/components/notre-modele/EligibilitySection";
 import PolesSection from "@/components/notre-modele/PolesSection";
-import ImpactSection from "@/components/notre-modele/ImpactSection";
 import FetchError from "@/components/errors";
 import { notreModeleQuery } from "@/hooks/notreModele/notreModeleQuery";
 import { useLocaleStore } from "@/store/localeStore";
@@ -57,11 +57,15 @@ export default function NotreModelePage() {
   return (
     <div className="bg-white dark:bg-[#0d0d0d] -mt-[81px]">
       <PageHero pageData={pageData} />
+      <TableOfContents />
       <ThesisSection pageData={pageData} />
-      <SectorsSection pageData={pageData} />
+      <div className="hidden lg:block">
+        <SectorsSection pageData={pageData} />
+      </div>
       <EligibilitySection />
-      <PolesSection pageData={pageData} />
-      <ImpactSection pageData={pageData} />
+      <div className="hidden lg:block">
+        <PolesSection pageData={pageData} />
+      </div>
       <NewsletterBanner homeData={homeData} />
     </div>
   );

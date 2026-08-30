@@ -58,21 +58,21 @@ export default function SynergiesSection({ pageData }: SynergiesSectionProps) {
     : DEFAULT_SYNERGIES.map((syn, idx) => ({ id: idx, ...syn }));
 
   return (
-    <section className="bg-white pb-24 lg:pb-[120px] px-6 lg:px-10">
+    <section className="bg-white dark:bg-[#0d0d0d] pb-24 lg:pb-[120px] px-6 lg:px-10">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-20">
         <div className="flex items-center gap-4">
-          <KickerIcon className="text-[#111]" />
-          <span className="font-abel text-[#111] text-xl uppercase tracking-tight max-w-[294px]">
+          <KickerIcon className="text-[#111] dark:text-white" />
+          <span className="font-abel text-[#111] dark:text-white text-xl uppercase tracking-tight max-w-[294px]">
             {pageData?.synergiesKicker || "Ce que les entités s'apportent entre elles"}
           </span>
         </div>
 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
-          <h2 className="font-sans text-[#010101] text-3xl sm:text-4xl leading-tight tracking-tight max-w-[621px]">
+          <h2 className="font-sans text-[#010101] dark:text-white text-3xl sm:text-4xl leading-tight tracking-tight max-w-[621px]">
             {pageData?.synergiesHeading ||
               "Des synergies concrètes qui créent de la valeur à chaque niveau du groupe."}
           </h2>
-          <p className="text-[rgba(1,1,1,0.8)] text-lg sm:text-xl leading-relaxed max-w-[514px]">
+          <p className="text-[rgba(1,1,1,0.8)] dark:text-white/80 text-lg sm:text-xl leading-relaxed max-w-[514px]">
             {pageData?.synergiesSubheading ||
               "C'est la raison pour laquelle chaque participation bénéficie de l'ensemble de l'écosystème du groupe, au-delà du seul apport en capital."}
           </p>
@@ -80,16 +80,19 @@ export default function SynergiesSection({ pageData }: SynergiesSectionProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {synergies.map((syn) => (
-            <div key={syn.id} className="bg-neutral-50 border border-[rgba(17,17,17,0.06)] rounded-lg p-5">
+            <div
+              key={syn.id}
+              className="bg-neutral-50 dark:bg-white/[0.02] border border-[rgba(17,17,17,0.06)] dark:border-white/[0.06] rounded-lg p-5"
+            >
               <p className="text-lg whitespace-nowrap overflow-hidden text-ellipsis">
                 <span className="text-[#218da8]">{syn.entityA}</span>
                 <span className="text-[#4d5766] mx-4">↔</span>
                 <span className="text-[#f29308]">{syn.entityB}</span>
               </p>
-              <p className="text-[rgba(17,17,17,0.8)] text-sm leading-relaxed pt-4">{syn.description}</p>
+              <p className="text-[rgba(17,17,17,0.8)] dark:text-white/80 text-sm leading-relaxed pt-4">{syn.description}</p>
 
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[rgba(17,17,17,0.06)]">
-                <span className="text-[rgba(17,17,17,0.8)] text-xs">Voir la fiche</span>
+              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[rgba(17,17,17,0.06)] dark:border-white/[0.06]">
+                <span className="text-[rgba(17,17,17,0.8)] dark:text-white/80 text-xs">Voir la fiche</span>
                 <CtaArrow size={14} className="text-[#4d5766]" />
               </div>
             </div>
