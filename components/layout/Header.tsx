@@ -51,7 +51,10 @@ export default function Header() {
 
   const logo =
     typeof headerData?.logo === "object" ? headerData.logo : undefined;
-  const logoUrl = logo?.url?.trim() || "/krestholding_logo.png";
+  const logoUrl =
+    logo?.url?.trim() || theme === "light"
+      ? "/Link_Home.svg"
+      : "/Link_Home_Dark.svg";
   const logoAlt = logo?.alt || "Krest Holding";
 
   const navItems: HeaderNavItem[] =
@@ -99,17 +102,31 @@ export default function Header() {
       >
         <div className="flex items-center justify-between px-6 lg:px-10 py-5">
           <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src={logoUrl}
-              alt={logoAlt}
-              width={140}
-              height={43}
-              priority
-              className={cn(
-                "h-10 w-auto object-contain",
-                isScrolled && theme === "light" && "invert",
-              )}
-            />
+            {isScrolled && theme === "light" ? (
+              <Image
+                src={"Link_Home_Dark.svg"}
+                alt={logoAlt}
+                width={140}
+                height={43}
+                priority
+                className={cn(
+                  "h-10 w-auto object-contain",
+                  // isScrolled && theme === "light" && "invert",
+                )}
+              />
+            ) : (
+              <Image
+                src={"Link_Home.svg"}
+                alt={logoAlt}
+                width={140}
+                height={43}
+                priority
+                className={cn(
+                  "h-10 w-auto object-contain",
+                  // isScrolled && theme === "light" && "invert",
+                )}
+              />
+            )}
           </Link>
 
           <nav
