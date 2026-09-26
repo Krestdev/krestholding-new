@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: krestholding-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: krestholding_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+    # Nom explicite : COMPOSE_PROJECT_NAME (.env) ne doit pas changer le volume utilisé.
+    name: krestholding-pgdata

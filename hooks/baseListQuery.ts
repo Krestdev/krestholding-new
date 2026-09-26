@@ -26,8 +26,8 @@ export class BaseListQuery<T, U> {
     return response.data;
   };
 
-  post = async (body: U): Promise<T> => {
-    const response = await api.post(this.url, body);
+  post = async (body: U, params?: Record<string, string | number>): Promise<T> => {
+    const response = await api.post(this.url, body, { params });
     return response.data;
   };
 

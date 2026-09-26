@@ -1,12 +1,37 @@
 import { s3Storage } from '@payloadcms/storage-s3'
 import { postgresAdapter } from "@payloadcms/db-postgres";
+import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 import { collections } from "@/payload/collections";
 import { globals } from "@/payload/globals";
 
+const smtpPort = Number(process.env.SMTP_PORT) || 587;
+// Port 465 = TLS implicite (Titan, Gmail…) ; sinon STARTTLS.
+const smtpSecure = smtpPort === 465;
+
+// Sans SMTP_HOST, Payload journalise les e-mails dans la console (utile en dev).
+const email = process.env.SMTP_HOST
+  ? nodemailerAdapter({
+      // From = compte authentifié par défaut : un From différent est souvent rejeté ou classé spam.
+      defaultFromAddress: process.env.EMAIL_FROM || process.env.SMTP_USER || "contact@krestdev.com",
+      defaultFromName: "Krest Holding",
+      transportOptions: {
+        host: process.env.SMTP_HOST,
+        port: smtpPort,
+        secure: smtpSecure,
+        connectionTimeout: 10_000,
+        greetingTimeout: 10_000,
+        socketTimeout: 20_000,
+        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+      },
+    })
+  : undefined;
+
 export default buildConfig({
+  email,
+
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 

@@ -8,6 +8,7 @@ import CtaArrow from "@/components/ui/CtaArrow";
 import { CarrieresPageContent } from "@/hooks/carrieres/type";
 import { dossierDocumentsQuery } from "@/hooks/dossierSubmissions/dossierDocumentsQuery";
 import { jobApplicationsQuery } from "@/hooks/jobApplications/jobApplicationsQuery";
+import { useLocaleStore } from "@/store/localeStore";
 
 interface SpontaneousApplicationPrefill {
   desiredRole?: string;
@@ -54,20 +55,25 @@ export default function SpontaneousApplicationSection({ pageData, prefill }: Spo
   const [uploads, setUploads] = useState<UploadingFile[]>([]);
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale } = useLocaleStore();
 
   const mutation = useMutation({
     mutationFn: () =>
-      jobApplicationsQuery.post({
-        fullName,
-        phone,
-        email,
-        targetEntityOrSector,
-        relatedJobOpening: prefill?.relatedJobOpeningId,
-        desiredRole,
-        targetCity,
-        documents: documentIds,
-        consentAccepted,
-      }),
+      jobApplicationsQuery.post(
+        {
+          fullName,
+          phone,
+          email,
+          targetEntityOrSector,
+          relatedJobOpening: prefill?.relatedJobOpeningId,
+          desiredRole,
+          targetCity,
+          documents: documentIds,
+          consentAccepted,
+        },
+        // Langue de l'accusé de réception, lue par Payload dans l'URL (validée côté serveur).
+        { locale },
+      ),
   });
 
   const addFiles = (fileList: FileList | null) => {
