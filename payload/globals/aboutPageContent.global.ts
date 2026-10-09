@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const AboutPageContent: GlobalConfig = {
   slug: 'about-page-content',
+  label: "Page Le groupe",
+  admin: {
+    group: ADMIN_GROUPS.groupe,
+    description: "Contenu de la page Le groupe.",
+  },
   access: {
     read: () => true,
   },

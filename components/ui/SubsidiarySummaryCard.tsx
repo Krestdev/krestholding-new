@@ -37,7 +37,7 @@ export default function SubsidiarySummaryCard({ subsidiary }: SubsidiarySummaryC
       </div>
 
       <Link
-        href={`/partenaires/${getSubsidiarySlug(subsidiary)}`}
+        href={`/nos-participations/${getSubsidiarySlug(subsidiary)}`}
         className="inline-flex items-center gap-2 bg-black/24 dark:bg-white/24 border border-black/64 dark:border-white/64 px-3 py-2 text-black/90 dark:text-white/90 font-mono text-sm uppercase tracking-wide transition-colors hover:bg-black/32 dark:hover:bg-white/32 shrink-0"
       >
         <span>Voir la fiche</span>

@@ -19,7 +19,7 @@ export default function DetailHero({ subsidiary }: DetailHeroProps) {
             Accueil
           </Link>
           <CaretRight size={12} className="text-white/64" />
-          <Link href="/partenaires" className="text-white hover:text-white/70 transition-colors">
+          <Link href="/nos-participations" className="text-white hover:text-white/70 transition-colors">
             Nos participations
           </Link>
           <CaretRight size={12} className="text-white/64" />
@@ -56,7 +56,7 @@ export default function DetailHero({ subsidiary }: DetailHeroProps) {
               </a>
             )}
             <Link
-              href="/partenaires"
+              href="/nos-participations"
               className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 border border-white/10 text-white font-mono text-sm uppercase tracking-wide transition-colors hover:bg-white/10"
             >
               Toutes nos participations

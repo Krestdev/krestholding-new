@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const HomePageContent: GlobalConfig = {
   slug: 'home-page-content',
+  label: "Page d'accueil",
+  admin: {
+    group: ADMIN_GROUPS.accueil,
+    description: "Contenu de la page d'accueil. Le bandeau newsletter est aussi affiché sur Notre modèle, Notre impact et Carrières.",
+  },
   access: {
     read: () => true,
   },

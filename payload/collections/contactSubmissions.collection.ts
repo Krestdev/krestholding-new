@@ -1,11 +1,15 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const ContactSubmissions: CollectionConfig = {
   slug: 'contact-submissions',
+  labels: { singular: "Message", plural: "Messages reçus" },
   access: {
     create: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.contact,
+    description: "Messages envoyés depuis le formulaire de la page Contact.",
     useAsTitle: 'fullName',
     defaultColumns: ['fullName', 'motif', 'email', 'createdAt'],
   },

@@ -1,7 +1,13 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  labels: { singular: "Média", plural: "Médias" },
+  admin: {
+    group: ADMIN_GROUPS.medias,
+    description: "Toutes les images du site.",
+  },
   access: {
     read: () => true,
   },

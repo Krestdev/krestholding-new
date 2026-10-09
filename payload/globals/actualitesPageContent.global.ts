@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const ActualitesPageContent: GlobalConfig = {
   slug: 'actualites-page-content',
+  label: "Page Actualités",
+  admin: {
+    group: ADMIN_GROUPS.actualites,
+    description: "Contenu de la page Actualités (espace presse, newsletter).",
+  },
   access: {
     read: () => true,
   },

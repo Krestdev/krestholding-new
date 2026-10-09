@@ -22,7 +22,7 @@ export default function DetailNavRow({ subsidiary, allSubsidiaries }: DetailNavR
       <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-stretch justify-between gap-4 px-6 lg:px-10 py-10 lg:py-20">
         {hasOthers && previous ? (
           <Link
-            href={`/partenaires/${getSubsidiarySlug(previous)}`}
+            href={`/nos-participations/${getSubsidiarySlug(previous)}`}
             className="flex-1 inline-flex items-center justify-center gap-3 border border-white/32 px-8 py-8 text-white font-mono text-sm uppercase tracking-wide transition-colors hover:bg-white/10"
           >
             <CaretLeft size={20} />
@@ -33,7 +33,7 @@ export default function DetailNavRow({ subsidiary, allSubsidiaries }: DetailNavR
         )}
 
         <Link
-          href="/partenaires"
+          href="/nos-participations"
           className="flex-1 inline-flex items-center justify-center bg-[#f29308] px-8 py-8 text-[#010101] font-mono text-sm uppercase tracking-wide transition-colors hover:bg-[#f29308]/85"
         >
           Retour au portefeuille
@@ -41,7 +41,7 @@ export default function DetailNavRow({ subsidiary, allSubsidiaries }: DetailNavR
 
         {hasOthers && next ? (
           <Link
-            href={`/partenaires/${getSubsidiarySlug(next)}`}
+            href={`/nos-participations/${getSubsidiarySlug(next)}`}
             className="flex-1 inline-flex items-center justify-center gap-3 border border-white/32 px-8 py-8 text-white font-mono text-sm uppercase tracking-wide transition-colors hover:bg-white/10"
           >
             <span>{next.name}</span>

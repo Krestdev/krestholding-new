@@ -1,11 +1,15 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const JobApplications: CollectionConfig = {
   slug: 'job-applications',
+  labels: { singular: "Candidature", plural: "Candidatures reçues" },
   access: {
     create: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.carrieres,
+    description: "Candidatures envoyées depuis les offres de la page Carrières.",
     useAsTitle: 'fullName',
     defaultColumns: ['fullName', 'desiredRole', 'targetEntityOrSector', 'email', 'createdAt'],
   },

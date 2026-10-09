@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const ContactInfo: GlobalConfig = {
   slug: 'contact-info',
+  label: "Coordonnées",
+  admin: {
+    group: ADMIN_GROUPS.contact,
+    description: "Coordonnées affichées sur la page Contact et dans le pied de page.",
+  },
   access: {
     read: () => true,
   },

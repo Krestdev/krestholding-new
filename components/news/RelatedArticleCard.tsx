@@ -12,7 +12,7 @@ export default function RelatedArticleCard({ item }: RelatedArticleCardProps) {
 
   return (
     <Link
-      href={`/actualite/${item.slug}`}
+      href={`/actualites/${item.slug}`}
       className="group flex flex-col border border-black/10 dark:border-white/10 transition-colors hover:border-black/30 dark:hover:border-white/30"
     >
       <div className="relative h-[369px] w-full bg-black/5 dark:bg-white/5 overflow-hidden">

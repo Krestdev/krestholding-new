@@ -1,11 +1,15 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const DossierSubmissions: CollectionConfig = {
   slug: 'dossier-submissions',
+  labels: { singular: "Dossier", plural: "Dossiers soumis" },
   access: {
     create: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.contact,
+    description: "Dossiers envoyés depuis « Soumettre un dossier » (page Contact).",
     useAsTitle: 'reference',
     defaultColumns: ['reference', 'companyName', 'needType', 'createdAt'],
   },

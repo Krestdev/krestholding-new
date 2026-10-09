@@ -1,8 +1,14 @@
 import { CollectionConfig } from "payload";
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Service: CollectionConfig = {
   slug: "services",
-  admin: { useAsTitle: "title" },
+  labels: { singular: "Pôle d'expertise", plural: "Pôles d'expertise" },
+  admin: {
+    group: ADMIN_GROUPS.modele,
+    description: "Les pôles du groupe, affichés sur la page d'accueil et la page Notre modèle.",
+    useAsTitle: "title",
+  },
   access: {
     read: () => true,
   },

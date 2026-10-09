@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 const POLE_OPTIONS = [
   'Growth, Marketing & Brand',
@@ -18,10 +19,13 @@ const slugify = (value: string) =>
 
 export const Subsidiaries: CollectionConfig = {
   slug: 'subsidiaries',
+  labels: { singular: "Participation", plural: "Participations" },
   access: {
     read: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.participations,
+    description: "Les entités du groupe : une fiche par participation (page Nos participations).",
     useAsTitle: 'name',
   },
   hooks: {

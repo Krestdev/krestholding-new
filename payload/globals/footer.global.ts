@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  label: "Pied de page",
+  admin: {
+    group: ADMIN_GROUPS.navigation,
+    description: "Colonnes de liens, réseaux sociaux et mentions du bas de page.",
+  },
   access: {
     read: () => true,
   },

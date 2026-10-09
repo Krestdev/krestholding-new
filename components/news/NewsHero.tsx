@@ -65,7 +65,7 @@ export default function NewsHero({ news }: NewsHeroProps) {
 
               <div className="flex items-start justify-between gap-4">
                 <Link
-                  href={`/actualite/${article.slug}`}
+                  href={`/actualites/${article.slug}`}
                   className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-white text-black font-mono text-sm uppercase tracking-wide transition-colors hover:bg-white/90"
                 >
                   <span>Lire l&apos;article</span>

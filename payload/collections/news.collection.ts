@@ -1,12 +1,16 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor, UploadFeature } from '@payloadcms/richtext-lexical'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const News: CollectionConfig = {
   slug: 'news',
+  labels: { singular: "Article", plural: "Articles" },
   access: {
     read: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.actualites,
+    description: "Articles de la page Actualités.",
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'publishedAt'],
   },

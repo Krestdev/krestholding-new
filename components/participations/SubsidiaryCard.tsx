@@ -23,7 +23,7 @@ export default function SubsidiaryCard({ subsidiary }: SubsidiaryCardProps) {
 
   return (
     <Link
-      href={`/partenaires/${getSubsidiarySlug(subsidiary)}`}
+      href={`/nos-participations/${getSubsidiarySlug(subsidiary)}`}
       className={`group border ${accent.border} overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-1`}
     >
       <div className={`h-1 w-full ${accent.bar}`} />

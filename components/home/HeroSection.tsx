@@ -73,7 +73,7 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
             </Link>
 
             <Link
-              href={homeData?.heroSecondaryCtaUrl || "/partenaires"}
+              href={homeData?.heroSecondaryCtaUrl || "/nos-participations"}
               className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 border border-white/10 text-white text-sm font-medium hover:bg-white/5 transition-colors"
             >
               <span>{homeData?.heroSecondaryCtaLabel || "Nos participations"}</span>
@@ -134,7 +134,7 @@ export default function HeroSection({ homeData }: HeroSectionProps) {
               </span>
             </div>
             <Link
-              href={heroNews?.slug ? `/actualite/${heroNews.slug}` : "/actualite"}
+              href={heroNews?.slug ? `/actualites/${heroNews.slug}` : "/actualites"}
               className="group flex flex-col h-[200px] items-center border border-white/10 transition-colors hover:border-white/30"
             >
               <div className="relative h-[142px] w-full bg-white/10 shrink-0 overflow-hidden">

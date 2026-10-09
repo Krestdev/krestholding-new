@@ -12,12 +12,13 @@ import { useEffect, useState } from "react";
 import { CaretUpDown, List, Moon, Sun, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
+// Shown when the CMS menu (admin: Menu & pied de page > Menu principal) is empty.
 const DEFAULT_NAV_ITEMS: HeaderNavItem[] = [
-  { id: "1", label: "Le groupe", url: "/" },
+  { id: "1", label: "Le groupe", url: "/le-groupe" },
   { id: "2", label: "Notre modèle", url: "/notre-modele" },
-  { id: "3", label: "Participation", url: "/partenaires" },
-  { id: "4", label: "Impact", url: "/impact" },
-  { id: "5", label: "Actualité", url: "/actualite" },
+  { id: "3", label: "Nos participations", url: "/nos-participations" },
+  { id: "4", label: "Notre impact", url: "/notre-impact" },
+  { id: "5", label: "Actualités", url: "/actualites" },
   { id: "6", label: "Carrières", url: "/carrieres" },
   { id: "7", label: "Contact", url: "/contact" },
 ];
