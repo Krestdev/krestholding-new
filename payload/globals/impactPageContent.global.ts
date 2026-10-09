@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const ImpactPageContent: GlobalConfig = {
   slug: 'impact-page-content',
+  label: "Page Notre impact",
+  admin: {
+    group: ADMIN_GROUPS.impact,
+    description: "Contenu de la page Notre impact.",
+  },
   access: {
     read: () => true,
   },

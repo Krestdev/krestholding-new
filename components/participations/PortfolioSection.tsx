@@ -115,7 +115,7 @@ export default function PortfolioSection({ pageData, subsidiaries }: PortfolioSe
                       </td>
                       <td className="py-4 pl-0">
                         <Link
-                          href={`/partenaires/${getSubsidiarySlug(item)}`}
+                          href={`/nos-participations/${getSubsidiarySlug(item)}`}
                           className="flex items-center gap-2 text-xs text-[rgba(17,17,17,0.8)] dark:text-white/80 whitespace-nowrap"
                         >
                           <span>Voir la fiche</span>

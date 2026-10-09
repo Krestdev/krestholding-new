@@ -9,15 +9,16 @@ import { ActualitesPageContent } from "./actualitesPageContent.global";
 import { ImpactPageContent } from "./impactPageContent.global";
 import { CarrieresPageContent } from "./carrieresPageContent.global";
 
+// Order = order inside each admin sidebar section (see payload/adminGroups.ts).
 export const globals = [
-  Header,
-  Footer,
-  ContactInfo,
   HomePageContent,
   AboutPageContent,
   NotreModeleContent,
   ParticipationsPageContent,
-  ActualitesPageContent,
   ImpactPageContent,
+  ActualitesPageContent,
   CarrieresPageContent,
+  ContactInfo,
+  Header,
+  Footer,
 ];

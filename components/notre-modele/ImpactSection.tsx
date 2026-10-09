@@ -47,7 +47,7 @@ export default function ImpactSection({ pageData }: ImpactSectionProps) {
           ))}
 
           <Link
-            href={pageData?.impactCtaUrl || "/a-propos"}
+            href={pageData?.impactCtaUrl || "/le-groupe"}
             className="group inline-flex items-center gap-2.5 pl-6 pr-3.5 py-3 bg-black text-white dark:bg-white dark:text-black text-sm font-medium uppercase tracking-wide transition-colors hover:opacity-90"
           >
             <span>{pageData?.impactCtaLabel || "Découvrir plus"}</span>

@@ -1,11 +1,15 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
+  labels: { singular: "Témoignage", plural: "Témoignages" },
   access: {
     read: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.accueil,
+    description: "Affichés sur la page d'accueil.",
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'authorTitle', 'order'],
   },

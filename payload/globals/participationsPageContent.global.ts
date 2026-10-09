@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const ParticipationsPageContent: GlobalConfig = {
   slug: 'participations-page-content',
+  label: "Page Nos participations",
+  admin: {
+    group: ADMIN_GROUPS.participations,
+    description: "Contenu de la page Nos participations. Les deux encarts d'appel à l'action (gauche / droite) sont aussi affichés en bas des pages Contact et Notre impact.",
+  },
   access: {
     read: () => true,
   },

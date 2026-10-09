@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Header: GlobalConfig = {
   slug: 'header',
+  label: "Menu principal",
+  admin: {
+    group: ADMIN_GROUPS.navigation,
+    description: "Menu en haut du site : une entrée par rubrique (Le groupe, Notre modèle, Nos participations, Notre impact, Actualités, Carrières, Contact).",
+  },
   access: {
     read: () => true,
   },

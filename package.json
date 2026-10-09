@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "payload": "payload",
+    "seed": "payload run scripts/seed.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const NotreModeleContent: GlobalConfig = {
   slug: 'notre-modele-content',
+  label: "Page Notre modèle",
+  admin: {
+    group: ADMIN_GROUPS.modele,
+    description: "Contenu de la page Notre modèle. Les zones d'intervention sont aussi affichées sur la page Contact.",
+  },
   access: {
     read: () => true,
   },

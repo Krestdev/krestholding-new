@@ -12,10 +12,10 @@ const DEFAULT_COLUMNS = [
   {
     columnTitle: "Le Groupe",
     links: [
-      { label: "Qui sommes-nous", url: "/a-propos" },
-      { label: "Gouvernance", url: "/a-propos" },
-      { label: "Histoire", url: "/a-propos" },
-      { label: "Charte graphique", url: "/a-propos" },
+      { label: "Qui sommes-nous", url: "/le-groupe" },
+      { label: "Gouvernance", url: "/le-groupe" },
+      { label: "Histoire", url: "/le-groupe" },
+      { label: "Charte graphique", url: "/le-groupe" },
     ],
   },
   {
@@ -30,8 +30,8 @@ const DEFAULT_COLUMNS = [
   {
     columnTitle: "Groupe",
     links: [
-      { label: "Impact", url: "/a-propos" },
-      { label: "Actualités", url: "/actualite" },
+      { label: "Impact", url: "/notre-impact" },
+      { label: "Actualités", url: "/actualites" },
       { label: "Carrières", url: "/carrieres" },
       { label: "Contact · Presse", url: "/contact" },
       { label: "Mentions légales", url: "/mentions-legales" },

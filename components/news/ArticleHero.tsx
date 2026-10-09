@@ -24,7 +24,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
             Accueil
           </Link>
           <CaretRight size={12} className="text-white/64" />
-          <Link href="/actualite" className="text-white hover:text-white/70 transition-colors">
+          <Link href="/actualites" className="text-white hover:text-white/70 transition-colors">
             Actualités
           </Link>
           <CaretRight size={12} className="text-white/64" />

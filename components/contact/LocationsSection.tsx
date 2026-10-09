@@ -59,7 +59,7 @@ export default function LocationsSection({ subsidiaries }: LocationsSectionProps
                   entry.subsidiary ? (
                     <Link
                       key={entry.name}
-                      href={`/partenaires/${getSubsidiarySlug(entry.subsidiary)}`}
+                      href={`/nos-participations/${getSubsidiarySlug(entry.subsidiary)}`}
                       className="text-black dark:text-white text-xl underline hover:text-black/80 dark:hover:text-white/80 transition-colors"
                     >
                       {entry.name.toUpperCase()}

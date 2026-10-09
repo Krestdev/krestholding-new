@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 const slugify = (value: string) =>
   value
@@ -10,10 +11,13 @@ const slugify = (value: string) =>
 
 export const JobOpenings: CollectionConfig = {
   slug: 'job-openings',
+  labels: { singular: "Offre d'emploi", plural: "Offres d'emploi" },
   access: {
     read: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.carrieres,
+    description: "Offres affichées sur la page Carrières.",
     useAsTitle: 'title',
     defaultColumns: ['title', 'relatedSubsidiary', 'contractType', 'location', 'publishedAt'],
   },

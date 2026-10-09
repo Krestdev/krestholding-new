@@ -13,19 +13,20 @@ import { DossierSubmissions } from "./dossierSubmissions.collection";
 import { JobOpenings } from "./jobOpenings.collection";
 import { JobApplications } from "./jobApplications.collection";
 
+// Order = admin sidebar order (see payload/adminGroups.ts): it follows the site menu.
 export const collections = [
-  Media,
-  Subsidiaries,
-  CompanyValues,
-  News,
-  Pages,
   Testimonials,
   Faqs,
   Certifications,
+  CompanyValues,
   Service,
-  ContactSubmissions,
-  DossierDocuments,
-  DossierSubmissions,
+  Subsidiaries,
+  News,
   JobOpenings,
-  JobApplications
+  JobApplications,
+  ContactSubmissions,
+  DossierSubmissions,
+  DossierDocuments,
+  Pages,
+  Media,
 ];

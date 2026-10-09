@@ -40,7 +40,7 @@ export default function NewsSection({ subsidiary, news }: NewsSectionProps) {
             {related.slice(0, 3).map((item) => {
               const image = typeof item.featuredImage === "object" ? item.featuredImage : undefined;
               return (
-                <Link key={item.id} href={`/actualite/${item.slug}`} className="group flex flex-col">
+                <Link key={item.id} href={`/actualites/${item.slug}`} className="group flex flex-col">
                   <div className="relative h-[369px] w-full bg-black/5 dark:bg-white/5 overflow-hidden">
                     {image?.url && (
                       <Image

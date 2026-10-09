@@ -1,11 +1,15 @@
 import type { CollectionConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: { singular: "Page Formation", plural: "Pages Formation" },
   access: {
     read: () => true,
   },
   admin: {
+    group: ADMIN_GROUPS.formation,
+    description: "Pages /formation/programmes et /formation/certifications. Ne font pas partie de l'arborescence principale.",
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug'],
   },

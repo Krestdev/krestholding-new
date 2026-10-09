@@ -1,7 +1,13 @@
 import type { GlobalConfig } from 'payload'
+import { ADMIN_GROUPS } from "../adminGroups";
 
 export const CarrieresPageContent: GlobalConfig = {
   slug: 'carrieres-page-content',
+  label: "Page Carrières",
+  admin: {
+    group: ADMIN_GROUPS.carrieres,
+    description: "Contenu de la page Carrières.",
+  },
   access: {
     read: () => true,
   },
